@@ -1,0 +1,10 @@
+
+#settingRecipe{
+    position: absolute;
+    right: 10px;
+    cursor: pointer;
+    bottom: 0px;
+}
+.setting.addition label{
+    vertical-align: super;
+}

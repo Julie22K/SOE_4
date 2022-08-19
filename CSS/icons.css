@@ -1,0 +1,45 @@
+
+ion-icon.edit,
+ion-icon.delete{
+    /* color: rgba(0, 0, 0, 0); */
+    position: absolute;
+    color:black;
+}
+ion-icon.edit{
+    right: 30px;
+}
+ion-icon.delete{
+    right: 10px;
+}
+/* ion-icon.edit:hover{
+    color: blue;
+}
+ion-icon.delete:hover{
+    color: red;
+} */
+img.type-food{
+    width: 20px;
+    height: 20px;
+}
+img.type-dish{
+    width: 45px;
+    height: 45px;
+}
+img.product{
+    width: 40px;
+    height: 40px;
+}
+img.product-icon{
+    width: 17px;
+    height: 17px;
+}
+
+img.recipe{
+    padding: 10px;
+    margin: 10px;
+    height: 200px;
+    width: inherit;
+}
+.carddish-info ion-icon:hover{
+    cursor: pointer;
+}
