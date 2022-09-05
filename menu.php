@@ -11,6 +11,7 @@ require_once 'config/nutr.php';
     <link rel="stylesheet" href="CSS/menu.css" type="text/css" />
     <link rel="stylesheet" href="CSS/modal.css" type="text/css" />
     <link rel="stylesheet" href="CSS/progress.css" type="text/css" />
+    <link rel="stylesheet" href="CSS/forms.css" type="text/css" />
 
     <title>Menu of week</title>
 
@@ -107,17 +108,10 @@ require_once 'config/nutr.php';
                             }
 
                             if ($text == "") {
-                                echo '<div class="card-menu"><div class="innercard add"><h6>Add</h6></div></div>';
+                                echo '<div class="card-menu"><div class="innercard add" onclick="add_dish_from_menu(' . $dayweek . ',' . $time . ')"><h6>Add</h6></div></div>';
                             } else {
                         ?>
                                 <div class="card-menu dish">
-                                    <!-- <ion-icon class="menu-ion" id="title" name="text-outline"></ion-icon>
-                                    <ion-icon id="info-modal" onclick="openmodal(<?= $weight ?>,<?= $price ?>,<?= $water ?>,<?= $cellulose ?>,<?= $percvit ?>,<?= $percmin ?>,<?= $percfat ?>,<?= $perccarb ?>,<?= $percprotein ?>,<?= $fat ?>,<?= $carb ?>,<?= $protein ?>)" class="menu-ion" name="stats-chart-outline"></ion-icon>
-                                    <ion-icon id="data" onclick="openmodalList('<?= $list ?>',<?= $weight ?>,<?= $price ?>)" class="menu-ion" name="list-outline"></ion-icon>
-                                    <ion-icon class="menu-ion" id="edit" name="create-outline"></ion-icon>
-                                    <a href="vendor/Delete_menucell.php?id=<?= $id ?>">
-                                        <ion-icon class="menu-ion" id="delete" name="trash-outline"></ion-icon>
-                                    </a> -->
                                     <div class="innercard title">
                                         <?= $text ?>
                                     </div>
@@ -132,6 +126,9 @@ require_once 'config/nutr.php';
 
                     ?>
                 </div>
+                <form action="vendor/Clear_dishes_and_shoplist.php" method="post">
+                    <button>Clear menu</button>
+                </form>
             </div>
 
         </div>
@@ -217,6 +214,11 @@ require_once 'config/nutr.php';
                 modal.style.display = "none";
             }
         }
+
+        function add_dish_from_menu(day, time) {
+
+
+        }
     </script>
 
 
@@ -224,6 +226,7 @@ require_once 'config/nutr.php';
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <script src="js/navbar.js"></script>
+    <script src="js/contextmenu.js"></script>
     <script src="js/setting.js"></script>
     <script src="js/color.js"></script>
 

@@ -41,7 +41,7 @@ require_once 'config/get.php';
                             }
                         }
                         ?>
-                        <p style="cursor: pointer;" onclick="location.href='Addshoplist.php'">+Add</p>
+                        <!-- <p style="cursor: pointer;" onclick="location.href='Addshoplist.php'">+Add</p> -->
 
                         </ul>
                 </div>
