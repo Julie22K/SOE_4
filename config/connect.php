@@ -4,8 +4,8 @@ $par2_name = 'root';
 $par3_p = '';
 
 // $par1_ip = "s1.ho.ua";
-// $par2_name = 'soe';
-// $par3_p = 'dtqbr0TByO';
+ //$par2_name = 'soe';
+//$par3_p = 'dtqbr0TByO';
 $par4_dp = 'soe';
 $soe = mysqli_connect($par1_ip, $par2_name, $par3_p, $par4_dp);
 

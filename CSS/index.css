@@ -54,3 +54,7 @@ hr{
 .hiden-element{
     display:none;
 }
+a.without-line{
+    text-decoration: none;
+    color: var(--black1);
+}

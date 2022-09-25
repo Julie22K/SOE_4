@@ -5,6 +5,15 @@ require_once 'config/connect.php';
 <html lang="en">
 
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XWZ14BWCYX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-XWZ14BWCYX');
+    </script>
     <?php require_once 'blocks/head.php' ?>
     <link rel="stylesheet" href="CSS/profiles.css" type="text/css" />
     <title>Persons</title>

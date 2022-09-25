@@ -7,11 +7,21 @@ require_once 'config/connect.php';
 <html lang="en">
 
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XWZ14BWCYX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-XWZ14BWCYX');
+    </script>
     <?php require_once 'blocks/head.php' ?>
     <link rel="stylesheet" href="CSS/dishes.css" type="text/css" />
     <link rel="stylesheet" href="CSS/table.css" type="text/css" />
     <link rel="stylesheet" href="CSS/forms.css" type="text/css" />
     <link rel="stylesheet" href="CSS/modal.css" type="text/css" />
+    <link rel="stylesheet" href="CSS/pagination.css" type="text/css" />
     <link rel="stylesheet" href="CSS/filtersort.css" type="text/css" />
     <title>Recipes</title>
 
@@ -49,13 +59,13 @@ require_once 'config/connect.php';
                             ?>
                         </div>
                         <div class="sort">
-                            <button onclick="sort_recipes_by_name()" id="sortRecipeByName" class="">A..Z</button>
-                            <button onclick="sort_recipes_by_weigth()" id="sortRecipeByWht" class="">Weight</button>
-                            <button onclick="sort_recipes_by_price()" id="sortRecipeByPrice" class="">Price</button>
-                            <button onclick="sort_recipes_by_KKAL()" id="sortRecipeByKKAL" class="">KKAL</button>
-                            <button onclick="sort_recipes_by_carb()" id="sortRecipeByCarb" class="">Carbonation</button>
-                            <button onclick="sort_recipes_by_fat()" id="sortRecipeByFat" class="">fat</button>
-                            <button onclick="sort_recipes_by_protein()" id="sortRecipeByProtein" class="">protein</button>
+                            <button onclick="sort_recipes('name_of_dish','#sortRecipeByName')" id="sortRecipeByName" class="active sort-recipe">A..Z</button>
+                            <button onclick="sort_recipes('weight_of_dish','#sortRecipeByWht')" id="sortRecipeByWht" class="sort-recipe">Weight</button>
+                            <button onclick="sort_recipes('price_of_dish','#sortRecipeByPrice')" id="sortRecipeByPrice" class="sort-recipe">Price</button>
+                            <button onclick="sort_recipes('kkal_of_dish','#sortRecipeByKKAL')" id="sortRecipeByKKAL" class="sort-recipe">KKAL</button>
+                            <button onclick="sort_recipes('protein_of_dish','#sortRecipeByCarb')" id="sortRecipeByCarb" class="sort-recipe">Carbonation</button>
+                            <button onclick="sort_recipes('carb_of_dish','#sortRecipeByFat')" id="sortRecipeByFat" class="sort-recipe">fat</button>
+                            <button onclick="sort_recipes('fat_of_dish','#sortRecipeByProtein')" id="sortRecipeByProtein" class="sort-recipe">protein</button>
                         </div>
                         <div class="search">
                             <input type="text" id="srch" placeholder="search...">
@@ -109,7 +119,7 @@ require_once 'config/connect.php';
                         if ($recipe[3] != '')  $image_url = 'style="background-size: cover;background-image:url(' . $recipe[3] . ');"';
 
                     ?>
-                        <div class="card card-dish <?= $recipe[2] ?>" id="<?= $recipe[1] ?>" <?= $image_url ?> name_of_dish="<?= str_replace(" ", "_", $recipe[1]) ?>" weight_of_dish="<?= $recipeWeight  ?>" price_of_dish="<?= $recipePrice  ?>" kkal_of_dish="<?= $recipe_kkal  ?>" protein_of_dish="<?= $recipe_protein  ?>" carb_of_dish="<?= $recipe_carb  ?>" fat_of_dish="<?= $recipe_fat  ?>">
+                        <div class="card card-dish <?= $recipe[2] ?>" id="<?= $recipe[0] ?>" <?= $image_url ?> name_of_dish="<?= str_replace(" ", "_", $recipe[1]) ?>" weight_of_dish="<?= $recipeWeight  ?>" price_of_dish="<?= $recipePrice  ?>" kkal_of_dish="<?= $recipe_kkal  ?>" protein_of_dish="<?= $recipe_protein  ?>" carb_of_dish="<?= $recipe_carb  ?>" fat_of_dish="<?= $recipe_fat  ?>">
                             <div class="data">
                                 <table>
                                     <thead>
@@ -147,21 +157,28 @@ require_once 'config/connect.php';
 
                                 </table>
                             </div>
-                            <div class="carddish-info">
-                                <!-- <ion-icon name="today-outline"></ion-icon><span class="text"></span>
-                                <ion-icon name="time-outline"></ion-icon><span class="text"></span> -->
-                                <ion-icon onclick="chooseday(<?= $recipe[0] ?>)" name="apps-outline"></ion-icon>
-                                <ion-icon name="podium-outline"></ion-icon>
-                                <ion-icon onclick="showrecipe('<?= $recipe[7] ?>')" name="reader-outline"></ion-icon>
-                                <ion-icon onclick="showimage('<?= $recipe[5] ?>')" name="images-outline"></ion-icon>
-                                <ion-icon onclick="showvideo('<?= $recipe[6] ?>')" name="film-outline"></ion-icon>
-                                <a href="update/Update_recipe.php?id=<?= $recipe[0] ?>">
-                                    <ion-icon class="edit" name="create-outline"></ion-icon>
-                                </a>
-                                <a href="vendor/Delete_recipe.php?id=<?= $recipe[0] ?>">
-                                    <ion-icon class="delete" name="close-outline"></ion-icon>
-                                </a>
-                            </div>
+
+
+                        </div>
+                        <div class="context-menu-open" id="contextmenurecipecard<?= $recipe[0] ?>">
+                            <ul>
+                                <li onclick="chooseday(<?= $recipe[0] ?>)">
+                                    <ion-icon name="apps-outline"></ion-icon>
+                                    Add to menu
+                                </li>
+                                <li>
+                                    <ion-icon name="create-outline"></ion-icon>
+                                    <a class="without-line" href="update/Update_recipe.php?id=<?= $recipe[0] ?>">
+                                        Edit
+                                    </a>
+                                </li>
+                                <li>
+                                    <ion-icon name="close-outline"></ion-icon>
+                                    <a class="without-line" href="vendor/Delete_recipe.php?id=<?= $recipe[0] ?>">
+                                        Delete
+                                    </a>
+                                </li>
+                            </ul>
                         </div>
                     <?php
                     }
@@ -225,6 +242,7 @@ require_once 'config/connect.php';
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <script src="js/recipes_setting.js"></script>
     <script src="js/navbar.js"></script>
+    <!-- <script src="js/pagination.js"></script> -->
     <script src="js/contextmenu.js"></script>
     <script src="js/setting.js"></script>
     <script src="js/color.js"></script>

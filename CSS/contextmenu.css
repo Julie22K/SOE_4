@@ -1,13 +1,3 @@
-.context-menu {
-  border: 4px solid #337AB7;
-  background: #BFE2FF;
-  width: 180px;
-  height: 100px;
-  display: inline-flex;
-  text-align: center;
-  align-items: center;
-  margin: 20px;
-}
 .context-menu-open {
   display: none;
   position: fixed;
@@ -28,11 +18,11 @@
   list-style: none;
   padding: 10px 12px;
   margin: 0;
-  border-bottom: 1px solid #BFE2FF;
+  border-bottom: 1px solid lightgray;
 }
 .context-menu-open ul li:last-child {
   border-bottom: 1px solid transparent;
 }
 .context-menu-open ul li:hover {
-  background-color: #BFE2FF;
+  background-color: var(--hover);
 }
