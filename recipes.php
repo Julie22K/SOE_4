@@ -160,32 +160,33 @@ require_once 'config/connect.php';
 
 
                         </div>
-                        <div class="context-menu-open" id="contextmenurecipecard<?= $recipe[0] ?>">
-                            <ul>
-                                <li onclick="chooseday(<?= $recipe[0] ?>)">
-                                    <ion-icon name="apps-outline"></ion-icon>
-                                    Add to menu
-                                </li>
-                                <li>
-                                    <ion-icon name="create-outline"></ion-icon>
-                                    <a class="without-line" href="update/Update_recipe.php?id=<?= $recipe[0] ?>">
-                                        Edit
-                                    </a>
-                                </li>
-                                <li>
-                                    <ion-icon name="close-outline"></ion-icon>
-                                    <a class="without-line" href="vendor/Delete_recipe.php?id=<?= $recipe[0] ?>">
-                                        Delete
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
+
                     <?php
                     }
                     ?>
                 </div>
             </div>
         </div>
+    </div>
+    <div class="context-menu-open" id="contextmenurecipecard">
+        <ul>
+            <li onclick="chooseday()">
+                <ion-icon name="apps-outline"></ion-icon>
+                Add to menu
+            </li>
+            <li>
+                <ion-icon name="create-outline"></ion-icon>
+                <a class="without-line" href="update/Update_recipe.php?id=">
+                    Edit
+                </a>
+            </li>
+            <li>
+                <ion-icon name="close-outline"></ion-icon>
+                <a class="without-line" href="vendor/Delete_recipe.php?id=">
+                    Delete
+                </a>
+            </li>
+        </ul>
     </div>
     <?php require_once 'blocks/modals/modal_choose_day_time.php'; ?>
     <script>

@@ -1,5 +1,7 @@
-<?php require_once 'config/connect.php';
-require_once 'config/nutr.php';
+<?php
+require_once 'config/connect.php';
+
+//require_once 'config/nutr.php';
 
 ?>
 
@@ -22,6 +24,9 @@ require_once 'config/nutr.php';
     <link rel="stylesheet" href="CSS/progress.css" type="text/css" />
     <link rel="stylesheet" href="CSS/forms.css" type="text/css" />
 
+    <link rel="stylesheet" href="CSS/analysis.css" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+
     <title>Menu of week</title>
 
 </head>
@@ -34,54 +39,31 @@ require_once 'config/nutr.php';
         <div class="main">
             <?php require_once 'blocks/topbar.php'; ?>
             <div class="page">
-                <?php require_once 'blocks/calc_nutr.php'; ?>
-
-                <div class="card" style="width:100%;">
-                    <label for="kkal">Protein/Fat/Carb(<?= $valuekkal ?>kkal)</label>
-                    <div id="kkal" class="progress-bar progress-multiple" style="width:97.5%;">
-                        <span class="progress progress-protein" style="width: <?= $percentprotein ?>%;"><?= $valueprotein ?>g</span>
-                        <span class="progress progress-fat" style="width: <?= $percentfat ?>%;"><?= $valuefat ?>g</span>
-                        <span class="progress progress-carb" style="width: <?= $percentcarb ?>%;"><?= $valuecarb ?>g</span>
+                <div id="card_analysis" class=""><!--style="min-width: 90%;"-->
+                    <div class="card-part" id="allanalitic">
+                        <div id="kprc" class="circle"></div>
+                        <div id="mins" class="circle"></div>
+                        <div id="vits" class="circle"></div>
+                        <div id="water" class="circle"></div>
+                        <div id="cellulose" class="circle"></div>
+                        <div id="sugar" class="circle"></div>
                     </div>
-                    <div class="grid-2">
-                        <div>
-                            <label for="water">Water:</label>
-                            <div id="water" class="progress-bar">
-                                <span class="progress progress-water" style="width:<?= $percentwater ?>%;"><?= $valuewater ?></span>
-                            </div>
-                        </div>
-                        <div>
-                            <label for="Cellulose">Cellulose:</label>
-                            <div id="cell" class="progress-bar">
-                                <span class="progress progress-cellulose" style="width: <?= $percentcellulose ?>%;"><?= $valuecellulose ?></span>
-                            </div>
-                        </div>
-                        <div>
-                            <label for="Vitamins:">Vitamins:</label>
-                            <ion-icon onclick="allvit(<?php echo $Norm_vitA . ',' . $Norm_vitE . ',' . $Norm_vitK . ',' . $Norm_vitD . ',' . $Norm_vitC . ',' . $Norm_Om3 . ',' . $Norm_Om6 . ',' . $Norm_vitB1 . ',' . $Norm_vitB2 . ',' . $Norm_vitB5 . ',' . $Norm_vitB6 . ',' . $Norm_vitB8 . ',' . $Norm_vitB9 . ',' . $Norm_vitB12 . ',' . $valuevitA . ',' . $valuevitE . ',' . $valuevitK . ',' . $valuevitD . ',' . $valuevitC . ',' . $valueOm3 . ',' . $valueOm6 . ',' . $valuevitB1 . ',' . $valuevitB2 . ',' . $valuevitB5 . ',' . $valuevitB6 . ',' . $valuevitB8 . ',' . $valuevitB9 . ',' . $valuevitB12 ?>)" name="help-circle-outline"></ion-icon>
-                            <div id="vit" class="progress-bar">
-                                <span class="progress progress-vit" style="width: <?= $percentvit ?>%;"><?= $percentvit ?>%</span>
-                            </div>
-                        </div>
-                        <div>
-                            <label for="Minerals:">Minerals:</label>
-                            <ion-icon onclick="allmin(<?= $Norm_minMg ?>, <?= $Norm_minNa ?>, <?= $Norm_minCl ?>, <?= $Norm_minCa ?>,<?= $Norm_minCu ?>,<?= $Norm_minCr ?>,<?= $Norm_minI ?>, <?= $Norm_minK ?>, <?= $Norm_minS ?>, <?= $Norm_minP ?>, <?= $valueminMg ?>, <?= $valueminNa ?>, <?= $valueminCl ?>, <?= $valueminCa ?>,<?= $valueminCu ?>,<?= $valueminCr ?>,<?= $valueminI ?>, <?= $valueminK ?>,<?= $valueminS ?>,<?= $valueminP ?>)" name="help-circle-outline"></ion-icon>
-                            <div id="min" class="progress-bar">
-                                <span class="progress progress-min" style="width: <?= $percentmin ?>%;"><?= $percentmin ?>%</span>
-                            </div>
-                        </div>
+                    <div class="card-part" id="minerals">
 
                     </div>
-                    <label for="finanse:">Finanse:</label>
-                    <div id="finanse" class="progress-bar">
-                        <span class="progress" style="width: <?= $percentfin ?>%;"><?= $percentfin ?>%(<?= $valuefin ?>)</span>
+                    <div class="card-part" id="vitamins">
+
                     </div>
+
+                    <div id="btnsPart">
+                        <button onclick="activateCardPart('allanalitic')" id="btnAll" class="button"><div>A<br>l<br>l<br></div></button>
+                        <button onclick="activateCardPart('minerals')" id="btnMin" class="button"><div>M<br>i<br>n<br>e<br>r<br>a<br>l<br>s<br></div></button>
+                        <button onclick="activateCardPart('vitamins')" id="btnVit" class="button"><div>V<br>i<br>t<br>a<br>m<br>i<br>n<br>s<br></div></button>
+                    </div>
+
                 </div>
                 <!-- menu's cards -->
-                <?php
-                $dishes = mysqli_query($soe, "SELECT * FROM `dishes`");
-                $dishes = mysqli_fetch_all($dishes);
-                ?>
+
                 <div class="container" id="menu">
                     <div class="card-menu day time">
                         <div class="innercard card static">
@@ -89,6 +71,7 @@ require_once 'config/nutr.php';
                         </div>
                     </div>
                     <?php
+
                     foreach ($days as $day) {
                     ?>
                         <div class="card-menu day">
@@ -142,94 +125,347 @@ require_once 'config/nutr.php';
 
         </div>
     </div>
-    <?= require_once 'blocks/modals/modal_menucell.php'; ?>
-    <script>
-        var modal = document.getElementById("ModalInfo");
-        var span = document.getElementsByClassName("close")[0];
+    <?php
+    $fulldata = mysqli_query($soe, "select * from menu_fulldata");
+    $fulldata = mysqli_fetch_assoc($fulldata);
 
-        function openmodal(weight, price, water, cell, percvit, percmin, percfat, perccarb, percprotein, fat, carb, protein) {
-            modal.style.display = "block";
+    $vitmin = mysqli_query($soe, "select * from menu_vits_and_mins");
+    $vitmin = mysqli_fetch_assoc($vitmin);
+    ?>
+    <script type="text/javascript">
+        const bigsize=230,midsize=190,smallsize=160;
 
-            let li = '<div class="info" id="info"><label for="kkal">Protein/Fat/Carb</label><div id="kkal" class="progress-bar progress-multiple" style="width:100%;"><span class="progress progress-protein"></span><span class="progress progress-fat"></span><span class="progress progress-carb"></span></div><div class="grid-2"><div><label for="Vitamins:">Vitamins:</label><div id="vit" class="progress-bar"><span class="progress progress-vit"></span></div></div><div><label for="Minerals:">Minerals:</label><div id="min" class="progress-bar"><span class="progress progress-min"></span></div></div></div></div><div class="info-data"><div id="wg" class="text">Weight</div><div id="pr" class="text">Price</div><div id="wt" class="text">Water</div><div id="cl" class="text">Cellulose</div></div>';
-            $("#modal-content").html(li);
+        var options = {
+            series: [<?=round($fulldata['kcal'],1)?>, <?=round($fulldata['protein'],1)?>, <?=round($fulldata['carb'],1)?>, <?=round($fulldata['fat'],1)?>],
+            chart: {
+                height: bigsize,
+                type: 'radialBar',
+            },
+            plotOptions: {
+                radialBar: {
+                    offsetY: 0,
+                    startAngle: 0,
+                    endAngle: 270,
+                    hollow: {
+                        margin: 5,
+                        size: '30%',
+                        background: 'transparent',
+                        image: undefined,
+                    },
+                    dataLabels: {
+                        name: {
+                            show: false,
+                        },
+                        value: {
+                            show: false,
+                        }
+                    }
+                }
+            },
+            colors: ['#7B58AD', '#FF4F4F', '#4664CF', '#F2E041'],
+            labels: ['Kcal', 'Protein', 'Carbonation', 'Fat'],
+            legend: {
+                show: true,
+                floating: true,
+                fontSize: '10px',
+                position: 'left',
+                offsetX: 0,
+                offsetY: -10,
+                labels: {
+                    useSeriesColors: true,
+                },
+                markers: {
+                    size: 0
+                },
+                formatter: function(seriesName, opts) {
+                    return seriesName + ":  " + opts.w.globals.series[opts.seriesIndex]
+                },
+                itemMargin: {
+                    vertical: 3
+                }
+            },
+            responsive: [{
+                breakpoint: 480,
+                options: {
+                    legend: {
+                        show: false
+                    }
+                }
+            }]
+        };
+        var kcal = new ApexCharts(document.querySelector("#kprc"), options);
+        kcal.render();
+        //minerals
+        var vitamins = {
+            series: [<?=round($vitmin['vitamins'],1)?>],
+            chart: {
+                height: midsize,
+                type: 'radialBar',
+            },
+            plotOptions: {
+                radialBar: {
+                    hollow: {
+                        size: '40%',
+                    }
+                },
+            },
+            colors:['#B14FFF'],
+            labels: ['Vitamins'],
+        };
+        var vits = new ApexCharts(document.querySelector("#vits"), vitamins);
+        vits.render();
+        //vitamins
+        var minerals = {
+            colors:['#FF4F99'],
+            series: [<?=round($vitmin['minerals'],1)?>],
+            chart: {
+                height: midsize,
+                type: 'radialBar',
+            },
+            plotOptions: {
+                radialBar: {
+                    hollow: {
+                        size: '40%',
+                    }
+                },
+            },
+            labels: ['Minerals'],
+        };
 
-            $("#wg").text('Weight:' + weight);
-            $("#pr").text('Price:' + price);
-            $("#wt").text('Water:' + water);
-            $("#cl").text('Cellulose:' + cell);
-            //kkal
-            $("#info .progress-protein").text(protein);
-            $("#info .progress-fat").text(fat);
-            $("#info .progress-carb").text(carb);
-            $("#info .progress-protein").css("width", percprotein + "%")
-            $("#info .progress-fat").css("width", percfat + "%")
-            $("#info .progress-carb").css("width", perccarb + "%")
-            //min
-            $("#min .progress").text(percmin);
-            $("#min .progress").css("width", percmin + "%")
-            //vit
-            $("#vit .progress").text(percvit);
-            $("#vit .progress").css("width", percvit + "%")
-        }
+        var mins = new ApexCharts(document.querySelector("#mins"), minerals);
+        mins.render();
+        //water
+        var water = {
+            series: [<?=round($fulldata['water'],1)?>],
+            chart: {
+                height: smallsize,
+                type: 'radialBar',
+            },
+            plotOptions: {
+                radialBar: {
+                    hollow: {
+                        size: '40%',
+                    }
+                },
+            },
+            labels: ['Water'],
+        };
 
-        function openmodalList(list, weight, price) {
-            let li = '<div class="info-data"><div id="wg" class="text">Weight</div><div id="pr" class="text">Price</div></div>';
-            $("#modal-content").html(li);
-            list.replace(';', ';\n')
-            modal.style.display = "block";
-            $("#wg").text('Weight:' + weight);
-            $("#pr").text('Price:' + price);
-            $("#modal-content").text(list);
-        }
+        var wtr = new ApexCharts(document.querySelector("#water"), water);
+        wtr.render();
+        //cellulose
+        var cellulose = {
+            series: [<?=round($fulldata['cellulose'],1)?>],
+            chart: {
+                height: smallsize,
+                type: 'radialBar',
+            },
+            plotOptions: {
+                radialBar: {
+                    hollow: {
+                        size: '40%',
+                    }
+                },
+            },
+            colors:['#83C73F'],
+            labels: ['Cellulose'],
+        };
 
-        function allvit(a, e, k, d, c, om3, om6, b1, b2, b5, b6, b8, b9, b12, va, ve, vk, vd, vc, vom3, vom6, vb1, vb2, vb5, vb6, vb8, vb9, vb12) {
-            let listnamevits = ['A', 'E', 'K', 'D', 'C', 'Omega 3', 'Omega 6', 'B1', 'B2', 'B5', 'B6', 'B8', 'B9', 'B12'];
-            let listnormvits = [a, e, k, d, c, om3, om6, b1, b2, b5, b6, b8, b9, b12];
-            let listvaluevits = [va, ve, vk, vd, vc, vom3, vom6, vb1, vb2, vb5, vb6, vb8, vb9, vb12];
-            modal.style.display = "block";
-            let li = '<div class="grid-2" id="vit">';
-            for (let i = 0; i < listnamevits.length; i++) {
-                let persent = listvaluevits[i] * 100 / listnormvits[i];
-                persent = persent >= 100 ? 100 : persent;
-                li += '<label for="vit_' + listnamevits[i] + ':">' + listnamevits[i] + ':</label><div id="vit_' + listnamevits[i] + '" class="progress-bar"><span class="progress" style="width:' + persent + '%;">' + listvaluevits[i] + '/' + listnormvits[i] + '</span></div>'
+        var cls = new ApexCharts(document.querySelector("#cellulose"), cellulose);
+        cls.render();
+        //water
+        var sugar = {
+            series: [50],
+            chart: {
+                height: smallsize,
+                type: 'radialBar',
+            },
+            plotOptions: {
+                radialBar: {
+                    hollow: {
+                        size: '40%',
+                    }
+                },
+            },
+            colors:['#3F9D7B'],
+            labels: ['Sugar'],
+        };
 
+        var sgr = new ApexCharts(document.querySelector("#sugar"), sugar);
+        sgr.render();
+        //vitamis
+        var vitammins = {
+            series: [
+                {
+                    data: [
+                        {
+                            x: 'A',
+                            y: <?=round($fulldata['vitA'],1)?>
+                        },
+                        {
+                            x: 'E',
+                            y: <?=round($fulldata['vitE'],1)?>
+                        },
+                        {
+                            x: 'K',
+                            y: <?=round($fulldata['vitK'],1)?>
+                        },
+                        {
+                            x: 'D',
+                            y: <?=round($fulldata['vitD'],1)?>
+                        },
+                        {
+                            x: 'C',
+                            y: <?=round($fulldata['vitC'],1)?>
+                        },
+                        {
+                            x: 'Omega 3',
+                            y: <?=round($fulldata['om3'],1)?>
+                        },
+                        {
+                            x: 'Omega 6',
+                            y: <?=round($fulldata['om6'],1)?>
+                        },
+                        {
+                            x: 'B1',
+                            y: <?=round($fulldata['vitB1'],1)?>
+                        },
+                        {
+                            x: 'B2',
+                            y: <?=round($fulldata['vitB2'],1)?>
+                        },
+                        {
+                            x: 'B5',
+                            y: <?=round($fulldata['vitB5'],1)?>
+                        },
+                        {
+                            x: 'B6',
+                            y: <?=round($fulldata['vitB6'],1)?>
+                        },
+                        {
+                            x: 'B8',
+                            y: <?=round($fulldata['vitB8'],1)?>
+                        },
+                        {
+                            x: 'B9',
+                            y: <?=round($fulldata['vitB9'],1)?>
+                        },
+                        {
+                            x: 'B12',
+                            y: <?=round($fulldata['vitB12'],1)?>
+                        }
+                    ]
+                }
+            ],
+            toolbar: {
+                show: false
+            },
+            legend: {
+                show: false
+            },
+            chart: {
+                height: 220,
+                width:925,
+                type: 'treemap',
+                toolbar: {
+                    show: false
+                }
+            },
+            /*title: {
+                text: 'Vitamins'
+            },*/
+            colors: ['#B14FFF'],
+            tooltip: {
+                y: {
+                    formatter: function(value, opts) {
+                        const sum = opts.series[0].reduce((a, b) => a + b, 0);
+                        const percent = value * 1;
+                        return percent.toFixed(0) + '%'
+                    },
+                },
+            }
+        };
+
+        var vts = new ApexCharts(document.querySelector("#vitamins"), vitammins);
+        vts.render();
+        //minerals
+        var minerrals = {
+            series: [
+                {
+                    data: [
+                        {
+                            x: 'Mg',
+                            y: <?=round($fulldata['minMg'],1)?>
+                        },
+                        {
+                            x: 'Na',
+                            y: <?=round($fulldata['minNa'],1)?>
+                        },
+                        {
+                            x: 'Ca',
+                            y: <?=round($fulldata['minCa'],1)?>
+                        },
+                        {
+                            x: 'Cl',
+                            y: <?=round($fulldata['minCl'],1)?>
+                        },
+                        {
+                            x: 'K',
+                            y: <?=round($fulldata['minK'],1)?>
+                        },
+                        {
+                            x: 'S',
+                            y: <?=round($fulldata['minS'],1)?>>100?100:<?=round($fulldata['minS'],1)?>
+                        },
+                        {
+                            x: 'P',
+                            y: <?=round($fulldata['minP'],1)?>
+                        },
+                        {
+                            x: 'Cu',
+                            y: <?=round($fulldata['minCu'],1)?>
+                        },
+                        {
+                            x: 'Cr',
+                            y: <?=round($fulldata['minCr'],1)?>
+                        },
+                        {
+                            x: 'I',
+                            y: <?=round($fulldata['minI'],1)?>
+                        }
+                    ]
+                }
+            ],
+            legend: {
+                show: false
+            },
+            chart: {
+                height: 220,
+                width:925,
+                type: 'treemap',
+                toolbar: {
+                    show: false
+                }
+            },
+            /*title: {
+                text: 'Minerals'
+            },*/
+            colors: ['#FF4F99'],
+            tooltip: {
+                y: {
+                    formatter: function(value, opts) {
+                        const sum = opts.series[0].reduce((a, b) => a + b, 0);
+                        const percent = value * 1;
+                        return percent.toFixed(0) + '%'
+                    },
+                },
             }
 
-            li += '</div>';
-            $("#modal-content").html(li);
-        }
+        };
 
-        function allmin(mg, na, cl, ca, cu, cr, i, k, s, p, vmg, vna, vcl, vca, vcu, vcr, vi, vk, vs, vp) {
-            let listnamemins = ['Mg', 'Na', 'Cl', 'Ca', 'Cu', 'Cr', 'I', 'K', 'S', 'P'];
-            let listnormmins = [mg, na, cl, ca, cu, cr, i, k, s, p];
-            let listvaluemins = [vmg, vna, vcl, vca, vcu, vcr, vi, vk, vs, vp];
-            modal.style.display = "block";
-            let li = '<div class="grid-2" id="min"> ';
-            for (let i = 0; i < listnamemins.length; i++) {
-                let persent = listvaluemins[i] * 100 / listnormmins[i];
-                persent = persent >= 100 ? 100 : persent;
-                li += '<label for="min_' + listnamemins[i] + ':">' + listnamemins[i] + ':</label><div id="min_' + listnamemins[i] + '" class="progress-bar"><span class="progress" style="width:' + persent + '%;">' + listvaluemins[i] + '/' + listnormmins[i] + '</span></div>'
-
-            }
-            li += '</div>';
-            $("#modal-content").html(li);
-        }
-
-        span.onclick = function() {
-            modal.style.display = "block";
-        }
-        window.onclick = function(event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        }
-
-        function add_dish_from_menu(day, time) {
-
-
-        }
+        var mns = new ApexCharts(document.querySelector("#minerals"), minerrals);
+        mns.render();
     </script>
-
 
 
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
@@ -238,6 +474,7 @@ require_once 'config/nutr.php';
     <script src="js/contextmenu.js"></script>
     <script src="js/setting.js"></script>
     <script src="js/color.js"></script>
+    <script src="js/card_parts.js"></script>
 
 </body>
 

@@ -1,8 +1,9 @@
-/*let = contextMenu = $('.context-menu-open');
+let contextMenu = $('.context-menu-open');
 
 
         $('.card-dish').on('contextmenu', function(e) {
-            //let=contextMenuCardDish =  $('#contextmenurecipecard'+e.currentTarget.id);
+            let contextMenuCardDish =$('#contextmenurecipecard'+e.currentTarget.id);
+            console.log(33);
             e.preventDefault();
             contextMenuCardDish.css({
                 top: e.clientY + 'px',
@@ -17,6 +18,6 @@
         });
         $(document).on('scroll', function() {
             contextMenu.hide();
-        });*/
+        });
 
         
