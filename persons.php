@@ -34,7 +34,7 @@ require_once 'config/connect.php';
                     $persons = mysqli_fetch_all($persons);
                     foreach ($persons as $person) {
                     ?>
-                        <div class="card card-prof">
+                        <div class="card card-prof" id="<?= $person[0] ?>">
                             <h4><?= $person[1] ?></h4>
                             <div class="face">
                                 <span class="line">
@@ -87,14 +87,7 @@ require_once 'config/connect.php';
                                     <p>Cellulose:</p>
                                     <p class="num"><?= $person[12] ?>g</p>
                                 </span>
-                                <span class="line edit-delete">
-                                    <a href="update/Update_person.php?id=<?= $person[0] ?>">
-                                        <ion-icon class="edit" name="create-outline"></ion-icon>
-                                    </a>
-                                    <a href="vendor/Delete_person.php?id=<?= $person[0] ?>">
-                                        <ion-icon class="delete" name="close-outline"></ion-icon>
-                                    </a>
-                                </span>
+
                             </div>
                         </div>
                     <?php
@@ -110,7 +103,7 @@ require_once 'config/connect.php';
         </div>
     </div>
 
-
+    <div class="context-menu-open" id="contextmenuperson"></div>
 
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>

@@ -17,7 +17,6 @@ function sort_recipes(attr_name,id_btn) {
         if(attr_name=='name_of_dish') {
             if (b[i].getAttribute(attr_name) > b[i + 1].getAttribute(attr_name)) {
                 shouldSwitch = true;
-                console.log(1);
                 break;
 
             }
@@ -25,7 +24,6 @@ function sort_recipes(attr_name,id_btn) {
         else{
             if (b[i].getAttribute(attr_name) < b[i + 1].getAttribute(attr_name)) {
                 shouldSwitch = true;
-                console.log(1);
                 break;
 
             }

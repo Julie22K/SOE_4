@@ -103,7 +103,7 @@ require_once 'config/connect.php';
                                 echo '<div class="card-menu"><div class="innercard add" onclick="add_dish_from_menu(' . $dayweek . ',' . $time . ')"><h6>Add</h6></div></div>';
                             } else {
                         ?>
-                                <div class="card-menu dish">
+                                <div class="card-menu dish" day="<?= $dayweek ?>" time="<?= $time ?>" id="<?= $dish[0] ?>">
                                     <div class="innercard title">
                                         <?= $text ?>
                                     </div>
@@ -125,6 +125,7 @@ require_once 'config/connect.php';
 
         </div>
     </div>
+    <div class="context-menu-open" id="contextmenumenucell"></div>
     <?php
     $fulldata = mysqli_query($soe, "select * from menu_fulldata");
     $fulldata = mysqli_fetch_assoc($fulldata);

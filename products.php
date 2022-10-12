@@ -142,7 +142,7 @@ require_once 'config/connect.php';
                             $products = mysqli_fetch_all($products);
                             foreach ($products as $product) {
                             ?>
-                                <tr class="tr-product <?= $product[2] ?>"
+                                <tr class="tr-product <?= $product[2] ?>" id="<?= $product[0] ?>"
 
                                     name_of_product="<?= $product[1] ?>"
                                 price_of_product="<?= $product[3] ?>"
@@ -208,13 +208,6 @@ require_once 'config/connect.php';
                                         $index_in_db+=1;
                                     }
                                     ?>
-                                    <td class='setting'><a href="update/Update_product.php?id=<?= $product[0] ?>">
-                                            <ion-icon class="edit" name="create-outline"></ion-icon>
-                                        </a></td>
-                                    <td class='setting'><a href="vendor/Delete_product.php?id=<?= $product[0] ?>">
-                                            <ion-icon class="delete" name="close-outline"></ion-icon>
-                                        </a></td>
-                                    <!-- onclick="alert('\'Ви впевнені, що хочете видалити елемент з назвою: '<?= $blog[2] ?>'?\'')"-->
                                 </tr>
                             <?php
                             }
@@ -234,6 +227,7 @@ require_once 'config/connect.php';
             <p>Some text in the Modal..</p>
         </div>
     </div>
+    <div class="context-menu-open" id="contextmenuproducttr"></div>
     <script>
        /* let modal = document.getElementById("myModal");
         let span = document.getElementsByClassName("close")[0];
