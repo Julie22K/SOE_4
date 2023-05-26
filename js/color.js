@@ -1,5 +1,5 @@
-let pallete,clr,brd,fr,bc;
-function theme(color,border,front,back){
+let pallete;
+function theme(color,border,front,back,btn){
     if(color=='#F5F5F5') document.documentElement.style.setProperty("--text",'#000000')
     else document.documentElement.style.setProperty("--text",'white')
 
@@ -9,8 +9,9 @@ function theme(color,border,front,back){
     document.documentElement.style.setProperty("--main3",border)
     document.documentElement.style.setProperty("--front",front)
     document.documentElement.style.setProperty("--back",back)
+    document.documentElement.style.setProperty("--btn",btn)
 
-    var pallete=[color,border,front,back];
+    var pallete=[color,border,front,back,btn];
     savetheme(pallete);
 }
 function savetheme(pallete){
@@ -24,14 +25,12 @@ function readtheme(){
 }
 $(document).ready(function(){
     //clr='#527445';
-    
     if (localStorage.getItem('theme') !== null) {
         pallete=readtheme();
-        theme(pallete[0],pallete[1],pallete[2],pallete[3]);
-        
+        theme(pallete[0],pallete[1],pallete[2],pallete[3],pallete[4]);
     }
     else{
-        theme('#003d08','#527445','#C2D4B3','#E5D3C9');
+        theme('#003d08','#527445','#C2D4B3','#E5D3C9','#003d08');
     }
     
 

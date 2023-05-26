@@ -1,0 +1,69 @@
+<?php
+$recipes = mysqli_query($soe, "SELECT * FROM `recipes` ORDER BY Name");
+$recipes = mysqli_fetch_all($recipes);
+foreach ($recipes as $recipe) {
+    $ingrs = mysqli_query($soe, "SELECT * FROM recipes,ingridients,products WHERE recipes.ID=ingridients.RecipeID AND products.ID=ingridients.ProductID AND recipes.Name='$recipe[1]';");
+    $ingrs = mysqli_fetch_all($ingrs);
+    $recipePrice = 0;
+    $recipeWeight = 0;
+    $recipe_kkal = 0;
+    $recipe_protein = 0;
+    $recipe_fat = 0;
+    $recipe_carb = 0;
+    foreach ($ingrs as $ingr) {
+        $recipePrice += $ingr[7] * $ingr[13] / 100;
+        $recipe_kkal += $ingr[7] * $ingr[15] / 100;
+        $recipe_protein += $ingr[7] * $ingr[17] / 100;
+        $recipe_fat += $ingr[7] * $ingr[16] / 100;
+        $recipe_carb += $ingr[7] * $ingr[18] / 100;
+        $recipeWeight += $ingr[7];
+    }
+    $image_url = '';
+    //opacity: 0.8;
+    if ($recipe[3] != '')  $image_url = 'style="background-image:url(' . $recipe[3] . ');"';
+    $image_url="";
+        ?>
+<div class="card card-dish <?= $recipe[2] ?>" id="<?= $recipe[0] ?>"  name_of_dish="<?= str_replace(" ", "_", $recipe[1]) ?>" weight_of_dish="<?= $recipeWeight  ?>" price_of_dish="<?= $recipePrice  ?>" kkal_of_dish="<?= $recipe_kkal  ?>" protein_of_dish="<?= $recipe_protein  ?>" carb_of_dish="<?= $recipe_carb  ?>" fat_of_dish="<?= $recipe_fat  ?>">
+        <div class="card-back" <?= $image_url ?>></div>
+    <div class="data">
+        <table>
+            <thead>
+            <tr>
+                <th><img class="type-dish" src="image/typeofdishes/<?= $recipe[2] ?>.png" alt="[dish]"></th>
+                <th><?= $recipe[1] ?></th>
+                <th><?= $recipePrice  ?>$</th>
+                <th><?= $recipeWeight  ?>g</th>
+                <th class="recipe-col-3"><?= $recipe_kkal  ?>kkal</th>
+                <th class="recipe-col-3"><?= $recipe_protein  ?>g</th>
+                <th class="recipe-col-3"><?= $recipe_fat ?>g</th>
+                <th class="recipe-col-3"><?= $recipe_carb  ?>g</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            <?php
+
+            foreach ($ingrs as $ingr) {
+            ?>
+            <tr>
+                <td><img class="type-food" src="image/groups/<?= $ingr[12] ?>.png" alt="<?= $ingr[12] ?>.png"></td>
+                <td><?= $ingr[11] ?></td>
+                <th><?= $ingr[7] * $ingr[13] / 100 ?>$</th>
+                <th><?= $ingr[7] ?>g</th>
+                <th class="recipe-col-3"><?= $ingr[7] * $ingr[15] / 100 ?>kkal</th>
+                <th class="recipe-col-3"><?= $ingr[7] * $ingr[17] / 100 ?>g</th>
+                <th class="recipe-col-3"><?= $ingr[7] * $ingr[16] / 100 ?>g</th>
+                <th class="recipe-col-3"><?= $ingr[7] * $ingr[18] / 100 ?>g</th>
+            </tr>
+            <?php
+            }
+            ?>
+            </tbody>
+
+        </table>
+    </div>
+</div>
+
+<?php
+}
+?>

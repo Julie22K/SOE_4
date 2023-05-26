@@ -1,16 +1,17 @@
 <?php
 require_once '../config/connect.php';
 
-$Recipe_ID = $_POST['recipe_id'];
+try{
+$Recipe_ID = $_POST['recipe_id_chooseDaT'];
 
-$ingrs = mysqli_query($soe, "SELECT * FROM `ingridients` WHERE `RecipeID`='$Recipe_ID'");
-$ingrs = mysqli_fetch_all($ingrs);
+$ingrs_ = mysqli_query($soe, "SELECT * FROM `ingridients` WHERE `RecipeID`='$Recipe_ID'");
+$ingrs_ = mysqli_fetch_all($ingrs_);
 
-$days = array('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday');
 foreach ($days as $day) {
     $arr = $_POST["$day"];
     if (!empty($arr)) {
         foreach ($arr as $time) {
+
             mysqli_query($soe, "INSERT INTO `dishes`(`Day`, `Time`, `RecipeID`) VALUES ('$day','$time','$Recipe_ID')");
 
             $dishes = mysqli_query($soe, "SELECT * FROM `dishes` WHERE `Time`='$time' AND `Day`='$day'AND `RecipeID`='$Recipe_ID'");
@@ -22,6 +23,8 @@ foreach ($days as $day) {
         }
     }
 }
-
-
 header('Location: ../menu.php');
+} catch (Exception $e) {
+    $e->getMessage();
+}
+

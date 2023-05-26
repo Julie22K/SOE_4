@@ -1,0 +1,46 @@
+@import url(http://fonts.googleapis.com/css?family=Ubuntu:regular,bold&subset=Latin);
+
+a.clear-link{
+  text-decoration: none;
+  color: var(--black1);
+}
+
+*{
+  font-family: Ubuntu,sans-serif;
+}
+.text-center{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+}
+.text-description{
+  padding: 10px;
+  font-size: xx-small;
+  overflow: hidden;
+  text-wrap: normal;
+}
+p{
+  margin: 10px;
+}
+.add-card h6{
+  color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  transition: $transition;
+}
+.add-card:hover h6{
+  color: darkblue;
+}
+.card-day h6,
+.card-daytime h6,
+.card-time h6{
+  color: var(--white);
+}
+.t-w-0{
+  font-weight: normal;
+}

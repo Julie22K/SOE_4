@@ -1,0 +1,121 @@
+
+.modal.warning{
+  border-color: orange;
+}
+.modal {
+  font-family: sans-serif;
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 6; /* Sit on top */
+  transition: $transition;
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+
+  .modal-content {
+
+    transition: $transition;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #fefefe;
+    padding: $distance;
+    border: 1px solid #888;
+    border-radius: $border_radius;
+    max-width: 500px; /* Could be more or less, depending on screen size */
+    max-height: 400px;
+    min-width: 200px;
+    min-height: 150px;
+    width: fit-content;
+    height: fit-content;
+    overflow: hidden;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+  }
+  .modal-header,
+  .modal-body,
+  .modal-footer{
+    display: flex;
+    width: 100%;
+    margin: calc($distance / 2);
+    padding: calc($distance / 4);
+  }
+  .modal-header {
+    justify-content:start;
+    border-bottom:1px solid gray;
+  }
+  .modal-body {
+
+   }
+  .modal-footer {
+    justify-content:space-between;
+    border-top:1px solid gray;
+    }
+  /* The Close Button */
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  img.product{
+    /*margin: 20px;
+    padding: 20px;*/
+    border:3px solid #888;
+    height: 300px;
+    width: inherit;
+
+  }
+  .modal-info{
+    width: 300px;
+    height: 245px;
+    background-color: var(--front);
+    color: var(--main);
+    position: relative;
+  }
+  .info-circles{
+    left: 15px;
+    right:15px;
+    top:15px;
+    height: 135px;
+    position: absolute;
+  }
+  .info-circles>div{
+    left: 5px;
+    right:5px;
+  }
+  .info-data{
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content:space-around;
+    font-size: 18px;
+    font-weight: bold;
+    left: 15px;
+    right:15px;
+    bottom:15px;
+    width: 270px;
+    height: 80px;
+    position: absolute;
+  }
+
+
+
+
+}
+/* The Modal (background) */
+

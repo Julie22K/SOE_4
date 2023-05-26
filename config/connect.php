@@ -10,13 +10,13 @@ $par4_dp = 'soe';
 $soe = mysqli_connect($par1_ip, $par2_name, $par3_p, $par4_dp);
 
 mysqli_set_charset($soe, 'utf8');
-if ($soe == false) {
+if (!$soe) {
     echo "error";
 }
-$typedish = array("all", "sup", "salad", "meat", "snack", "breakfast", "sandwich", "drink", "desert", "poridje", "puncakes", "sweets", "sauce", "paste", "baking", "pudding", "others");
+$type_dish = array("sup", "salad", "meat","fish", "snack", "breakfast", "sandwich", "drink", "dessert", "poridje", "puncakes", "sweets", "sauce", "paste", "baking", "pudding", "others");
 $types = array('vegetables', 'fruits', 'fish', 'green', 'berries', 'legumes', 'milk', 'meat', 'eggs', 'mushrooms', 'cereals',  'spices', 'baking', 'tea', 'dried fruits', 'nuts', 'seed', 'oil');
-$times = array('breakfast', 'snack(1)', 'lunch', 'snack(2)', 'dinner');
-$days = array('monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday');
+$times = array('Breakfast', 'Snack(1)', 'Lunch', 'Snack(2)', 'Dinner');
+$days = array('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday');
 //warning code
 // $products = mysqli_query($soe, "SELECT * FROM `products`");
 // $products = mysqli_fetch_all($products);
@@ -26,4 +26,3 @@ $days = array('monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'
 //     $ID = $product[0];
 //     mysqli_query($soe, "UPDATE `products` SET `Name`='$word'WHERE `ID`='$ID'");
 // }
-?>

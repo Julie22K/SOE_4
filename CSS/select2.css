@@ -1,11 +1,13 @@
-.select2-container
-{
+
+.select2-container {
 -webkit-box-sizing:border-box;
 box-sizing:border-box;
 display:inline-block;
-margin:0;
 position:relative;
-vertical-align:middle
+vertical-align:middle;
+    border-radius: 5px;/*
+margin-top: 5px;*/
+
 }
 
 .select2-container .select2-selection--single
@@ -22,9 +24,10 @@ user-select:none;
 }
 .select2-container .select2-selection--single .select2-selection__rendered
 {
+
     background:#abb8ce00;
-display:block;
-position: absolute;
+display:block;/*
+position: absolute;*/
 top: 18px;
 height: 25px;
 padding-left:8px;
@@ -37,7 +40,7 @@ white-space:nowrap;
 {
 background-color:transparent;
 border:none;
-font-size:1em
+font-size:smaller;
 }
 .select2-container[dir="rtl"] .select2-selection--single .select2-selection__rendered
 {
@@ -58,6 +61,7 @@ user-select:none;
 }
 .select2-container .select2-selection--multiple .select2-selection__rendered
 {
+
 display:inline;
 list-style:none;
 padding:0
@@ -66,7 +70,7 @@ padding:0
 {
 background-color:transparent;
 border:none;
-font-size:1em
+font-size:smaller
 }
 .select2-container .select2-search--inline .select2-search__field
 {
@@ -194,9 +198,10 @@ white-space:nowrap !important
 .select2-container--default .select2-selection--single
 {
 background-color:#fff;
-border:1px solid #aaa;
+border-width:1px;
 border-radius:4px
 }
+
 .select2-container--default .select2-selection--single .select2-selection__rendered
 {
 color:#444;
@@ -318,7 +323,7 @@ border-top-left-radius:4px;
 border-bottom-left-radius:4px;
 color:#999;
 cursor:pointer;
-font-size:1em;
+font-size:smaller;
 font-weight:bold;
 padding:0 4px;
 position:absolute;
@@ -606,7 +611,7 @@ border-top-left-radius:4px;
 border-bottom-left-radius:4px;
 color:#888;
 cursor:pointer;
-font-size:1em;
+font-size:smaller;
 font-weight:bold;
 padding:0 4px
 }

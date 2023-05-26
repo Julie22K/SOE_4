@@ -1,7 +1,7 @@
 filterSelection("all")
 function filterSelection(c) {
   var x, i;
-  x = document.getElementsByClassName("card-dish");
+  x = document.getElementsByClassName("card-recipe");
   if (c == "all") c = "";
   for (i = 0; i < x.length; i++) {
     w3RemoveClass(x[i], "show");
@@ -32,7 +32,7 @@ function w3RemoveClass(element, name) {
 
 // Add active class to the current button (highlight it)
 var btnContainer = document.getElementById("filter");
-var btns = btnContainer.getElementsByClassName("carddishSort");
+var btns = btnContainer.getElementsByClassName("card-recipe-sort");
 for (var i = 0; i < btns.length; i++) {
   btns[i].addEventListener("click", function(){
     var current = document.getElementsByClassName("active");

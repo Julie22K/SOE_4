@@ -1,0 +1,43 @@
+
+.grid{
+  display: grid;
+  grid-gap: $distance;
+  .card{
+    margin: 0;/*todo можливо не потрібен*/
+  }
+}
+.grid-2{
+  grid-template-columns: auto auto;
+}
+.grid-3{
+  grid-template-columns: auto auto auto;
+}
+.grid-4{
+  grid-template-columns: auto auto auto auto;
+}
+.grid-5{
+  grid-template-columns: auto auto auto auto auto;
+}
+.grid-6{
+  grid-template-columns: auto auto auto auto auto auto;
+}
+.grid-7{
+  grid-template-columns: auto auto auto auto auto auto auto;
+}
+.grid-8{
+  grid-template-columns: auto auto auto auto auto auto auto auto;
+}
+
+/* On screens that are 992px or less, set the background color to blue */
+@media screen and (max-width: 1000px) {
+  .grid-8,.grid-7,.grid-6,.grid-5,.grid-4,.grid-3 {
+    grid-template-columns: auto auto;
+  }
+}
+
+/* On screens that are 600px or less, set the background color to olive */
+@media screen and (max-width: 700px) {
+  .grid-8,.grid-7,.grid-6,.grid-5,.grid-4,.grid-3,.grid-2{
+    grid-template-columns: auto;
+  }
+}

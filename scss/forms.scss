@@ -1,0 +1,390 @@
+
+@import "tgl";
+input[type=range] {
+  height: 32px;
+  -webkit-appearance: none;
+  margin: 10px 0;
+  width: 100%;
+}
+input[type=range]:focus {
+  outline: none;
+}
+input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 10px;
+  cursor: pointer;/*
+  animate: 0.2s;*/
+  background: var(--main);
+  border-radius: 5px;
+  border: 1px solid var(--main3);
+}
+input[type=range]::-webkit-slider-thumb {
+  border: 1px solid var(--main3);
+  height: 24px;
+  width: 14px;
+  border-radius: 50px;
+  background: #FFFFFF;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -8px;
+}
+input[type=range]:focus::-webkit-slider-runnable-track {
+  background: var(--main);
+}
+input[type=range]::-moz-range-track {
+  width: 100%;
+  height: 10px;
+  cursor: pointer;
+  animate: 0.2s;
+  background:var(--main);
+  border-radius: 5px;
+  border: 1px solid #000000;
+}
+input[type=range]::-moz-range-thumb {
+  border: 1px solid #000000;
+  height: 24px;
+  width: 14px;
+  border-radius: 50px;
+  background: #FFFFFF;
+  cursor: pointer;
+}
+input[type=range]::-ms-track {
+  width: 100%;
+  height: 10px;
+  cursor: pointer;
+  animate: 0.2s;
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+input[type=range]::-ms-fill-lower {
+  background:var(--main);
+  border: 1px solid #000000;
+  border-radius: 10px;
+}
+input[type=range]::-ms-fill-upper {
+  background: var(--main);
+  border: 1px solid #000000;
+  border-radius: 10px;
+}
+input[type=range]::-ms-thumb {
+  margin-top: 1px;
+  border: 1px solid #000000;
+  height: 24px;
+  width: 14px;
+  border-radius: 50px;
+  background: #FFFFFF;
+  cursor: pointer;
+}
+input[type=range]:focus::-ms-fill-lower {
+  background: var(--main);
+}
+input[type=range]:focus::-ms-fill-upper {
+  background:var(--main);
+}
+form.search{
+  display:grid;
+  width: 100%;
+  grid-template-columns: 70% 30%;
+  margin-left: 0px;
+
+}
+form.search button,
+form.search input{
+
+  margin-top: 0px;
+}
+
+.form-inline{
+  display:inline-grid;
+  width: 100%;
+}
+
+.form-add{
+  width: 100%;
+  padding: $distance;
+  margin: $distance;
+  .int[type=text],
+  .int[type=number]{
+    width: 70%;
+    height: 25px;
+  }
+  .slt{
+    width: 70%;
+    height: 25px;
+  }
+  textarea{
+    height: 25px;
+    margin-left: 10px;
+  }
+  label{
+    margin-top: 15px;
+    margin-bottom: 3px;
+  }
+  label:nth-child(1){
+    margin-top: 5px;
+    margin-bottom: 3px;
+  }
+}
+.form-add>div{
+  padding: calc($distance / 2);
+  margin: calc($distance / 2);
+
+}
+
+.int{
+  margin-left: 10px;
+  border-radius: $border_radius;
+  border: 0.5px solid #00000099;
+  padding: calc( $distance / 2);
+}
+.int:disabled{
+  background: white;
+  color: darkgray;
+  opacity: 0.8;
+}
+.int:disabled:active{
+  opacity: 0.8;
+}
+.int:disabled:hover{
+  cursor: auto;
+}
+
+.slt{
+  margin-left: 10px;
+  border-radius: $border_radius;
+  border: 0.5px solid #00000099;
+  padding: calc( $distance / 2);
+}
+textarea{
+  width: 100%;
+  height: 100px;
+  border-radius: $border_radius;
+  border-width: 0.5px;
+  padding: calc( $distance / 2);
+}
+#list_ingredients{
+  height: 150px;
+}
+
+/*select{
+  margin-left: 10px;
+}*/
+/*
+form label.radio{
+  margin-top: 5px;
+}*/
+/*form button{
+  margin-left: 10px;
+  margin-top: 20px;
+  padding: 5px;
+  border: 0px;
+  background-color: var(--main);
+  color: var(--white);
+  border: 1px solid var(--main3);
+  border-radius: 2px;
+}
+form button:hover{
+  background-color:var(--main);
+  color: var(--white);
+  border:1px solid var(--main3);
+}*/
+/*
+form button[type=button]{
+    background-color: #7e4545;
+    color: white;
+    border: 1px solid #502f2f;
+}
+form button[type=button]:hover{
+    background-color:#7c3a3a;
+    color: white;
+    border:1px solid #502f2f;
+}
+form button[type=reset]{
+    background-color: #457e5f;
+    color: white;
+    border: 1px solid #223d2e;
+}
+form button[type=reset]:hover{
+    background-color:#318356;
+    color: white;
+    border:1px solid #223d2e;
+}*/
+/* if somethings not works - change */
+/* form span{
+    text-align: center;
+    padding: 5px;
+    margin: 5px;
+    background-color: var(--white);
+    color: var(--main);
+    border-radius: 2px;
+}
+form span:hover{
+    background-color: var(--main);
+    color: var(--white);
+
+} */
+th button{
+  margin-top: 0px;
+}//todo delete?
+th button:hover{
+  cursor: pointer;
+}//todo delete?
+
+/* #inputName{
+    width: 70%;
+}
+#inputType{
+    width: 30%;
+} */
+
+/* set the position of dropdown */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+.dropdown button{
+  width: 75px;
+}
+/* set the size and position of button on web */
+/*.button {
+
+}*/
+/* provide css to background of list items */
+.list-items-for-sort{
+  overflow-y: scroll;
+  display: none;
+  max-height: 92px;
+  position: absolute;
+  background-color: white;
+  min-width: 75px;
+  position: absolute;
+  z-index: 6;
+  button{
+    display: block;
+    text-decoration: none;
+  }
+}//todo question
+
+#radio_sex{
+  display: inline-flex;
+  height: 30px;
+  width: 200px;
+  align-items: center;
+  justify-content: space-evenly;
+  .option{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin: 0 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 0 5px;
+    border: 2px solid lightgrey;
+    transition: all 0.3s ease;
+  }
+  .option .dot{
+    height: 15px;
+    width: 15px;
+    background: #d9d9d9;
+    border-radius: 50%;
+    position: relative;
+  }
+  .option .dot::before{
+    position: absolute;
+    content: "";
+    top:3px;
+    left: 3px;
+    width: 9px;
+    height: 9px;
+    background:var(--btn-bg);
+    border-radius: 50%;
+    opacity: 0;
+    transform: scale(1.5);
+    transition: all 0.3s ease;
+  }
+  input[type="radio"]{
+    display: none;
+  }
+  #option-1:checked:checked ~ .option-1,
+  #option-2:checked:checked ~ .option-2{
+    border-color: var(--btn-bg);
+    background: var(--btn-bg);
+  }
+  #option-1:checked:checked ~ .option-1 .dot,
+  #option-2:checked:checked ~ .option-2 .dot{
+    background: #fff;
+  }
+  #option-1:checked:checked ~ .option-1 .dot::before,
+  #option-2:checked:checked ~ .option-2 .dot::before{
+    opacity: 1;
+    transform: scale(1);
+  }
+  .option span{
+    color: var(--gray);
+    font-size: inherit;
+  }
+
+  #option-1:checked:checked ~ .option-1 span,
+  #option-2:checked:checked ~ .option-2 span{
+    color: #fff;
+    font-size: revert;
+  }
+}
+
+#form_add_product{
+  #form_add_product_vits_and_mins{
+    input{
+      margin-top: 20px;
+      width: 20%;
+    }
+  }
+
+
+}
+#form_add_recipe{
+  .add-card{
+    width: 33%;
+    height: 160px;
+  }
+  textarea{
+    width: 100%; max-width: 100%;
+  }
+}
+#table_ingredients{
+ /* tr:hover{
+    background: none;
+  }*/
+  tr#add_ingredient{
+    .int{
+      height: 30px;
+    }
+  }
+  tr.new-i{
+    td.i_id input{
+      visibility: hidden;
+    }
+    td.name input:disabled{
+      border: none;
+      color: black;
+    }
+    td.weight {
+      input{
+        text-align: right;
+        border: none;
+      }
+      input:active{
+        border: 1px solid grey;
+      }
+    }
+    td.price input{
+      text-align: right;
+      border: none;
+    }
+  }
+
+
+}
+

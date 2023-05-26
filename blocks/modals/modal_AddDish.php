@@ -2,7 +2,7 @@
     <span class="close" id="closes">&times;</span>
     <!-- Modal content -->
     <div class="modal-content modal-info" id="modal-">
-        <form action="../../vendor/Create_dish.php" method="POST">
+        <form action="../../php_ajax/Create_dish.php" method="POST">
             <legend></legend>
 
 

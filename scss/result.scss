@@ -1,0 +1,50 @@
+
+@import 'variables';
+
+@import 'preloader';
+
+@import 'navbar';
+@import 'page';
+@import 'card';
+
+@import 'row_col';
+
+@import 'table';
+@import 'grid';
+@import 'forms';
+
+@import 'buttons';
+@import 'text';
+
+@import 'icons';
+@import 'image';
+
+@import 'pagination';
+@import 'filter_sort';
+@import 'progres_bar';
+
+@import 'modal';
+@import 'context_menu';
+
+@import 'list';
+
+
+*{
+  box-sizing: border-box;
+  padding: 0px;
+  margin: 0px;
+  font-family: 'Ubuntu',sans-serif;
+
+}
+body{
+  min-height:100vh;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+.hiden-element{
+  visibility: hidden;
+}
+.none-element{
+  display: none;
+}

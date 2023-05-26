@@ -6,7 +6,7 @@ $type = $_POST['type'];
 $price = $_POST['price'];
 // $img = $_POST['image'];
 
-$kkal = $_POST['kkal'];
+$kcal = $_POST['kcal'];
 $carb = $_POST['carb'];
 $fat = $_POST['fat'];
 $protein = $_POST['protein'];
@@ -41,7 +41,7 @@ mysqli_query($soe, "INSERT INTO `products`(`Name`, `Type`, `Price100g`,
 `kkal`, `fat`, `protein`, `carb`, `cellulose`, `water`, `vitA`, `vitE`, `vitK`, `vitD`, 
 `vitC`, `om3`, `om6`, `vitB1`, `vitB2`, `vitB5`, `vitB6`, `vitB8`, `vitB9`, `vitB12`, 
 `minMg`, `minNa`, `minCl`, `minCa`, `minK`, `minS`, `minP`, `minCu`, `minI`, `minCr`) 
-VALUES ('$name','$type','$price','$kkal','$fat','$protein',
+VALUES ('$name','$type','$price','$kcal','$fat','$protein',
 '$carb','$cellulose','$water','$vitA','$vitE','$vitK','$vitD','$vitC',
 '$om3','$om6','$vitB1','$vitB2','$vitB5','$vitB6','$vitB8',
 '$vitB9','$vitB12','$minMg','$minNa','$minCa','$minCl','$minK',

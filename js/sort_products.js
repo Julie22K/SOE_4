@@ -12,14 +12,14 @@ function sort_products(attr_name,id_btn,short_name) {
         b = list.getElementsByTagName("tr");
         for (i = 0; i < (b.length - 1); i++) {
             shouldSwitch = false;
-            if(attr_name=='name_of_product') {
-                if (b[i].getAttribute(attr_name) > b[i + 1].getAttribute(attr_name)) {
+            if(attr_name==='name_of_product') {
+                if (b[i].getAttribute(attr_name)*1 > b[i + 1].getAttribute(attr_name)*1) {
                     shouldSwitch = true;
                     break;
                 }
             }
             else {
-                if (b[i].getAttribute(attr_name) < b[i + 1].getAttribute(attr_name)) {
+                if (b[i].getAttribute(attr_name)*1 < b[i + 1].getAttribute(attr_name)*1) {
                     shouldSwitch = true;
                     break;
                 }
@@ -33,15 +33,15 @@ function sort_products(attr_name,id_btn,short_name) {
     }
 
     $(id_btn).addClass("active");
-    if(short_name!='')
+    if(short_name!=='')
     {
-        visible_col_b.addClass("hiden-element");
-        visible_col_h.addClass("hiden-element");
+        visible_col_b.hide();
+        visible_col_h.hide();
 
         visible_col_b= $('.b_'+short_name);
         visible_col_h=$('#h_'+short_name);
-        visible_col_b.removeClass("hiden-element");
-        visible_col_h.removeClass("hiden-element");
+        visible_col_b.show();
+        visible_col_h.show();
     }
 
 }
