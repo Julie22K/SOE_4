@@ -1,0 +1,274 @@
+
+.card{
+  border-radius:$border_radius;
+  min-height: 50px;/*
+  width: 100%;*/
+  display:flex;
+  position: relative;
+
+  box-shadow: $shadow;
+
+  transition: $transition;
+
+  overflow: hidden;
+}
+.card:hover{
+  box-shadow:$shadow-hover;
+}
+.static:hover{
+  box-shadow:$shadow;
+}
+.card-header{
+  border-radius: $border_radius;
+  display:flex;
+  position: relative;
+  width: 100%;
+  box-shadow: $shadow;
+  min-height: $height_header;
+  transition-timing-function:linear;
+  transition-property: height;
+}
+
+.anti-card{
+  min-height: auto;
+  position: relative;
+  width: 100%;
+
+  transition: $transition;
+
+  /*overflow: hidden;*/
+
+}
+.add-card{
+  border-radius: $border_radius;
+  display:flex;
+  position: relative;
+  transition: 0.7s;
+  border:2px dashed lightblue;
+  overflow: hidden;
+}
+.add-card.add-card-dish{
+  height:calc( $height_menu_card - $distance / 2);
+  
+}
+.add-card.add-card-recipe{
+  height:calc(  $height_recipe - $distance / 2);
+}
+.add-card.add-card-person{
+  height:calc(  $height_person - $distance / 2);
+}
+.add-card#add_image_url{
+  background-size: cover;
+}
+.add-card#add_image_url,
+.add-card#add_video_url,
+.add-card#add_description{
+  padding: 0px ;
+}
+.add-card:hover p,
+.add-card:hover{
+  opacity: 0.5;
+}
+.selected {
+  opacity: 0.6;
+}
+.add-card.invisible{
+  border-color: rgba(255, 255, 255, 0);
+}
+.add-card.invisible h6
+.add-card.invisible h3{
+  border-color: rgba(255, 255, 255, 0);
+}
+.add-card.visible{
+  border-color: lightblue;
+}
+.add-card:hover{
+  border:2px dashed  darkblue;
+  cursor: pointer;
+}
+.card-recipe{
+  height: $height_recipe;
+  position: relative;
+  .card-recipe-back{
+
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    opacity: 0.6;
+  }
+  .card-recipe-data{
+    z-index: 3;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.card-dish{
+  height: $height_menu_card;
+  font-size: smaller;
+  ul{
+    width: auto;
+    list-style: auto;
+  }
+}
+.card-dish:hover{/*cursor: grab*/}
+.card-day,
+.card-time,
+.card-daytime{
+  height: $height_menu_card;
+  background-color: var(--main);
+}
+
+.card-person{
+  color: black;
+  height: $height_person;
+  position: relative;
+  overflow: hidden;
+  line-height: 0;
+
+  transition: $transition;
+  h3{
+    margin-top: 7.5px;
+  }
+   span.line{
+    display: flex;
+    width: 100%;
+  }
+  p.num{
+     position: absolute;
+     right: 30px;
+   }
+
+  .face{
+    top:30px;
+    position: absolute;
+    padding: 3% 4%;
+    width: 100%;
+    height:$height_person;;
+  }
+  .addition {
+    width: 100%;
+    height: $height_person;;
+
+    color: rgba(255, 255, 255, 0);
+    position: absolute;
+    top: 30px;
+    left: -100%;
+    padding: 3% 4%;
+    /*	display: none;*/
+    transition: all $transition ease-in-out;
+    -moz-transition: all $transition
+
+  }
+}
+.card-person:hover{
+  background: var(--main);
+  color: white;
+  .addition{
+    top:30px;
+    left:0;
+    display: block;
+    color: white;
+
+  }
+  .face{
+    top:30px;
+    left:100%;
+    display: block;
+    /*visibility: hidden;*/
+  }
+}
+#card_analitic {
+  transition: $transition;
+
+  .arc path {
+    stroke: #000;
+  }
+  .menu-info-card{
+    height: auto;
+    width: inherit;
+
+  }
+  #all_analitic {
+    position: relative;
+
+  .circle {
+    position: absolute;
+
+  }
+
+    /*       const bigsize=230,midsize=190,smallsize=160;*/
+    @media (max-width: 1400px) {
+      .circle-l{width: 230px;height: 230px;}
+      .circle-m{width: 190px;height: 190px;}
+      .circle-s{width: 160px;height: 160px;}
+      #cellulose {
+        bottom: 10px;
+        right: 20%;
+      }
+      #sugar {
+        top: 10px;
+        right: 8%;
+      }
+    }
+    @media (max-width: 1000px) {
+      .circle-l{width: 190px;height: 190px;}
+      .circle-m{width: 160px;height: 160px;}
+      .circle-s{width: 120px;height: 120px;}
+      #cellulose {
+        bottom: 10px;
+        right: 35%;
+      }
+      #sugar {
+        top: 10px;
+        right: 28%;
+      }
+    }
+    @media (max-width: 800px) {
+      .circle-l{width: 160px;height: 160px;}
+      .circle-m{width: 120px;height: 120px;}
+      .circle-s{width: 80px;height: 80px;}
+      #cellulose {
+        bottom: 10px;
+        right: 15%;
+      }
+      #sugar {
+        top: 10px;
+        right: 8%;
+      }
+    }
+    #kprc {
+      top: 5px;
+      left: 0;
+    }
+    #mins {
+      top: 5px;
+      left: 20%;
+    }
+    #vits {
+      bottom: 5px;
+      left: 35%;
+    }
+    #water {
+      top: 10px;
+      left: 50%;
+    }
+
+  .circle text {
+    font-size: 10px;
+  }}
+}
+.border-line-bottom{/*
+  border-color: slategrey;
+  border-bottom-width: 1px;
+  border-bottom-style: inset;*/
+}
+
+

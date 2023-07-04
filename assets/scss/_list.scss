@@ -1,0 +1,66 @@
+
+#shopping_list{
+  table {
+    /*
+    transition: $transition;*/
+    //margin: $distance;
+
+    caption {
+      background-color: var(--main);
+      border-radius: $border_radius;
+      color: white;
+      height: 25px;
+
+      h3 {
+        font-weight: 100;
+        font-variant: small-caps;
+      }
+
+      img {
+        //margin-top: 2.5px;
+        filter: invert(1);
+      }
+    }
+    caption:hover{cursor: pointer;}
+
+    tr {
+      width: 100%;
+
+      td.check {
+        width: 10%;
+      }
+
+      td.dish {
+        width: 5%;
+      }
+
+      td.weight {
+        width: 20%;
+      }
+
+      td.price {
+        width: 20%;
+      }
+    }
+
+    tr:hover {
+      background-color: white;
+    }
+  }
+
+}
+ul.list-none{
+list-style: none;
+}
+ul.list-numeric{
+  list-style: auto;
+}
+span{
+position: relative;
+
+  img{
+position: absolute;
+top:0px;
+left:-20px;
+  }
+}

@@ -1,0 +1,43 @@
+
+#finance{
+  .progress{
+    height: 30px;
+    width: 100%;
+    overflow: hidden;
+    background: rgb(243, 243, 243);
+    border-radius: $border_radius;
+    .progress-need{
+      width: 0%;
+      height: 30px;
+      font-size: large;
+      color: white;
+      background: #ffec88;
+      .progress-used{
+        width: 0%;
+        height: 30px;
+        font-size: large;
+        color: white;
+        background: gold;
+      }
+    }
+    .progress-need.warning{
+      
+      background: #ff8888;
+      .progress-used{
+        background: rgb(255, 0, 0);
+
+      }
+    }
+    .progress-need.success{
+      
+      background: #baf1bc;
+      .progress-used{
+        background: #75d878;
+
+      }
+    }
+  }
+
+
+
+}

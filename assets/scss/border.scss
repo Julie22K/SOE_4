@@ -1,0 +1,30 @@
+
+.border{
+border: 1px solid var(--gray);
+border-radius: 5px;
+}
+.border-bottom{
+    border-bottom: 1px solid var(--gray);
+}
+.border-left{
+    border-right: 1px solid var(--gray);
+}
+.border-right{
+    border-right: 1px solid var(--gray);
+}
+.border-top{
+    border-top: 1px solid var(--gray);
+}
+
+.border-double{
+    border-style: double;
+    border-width:initial;
+}
+
+.border-w-half{
+    border-width: 0.5px;
+}
+
+.border-2{
+    border-style: 2px;
+}

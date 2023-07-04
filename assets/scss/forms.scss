@@ -1,0 +1,361 @@
+
+@import "tgl";
+form {
+  display: grid;
+  gap: 10px;
+}
+
+label{
+  margin: $distance 0 $distance 0;
+}
+
+#modal_add_recipe_to_menu label{
+  margin: 0;
+}
+input[type="text"],
+input[type="number"],
+input[type="password"],
+input[type="email"],
+input[type="date"],
+input[type="time"],
+input[type="file"],
+select,
+textarea {
+  padding: 10px;
+  border: 1px solid var(--main3);
+  border-radius: 5px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+input[type="password"]:focus,
+input[type="email"]:focus,
+input[type="date"]:focus,
+input[type="time"]:focus,
+input[type="file"]:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--main);
+}
+
+select {
+  appearance: none;
+  background-color: white;
+  background-image: url("path/to/arrow-icon.png");
+  background-repeat: no-repeat;
+  background-position: right center;
+  padding-right: 25px;
+}
+
+textarea {
+  resize: vertical;
+}
+form.search{
+  display:grid;
+  width: 100%;
+  grid-template-columns: 70% 30%;
+  margin-left: 0px;
+button,
+ input{
+  margin-top: 0px;
+}
+}
+ 
+
+.form-inline{
+  display:inline-grid;
+  width: 100%;
+}
+
+/*.form-add{
+  width: 100%;
+  padding: $distance;
+  margin: $distance;
+  .int[type=text],
+  .int[type=number]{
+    width: 70%;
+    height: 25px;
+  }
+  .slt{
+    width: 70%;
+    height: 25px;
+  }
+  textarea{
+    height: 25px;
+    margin-left: 10px;
+  }
+  label{
+    margin-top: 15px;
+    margin-bottom: 3px;
+  }
+  label:nth-child(1){
+    margin-top: 5px;
+    margin-bottom: 3px;
+  }
+}*/
+form>div{
+  padding: calc($distance / 2);
+  margin: calc($distance / 2);
+
+}
+/*
+.int{
+  margin-left: 10px;
+  border-radius: $border_radius;
+  border: 0.5px solid #00000099;
+  padding: calc( $distance / 2);
+}
+.int:disabled{
+  background: white;
+  color: darkgray;
+  opacity: 0.8;
+}
+.int:disabled:active{
+  opacity: 0.8;
+}
+.int:disabled:hover{
+  cursor: auto;
+}
+
+.slt{
+  margin-left: 10px;
+  border-radius: $border_radius;
+  border: 0.5px solid #00000099;
+  padding: calc( $distance / 2);
+}
+textarea{
+  width: 100%;
+  height: 100px;
+  border-radius: $border_radius;
+  border-width: 0.5px;
+  padding: calc( $distance / 2);
+}*/
+
+
+/*select{
+  margin-left: 10px;
+}*/
+/*
+form label.radio{
+  margin-top: 5px;
+}*/
+/*form button{
+  margin-left: 10px;
+  margin-top: 20px;
+  padding: 5px;
+  border: 0px;
+  background-color: var(--main);
+  color: var(--white);
+  border: 1px solid var(--main3);
+  border-radius: 2px;
+}
+form button:hover{
+  background-color:var(--main);
+  color: var(--white);
+  border:1px solid var(--main3);
+}*/
+/*
+form button[type=button]{
+    background-color: #7e4545;
+    color: white;
+    border: 1px solid #502f2f;
+}
+form button[type=button]:hover{
+    background-color:#7c3a3a;
+    color: white;
+    border:1px solid #502f2f;
+}
+form button[type=reset]{
+    background-color: #457e5f;
+    color: white;
+    border: 1px solid #223d2e;
+}
+form button[type=reset]:hover{
+    background-color:#318356;
+    color: white;
+    border:1px solid #223d2e;
+}*/
+/* if somethings not works - change */
+/* form span{
+    text-align: center;
+    padding: 5px;
+    margin: 5px;
+    background-color: var(--white);
+    color: var(--main);
+    border-radius: 2px;
+}
+form span:hover{
+    background-color: var(--main);
+    color: var(--white);
+
+} */
+th button{
+  margin-top: 0px;
+}//todo delete?
+th button:hover{
+  cursor: pointer;
+}//todo delete?
+
+/* #inputName{
+    width: 70%;
+}
+#inputType{
+    width: 30%;
+} */
+
+/* set the position of dropdown */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+.dropdown button{
+  width: 75px;
+}
+/* set the size and position of button on web */
+/*.button {
+
+}*/
+/* provide css to background of list items */
+.list-items-for-sort{
+  overflow-y: scroll;
+  display: none;
+  max-height: 92px;
+  position: absolute;
+  background-color: white;
+  min-width: 75px;
+  position: absolute;
+  z-index: 6;
+  button{
+    display: block;
+    text-decoration: none;
+  }
+}//todo question
+
+#radio_sex{
+  display: inline-flex;
+  height: 30px;
+  width: 200px;
+  align-items: center;
+  justify-content: space-evenly;
+  .option{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin: 0 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 0 5px;
+    border: 2px solid lightgrey;
+    transition: all 0.3s ease;
+  }
+  .option .dot{
+    height: 15px;
+    width: 15px;
+    background: #d9d9d9;
+    border-radius: 50%;
+    position: relative;
+  }
+  .option .dot::before{
+    position: absolute;
+    content: "";
+    top:3px;
+    left: 3px;
+    width: 9px;
+    height: 9px;
+    background:var(--btn-bg);
+    border-radius: 50%;
+    opacity: 0;
+    transform: scale(1.5);
+    transition: all 0.3s ease;
+  }
+  input[type="radio"]{
+    display: none;
+  }
+  #option-1:checked:checked ~ .option-1,
+  #option-2:checked:checked ~ .option-2{
+    border-color: var(--btn-bg);
+    background: var(--btn-bg);
+  }
+  #option-1:checked:checked ~ .option-1 .dot,
+  #option-2:checked:checked ~ .option-2 .dot{
+    background: #fff;
+  }
+  #option-1:checked:checked ~ .option-1 .dot::before,
+  #option-2:checked:checked ~ .option-2 .dot::before{
+    opacity: 1;
+    transform: scale(1);
+  }
+  .option span{
+    color: var(--gray);
+    font-size: inherit;
+  }
+
+  #option-1:checked:checked ~ .option-1 span,
+  #option-2:checked:checked ~ .option-2 span{
+    color: #fff;
+    font-size: revert;
+  }
+}
+
+// #form_add_product{
+//   #form_add_product_vits_and_mins{
+//     input{
+//       margin-top: 20px;
+//       width: 20%;
+//     }
+//   }
+
+
+// }
+#form_add_recipe{
+  .add-card{
+    width: 33%;
+    height: 160px;
+  }
+  textarea{
+    width: 100%; max-width: 100%;
+  }
+}
+input.fake{
+  border: none;
+}
+#table_ingredients{
+ /* tr:hover{
+    background: none;
+  }*/
+  tr#add_ingredient{
+    .int{
+      height: 30px;
+    }
+  }
+  tr.new-i{
+    td.i_id input{
+      visibility: hidden;
+    }
+    td.name input:disabled{
+      border: none;
+      color: black;
+    }
+    td.weight {
+      input{
+        text-align: right;
+        border: none;
+      }
+      input:active{
+        border: 1px solid grey;
+      }
+    }
+    td.price input{
+      text-align: right;
+      border: none;
+    }
+  }
+
+
+}
+

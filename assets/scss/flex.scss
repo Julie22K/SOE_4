@@ -1,0 +1,58 @@
+.row{
+  display: flex;
+  flex-direction: row;
+}
+.col{
+  display: flex;
+  flex-direction: column;
+}
+.a-items-center{
+  align-items: center;
+}
+.a-items-baseline{
+align-items: baseline
+}
+.col.col-wrap,
+.row.row-wrap{
+  flex-wrap: wrap;
+}
+.row.row-center,
+.col.col-center{
+  text-align: center;
+}
+.row-reverse{
+  display: flex;
+  flex-direction: row-reverse;
+}
+.col-reverse{
+  display: flex;
+  flex-direction: column-reverse;
+}
+.j-c-st{
+  justify-content: stretch;
+}
+.j-c-ev{
+  justify-content: space-evenly;
+}
+.j-c-ar{
+  justify-content: space-around;
+}
+.j-c-be{
+  justify-content: space-between;
+}
+
+.w-half{
+  width: 50%;
+}
+.w-full{
+  width: 100%;
+}
+.w-fill{
+  width:-webkit-fill-available;
+}
+.w-third{
+  width: 33.3333%;
+}
+.w-inherit{
+  width: inherit;
+}
