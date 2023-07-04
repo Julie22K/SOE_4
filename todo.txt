@@ -1,4 +1,15 @@
-•setting_recipe.php
+/*•setting_recipe.php
 •поправити калк_дата () ділити на 7 днів    +
 •додати свої рецепти
-•додати вагу при виборі рецепту
+•додати вагу при виборі рецепту*/
+Menu
+	=>add dish(modal)
+	=>update dish
+Shopping_list()
+	=>check item
+Recipes()
+	=>edit recipe
+Products()
+	=>edit product(product::find()+price::where()+shop::where()+product_category::find())
+Persons()
+	=>edit person
