@@ -1,6 +1,6 @@
 <?php
-require 'C:\Users\Dell\source\SOE_4\config/connect.php';
-require 'C:\Users\Dell\source\SOE_4\config/nutr.php';
+require 'C:\Users\Julie\source\SOE_4\config/connect.php';
+require 'C:\Users\Julie\source\SOE_4\config/nutr.php';
 $idcd = $_POST['idc'];
 $name = $_POST['name'];
 $sex = $_POST['sex'];

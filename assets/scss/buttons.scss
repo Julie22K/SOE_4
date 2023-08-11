@@ -1,9 +1,11 @@
 .btn {
-  height: 25px;
+  height: 30px;
+
   /*margin: calc($distance / 3);*/
-  padding: 0 10px;
+  font-size: 14px;
+  padding: 0 5px;
   width: content-box;
-  border-radius: 5px;
+  border-radius: $border_radius;
   border: 1.5px solid var(--btn-bdr);
   background: var(--btn-bg);
   color: var(--main-tx);
@@ -56,6 +58,7 @@
   color: var(--front);
   background: var(--back);
   border-color: var(--back);
+  height: 25px;
 }
 
 .btn-filter-sort.active {
@@ -92,57 +95,68 @@
 .btn-color {
   width: 80px;
   height: 50px;
-  
+
   padding: calc($distance / 2);
   margin: $distance*2 $distance;
   border: none;
   // color: var(--white);
   // text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
- }
+}
 
- .btn-color span {
+.btn-color span {
   color: black;
   position: relative;
   top: 100%;
   word-wrap: break-word;
   text-transform: capitalize;
 }
+
 .btn-color:hover {
   box-shadow: $shadow;
 }
 
 .btn-color#red_green {
-  background-image: linear-gradient(to right, #DA2A2A 50%, #64C264 50%); 
+  background-image: linear-gradient(to right, #DA2A2A 50%, #64C264 50%);
 }
+
 .btn-color#green_purple {
-  background-image: linear-gradient(to right, #277F27 50%, #532496 50%); 
+  background-image: linear-gradient(to right, #277F27 50%, #532496 50%);
 }
+
 .btn-color#blue_orange {
-  background-image: linear-gradient(to right, #50a4bd 50%, #ffa927 50%); 
+  background-image: linear-gradient(to right, #50a4bd 50%, #ffa927 50%);
 }
+
 .btn-color#yellow_orange {
-  background-image: linear-gradient(to right, #ffa927 50%, #ffa927 50%); 
+  background-image: linear-gradient(to right, #ffa927 50%, #ffa927 50%);
 }
+
 .btn-color#purple_yellow {
-  background-image: linear-gradient(to right, #7B58AD 50%, #FFF040 50%); 
+  background-image: linear-gradient(to right, #7B58AD 50%, #FFF040 50%);
 }
+
 .btn-color#red {
-  background-image: linear-gradient(to right, #c43b3b 50%, #c43b3b 50%); 
+  background-image: linear-gradient(to right, #c43b3b 50%, #c43b3b 50%);
 }
+
 .btn-color#green {
-  background-image: linear-gradient(to right, #4ba04e 50%, #4ba04e 50%); 
+  background-image: linear-gradient(to right, #4ba04e 50%, #4ba04e 50%);
 }
+
 .btn-color#blue {
-  background-image: linear-gradient(to right, #50a4bd 50%, #50a4bd 50%); 
+  background-image: linear-gradient(to right, #50a4bd 50%, #50a4bd 50%);
 }
+
 .btn-color#gray {
-  background-image: linear-gradient(to right, #323232 50%, #323232 50%); 
+  background-image: linear-gradient(to right, #323232 50%, #323232 50%);
 }
+
 .btn-color#yellow_gray {
-  background-image: linear-gradient(to right, #666666 50%, #F2F3A5 50%); 
+  background-image: linear-gradient(to right, #666666 50%, #F2F3A5 50%);
 }
+
 .btn-color#purple {
-  background-image: linear-gradient(to right, #532496 50%, #532496 50%); 
+  background-image: linear-gradient(to right, #532496 50%, #532496 50%);
 }
 
 .btn-search {

@@ -1,4 +1,4 @@
-<?php require 'C:\Users\Dell\source\SOE_4\public\blocks/pre_head.php';
+<?php require 'C:\Users\Julie\source\SOE_4\public\blocks/pre_head.php';
 
 use App\Data;
 use App\Models\Product; ?>
@@ -6,19 +6,19 @@ use App\Models\Product; ?>
 <html lang="en">
 
 <head>
-    <?php require 'C:\Users\Dell\source\SOE_4\public\blocks/head.php' ?>
+    <?php require 'C:\Users\Julie\source\SOE_4\public\blocks/head.php' ?>
     <title>Setting</title>
 
 </head>
 
 <body oncontextmenu="return false;">
-    <?php require 'C:\Users\Dell\source\SOE_4\public\blocks/preloader.php' ?>
+    <?php require 'C:\Users\Julie\source\SOE_4\public\blocks/preloader.php' ?>
 
     <div class="container" id="setting">
-        <?php require 'C:\Users\Dell\source\SOE_4\public\blocks/header.php' ?>
+        <?php require 'C:\Users\Julie\source\SOE_4\public\blocks/header.php' ?>
         <!-- main -->
         <div class="main">
-            <?php require 'C:\Users\Dell\source\SOE_4\public\blocks/topbar.php' ?>
+            <?php require 'C:\Users\Julie\source\SOE_4\public\blocks/topbar.php' ?>
             <div class="page " id="setting_page">
                 <div class="anti-card col m-3 p-3">
                     <div>
@@ -93,7 +93,7 @@ use App\Models\Product; ?>
             </div>
         </div>
     </div>
-    <?php require 'C:\Users\Dell\source\SOE_4\public\blocks/fotter.php'; ?>
+    <?php require 'C:\Users\Julie\source\SOE_4\public\blocks/fotter.php'; ?>
 
 </body>
 

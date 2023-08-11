@@ -1,17 +1,20 @@
-
 @import "tgl";
+
 form {
   display: grid;
   gap: 10px;
 }
 
-label{
+label,
+legend {
   margin: $distance 0 $distance 0;
+  font-weight: 450;
 }
 
-#modal_add_recipe_to_menu label{
+#modal_add_recipe_to_menu label {
   margin: 0;
 }
+
 input[type="text"],
 input[type="number"],
 input[type="password"],
@@ -21,11 +24,35 @@ input[type="time"],
 input[type="file"],
 select,
 textarea {
-  padding: 10px;
-  border: 1px solid var(--main3);
-  border-radius: 5px;
-  width: 100%;
+  padding: 0.375rem 0.75rem;
+  height: calc(1.5em + 0.75rem + 2px);
+  border: 1px solid gray;
   box-sizing: border-box;
+  width: 100%;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  background-clip: padding-box;
+  border-radius: $border_radius;
+  transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.form-control {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin: 15px;
+}
+
+.button-row {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin: 15px;
 }
 
 input[type="text"]:focus,
@@ -38,7 +65,7 @@ input[type="file"]:focus,
 select:focus,
 textarea:focus {
   outline: none;
-  border-color: var(--main);
+  border-color: var(--main3);
 }
 
 select {
@@ -53,20 +80,22 @@ select {
 textarea {
   resize: vertical;
 }
-form.search{
-  display:grid;
+
+form.search {
+  display: grid;
   width: 100%;
   grid-template-columns: 70% 30%;
   margin-left: 0px;
-button,
- input{
-  margin-top: 0px;
-}
-}
- 
 
-.form-inline{
-  display:inline-grid;
+  button,
+  input {
+    margin-top: 0px;
+  }
+}
+
+
+.form-inline {
+  display: inline-grid;
   width: 100%;
 }
 
@@ -96,11 +125,12 @@ button,
     margin-bottom: 3px;
   }
 }*/
-form>div{
+form>div {
   padding: calc($distance / 2);
   margin: calc($distance / 2);
 
 }
+
 /*
 .int{
   margin-left: 10px;
@@ -192,12 +222,16 @@ form span:hover{
     color: var(--white);
 
 } */
-th button{
+th button {
   margin-top: 0px;
-}//todo delete?
-th button:hover{
+}
+
+//todo delete?
+th button:hover {
   cursor: pointer;
-}//todo delete?
+}
+
+//todo delete?
 
 /* #inputName{
     width: 70%;
@@ -211,15 +245,17 @@ th button:hover{
   position: relative;
   display: inline-block;
 }
-.dropdown button{
+
+.dropdown button {
   width: 75px;
 }
+
 /* set the size and position of button on web */
 /*.button {
 
 }*/
 /* provide css to background of list items */
-.list-items-for-sort{
+.list-items-for-sort {
   overflow-y: scroll;
   display: none;
   max-height: 92px;
@@ -228,19 +264,23 @@ th button:hover{
   min-width: 75px;
   position: absolute;
   z-index: 6;
-  button{
+
+  button {
     display: block;
     text-decoration: none;
   }
-}//todo question
+}
 
-#radio_sex{
+//todo question
+
+#radio_sex {
   display: inline-flex;
   height: 30px;
   width: 200px;
   align-items: center;
   justify-content: space-evenly;
-  .option{
+
+  .option {
     height: 100%;
     width: 100%;
     display: flex;
@@ -253,50 +293,57 @@ th button:hover{
     border: 2px solid lightgrey;
     transition: all 0.3s ease;
   }
-  .option .dot{
+
+  .option .dot {
     height: 15px;
     width: 15px;
     background: #d9d9d9;
     border-radius: 50%;
     position: relative;
   }
-  .option .dot::before{
+
+  .option .dot::before {
     position: absolute;
     content: "";
-    top:3px;
+    top: 3px;
     left: 3px;
     width: 9px;
     height: 9px;
-    background:var(--btn-bg);
+    background: var(--btn-bg);
     border-radius: 50%;
     opacity: 0;
     transform: scale(1.5);
     transition: all 0.3s ease;
   }
-  input[type="radio"]{
+
+  input[type="radio"] {
     display: none;
   }
-  #option-1:checked:checked ~ .option-1,
-  #option-2:checked:checked ~ .option-2{
+
+  #option-1:checked:checked~.option-1,
+  #option-2:checked:checked~.option-2 {
     border-color: var(--btn-bg);
     background: var(--btn-bg);
   }
-  #option-1:checked:checked ~ .option-1 .dot,
-  #option-2:checked:checked ~ .option-2 .dot{
+
+  #option-1:checked:checked~.option-1 .dot,
+  #option-2:checked:checked~.option-2 .dot {
     background: #fff;
   }
-  #option-1:checked:checked ~ .option-1 .dot::before,
-  #option-2:checked:checked ~ .option-2 .dot::before{
+
+  #option-1:checked:checked~.option-1 .dot::before,
+  #option-2:checked:checked~.option-2 .dot::before {
     opacity: 1;
     transform: scale(1);
   }
-  .option span{
+
+  .option span {
     color: var(--gray);
     font-size: inherit;
   }
 
-  #option-1:checked:checked ~ .option-1 span,
-  #option-2:checked:checked ~ .option-2 span{
+  #option-1:checked:checked~.option-1 span,
+  #option-2:checked:checked~.option-2 span {
     color: #fff;
     font-size: revert;
   }
@@ -312,45 +359,55 @@ th button:hover{
 
 
 // }
-#form_add_recipe{
-  .add-card{
+#form_add_recipe {
+  .add-card {
     width: 33%;
     height: 160px;
   }
-  textarea{
-    width: 100%; max-width: 100%;
+
+  textarea {
+    width: 100%;
+    max-width: 100%;
   }
 }
-input.fake{
+
+input.fake {
   border: none;
 }
-#table_ingredients{
- /* tr:hover{
+
+#table_ingredients {
+
+  /* tr:hover{
     background: none;
   }*/
-  tr#add_ingredient{
-    .int{
+  tr#add_ingredient {
+    .int {
       height: 30px;
     }
   }
-  tr.new-i{
-    td.i_id input{
+
+  tr.new-i {
+    td.i_id input {
       visibility: hidden;
     }
-    td.name input:disabled{
+
+    td.name input:disabled {
       border: none;
       color: black;
     }
+
     td.weight {
-      input{
+      input {
         text-align: right;
         border: none;
       }
-      input:active{
+
+      input:active {
         border: 1px solid grey;
       }
     }
-    td.price input{
+
+    td.price input {
       text-align: right;
       border: none;
     }
@@ -358,4 +415,3 @@ input.fake{
 
 
 }
-

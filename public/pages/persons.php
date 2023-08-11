@@ -1,4 +1,4 @@
-<?php require 'C:\Users\Dell\source\SOE_4\public\blocks/pre_head.php';
+<?php require 'C:\Users\Julie\source\SOE_4\public\blocks/pre_head.php';
 
 use App\Data;
 use App\Models\Person;
@@ -7,17 +7,17 @@ use App\Models\Product; ?>
 <html lang="en">
 
 <head>
-    <?php require 'C:\Users\Dell\source\SOE_4\public\blocks/head.php' ?>
+    <?php require 'C:\Users\Julie\source\SOE_4\public\blocks/head.php' ?>
     <title>Особи</title>
 </head>
 
 <body oncontextmenu="return false;">
-    <?php require 'C:\Users\Dell\source\SOE_4\public\blocks/preloader.php' ?>
+    <?php //require_once 'C:\Users\Julie\source\SOE_4\public\blocks/preloader.php' ?>
     <div class="container">
-        <?php require 'C:\Users\Dell\source\SOE_4\public\blocks/header.php' ?>
+        <?php require 'C:\Users\Julie\source\SOE_4\public\blocks/header.php' ?>
         <!-- main -->
         <div class="main">
-            <?php require 'C:\Users\Dell\source\SOE_4\public\blocks/topbar.php' ?>
+            <?php require 'C:\Users\Julie\source\SOE_4\public\blocks/topbar.php' ?>
             <div class="page" id="persons_page">
                 <div class="anti-card grid grid-2">
                     <?php $persons = Person::all();
@@ -27,53 +27,64 @@ use App\Models\Product; ?>
                             <div class="face">
                                 <span class="line">
                                     <p>Стать:</p>
-                                    <p class="num"><?= $person->gender ?></p>
+                                    <p class="num"><?= $person->gender=="woman"?"жінка":"чоловік" ?></p>
                                 </span>
                                 <span class="line">
                                     <p>Вага:</p>
-                                    <p class="num"><?= $person->weight ?>kg</p>
+                                    <p class="num"><?= $person->weight ?> кг</p>
                                 </span>
                                 <span class="line">
                                     <p>Зріст:</p>
-                                    <p class="num"><?= $person->height ?>cm</p>
+                                    <p class="num"><?= $person->height ?> см</p>
                                 </span>
                                 <span class="line">
                                     <p>Вік:</p>
-                                    <p class="num"><?= $person->age() ?>y.o.</p>
+                                    <p class="num"><?= $person->age() ?> р.</p>
                                 </span>
                                 <span class="line">
                                     <p>Дата народження:</p>
-                                    <p class="num"><?= $person->date_of_birth ?></p>
+                                    <p class="num"><?php
+                                    $date=$person->date_of_birth;
+
+                                    $day=date("d",strtotime($date));
+                                    $m=date("m",strtotime($date));
+                                    $year=date("Y",strtotime($date));
+
+                                    $month=Data::$months[$m*1-1];
+
+                                    echo $day . " " . $month . " " .  $year;
+                                    
+                                    ?></p>
                                 </span>
                                 <span class="line">
-                                    <p>Активність:</p>
+                                    <p>Рівень активності:</p>
                                     <p class="num"><?= $person->activity ?></p>
                                 </span>
                             </div>
                             <div class="addition">
                                 <span class="line">
                                     <p>Ккалорії:</p>
-                                    <p class="num"><?= $person->person_data['kcal'] ?> kkal</p>
+                                    <p class="num"><?= $person->person_data['kcal'] ?> ккал</p>
                                 </span>
                                 <span class="line">
                                     <p>Білки:</p>
-                                    <p class="num"><?= $person->person_data['protein'] ?> g</p>
+                                    <p class="num"><?= $person->person_data['protein'] ?> г</p>
                                 </span>
                                 <span class="line">
-                                    <p>Вуглуводи:</p>
-                                    <p class="num"><?= $person->person_data['carb'] ?> g</p>
+                                    <p>Вуглеводи:</p>
+                                    <p class="num"><?= $person->person_data['carb'] ?> г</p>
                                 </span>
                                 <span class="line">
                                     <p>Жири:</p>
-                                    <p class="num"><?= $person->person_data['fat'] ?> g</p>
+                                    <p class="num"><?= $person->person_data['fat'] ?> г</p>
                                 </span>
                                 <span class="line">
                                     <p>Вода:</p>
-                                    <p class="num"><?= $person->person_data['water'] ?> ml</p>
+                                    <p class="num"><?= $person->person_data['water'] ?> мл</p>
                                 </span>
                                 <span class="line">
                                     <p>Клітковина:</p>
-                                    <p class="num"><?= $person->person_data['cellulose'] ?>g</p>
+                                    <p class="num"><?= $person->person_data['cellulose'] ?> г</p>
                                 </span>
                             </div>
                         </div>
@@ -86,5 +97,5 @@ use App\Models\Product; ?>
         </div>
     </div>
     <div class="context-menu-open" id="contextmenuperson"></div>
-    <?php require 'C:\Users\Dell\source\SOE_4\public\blocks/fotter.php'; ?>
+    <?php require 'C:\Users\Julie\source\SOE_4\public\blocks/fotter.php'; ?>
 </body>

@@ -1,23 +1,23 @@
-<?php require_once 'C:\Users\Dell\source\SOE_4\public\blocks/pre_head.php';
+<?php require_once 'C:\Users\Julie\source\SOE_4\public\blocks/pre_head.php';
 
 use App\Models\Menu; ?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <?php require_once 'C:\Users\Dell\source\SOE_4\public\blocks/head.php' ?>
+    <?php require_once 'C:\Users\Julie\source\SOE_4\public\blocks/head.php' ?>
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     <title>Menu of week</title>
 </head>
 
 <body oncontextmenu="return false;">
-    <?php //require_once 'C:\Users\Dell\source\SOE_4\public\blocks/preloader.php'; 
+    <?php //require_once 'C:\Users\Julie\source\SOE_4\public\blocks/preloader.php'; 
     ?>
     <div class="container">
-        <?php require_once 'C:\Users\Dell\source\SOE_4\public\blocks/header.php'; ?>
+        <?php require_once 'C:\Users\Julie\source\SOE_4\public\blocks/header.php'; ?>
         <!-- main -->
         <div class="main">
-            <?php require_once 'C:\Users\Dell\source\SOE_4\public\blocks/topbar.php'; ?>
+            <?php require_once 'C:\Users\Julie\source\SOE_4\public\blocks/topbar.php'; ?>
             <div class="page" id="menu_page">
                 <?php $menu_id = ($_GET['id']);
                 $menu = Menu::find($menu_id); ?>
@@ -38,7 +38,7 @@ use App\Models\Menu; ?>
 
     <script src="../../assets/js/modal.js"></script>
 
-    <?php require_once 'C:\Users\Dell\source\SOE_4\public\blocks/fotter.php'; ?>
+    <?php require_once 'C:\Users\Julie\source\SOE_4\public\blocks/fotter.php'; ?>
 
 </body>
 

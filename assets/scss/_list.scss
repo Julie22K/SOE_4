@@ -1,5 +1,4 @@
-
-#shopping_list{
+#shopping_list {
   table {
     /*
     transition: $transition;*/
@@ -21,7 +20,10 @@
         filter: invert(1);
       }
     }
-    caption:hover{cursor: pointer;}
+
+    caption:hover {
+      cursor: pointer;
+    }
 
     tr {
       width: 100%;
@@ -30,8 +32,12 @@
         width: 10%;
       }
 
+      td.name {
+        width: 25%;
+      }
+
       td.dish {
-        width: 5%;
+        width: 25%;
       }
 
       td.weight {
@@ -49,18 +55,21 @@
   }
 
 }
-ul.list-none{
-list-style: none;
+
+ul.list-none {
+  list-style: none;
 }
-ul.list-numeric{
+
+ul.list-numeric {
   list-style: auto;
 }
-span{
-position: relative;
 
-  img{
-position: absolute;
-top:0px;
-left:-20px;
+span {
+  position: relative;
+
+  img {
+    position: absolute;
+    top: 0px;
+    left: -20px;
   }
 }

@@ -13,6 +13,7 @@ class ShopItem
     public $dish_id;
     public $is_exists;
     public $price;
+
     function __construct($ingredient_id, $product_id, $dish_id, $is_exists, $price, $id = null)
     {
         $this->id = $id;
@@ -21,6 +22,18 @@ class ShopItem
         $this->dish_id = $dish_id;
         $this->is_exists = $is_exists;
         $this->price = $price;
+    }
+    static public function shoplist_grouping(array $shoplist){
+        $res=array();
+
+        foreach($shoplist as $item){
+            array_push($res[$item->product_id]);
+        }
+        //todo
+
+
+
+        return $res;
     }
     public function ingredient()
     {

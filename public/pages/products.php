@@ -1,17 +1,17 @@
-<?php require 'C:\Users\Dell\source\SOE_4\public\blocks/pre_head.php'; ?>
+<?php require 'C:\Users\Julie\source\SOE_4\public\blocks/pre_head.php'; ?>
 <!doctypehtml>
     <html lang="en">
 
     <head>
-        <?php require 'C:\Users\Dell\source\SOE_4\public\blocks/head.php' ?>
+        <?php require 'C:\Users\Julie\source\SOE_4\public\blocks/head.php' ?>
         <title>Продукти</title>
     </head>
 
     <body oncontextmenu="return false;">
         <script></script>
-        <?php require 'C:\Users\Dell\source\SOE_4\public\blocks/preloader.php' ?>
-        <div class="container"><?php require 'C:\Users\Dell\source\SOE_4\public\blocks/header.php' ?>
-            <div class="main"><?php require 'C:\Users\Dell\source\SOE_4\public\blocks/topbar.php' ?>
+        <?php require 'C:\Users\Julie\source\SOE_4\public\blocks/preloader.php' ?>
+        <div class="container"><?php require 'C:\Users\Julie\source\SOE_4\public\blocks/header.php' ?>
+            <div class="main"><?php require 'C:\Users\Julie\source\SOE_4\public\blocks/topbar.php' ?>
                 <div class="page" id="product_page">
                     <div class="m-3 w-full anti-card j-c-be row">
                         <div class="row"><button class="btn m-3 btn-cancel" onclick='location.href="shops.php"'>Магазини</button>
@@ -124,7 +124,7 @@
             </div>
         </div>
         <div class="context-menu-open" id="contextmenuproducttr"></div>
-        <?php require 'C:\Users\Dell\source\SOE_4\public\blocks/fotter.php'; ?>
+        <?php require 'C:\Users\Julie\source\SOE_4\public\blocks/fotter.php'; ?>
         <script src="../../assets/js/pagination.js"></script>
         <script src="../../assets/js/filter/products.js"></script>
         <script src="../../assets/js/sort/sort_products.js"></script>

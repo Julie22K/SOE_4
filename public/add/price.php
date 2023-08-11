@@ -4,7 +4,7 @@ use App\Models\Manufacturer;
 use App\Models\Product;
 use App\Models\Shop;
 
-require 'C:\Users\Dell\source\SOE_4\public\blocks/pre_head.php';
+require 'C:\Users\Julie\source\SOE_4\public\blocks/pre_head.php';
 
 $shop_id = 0;
 $manufacturer_id = 0;
@@ -18,18 +18,18 @@ if (isset($_GET['manufacturer'])) $manufacturer_id = $_GET['manufacturer'];
 <html lang="en">
 
 <head>
-    <?php require 'C:\Users\Dell\source\SOE_4\public\blocks/head.php' ?>
+    <?php require 'C:\Users\Julie\source\SOE_4\public\blocks/head.php' ?>
     <title>Додати ціну</title>
 
 </head>
 
 <body oncontextmenu="return false;">
-    <?php require 'C:\Users\Dell\source\SOE_4\public\blocks/preloader.php' ?>
+    <?php require 'C:\Users\Julie\source\SOE_4\public\blocks/preloader.php' ?>
     <div class="container">
-        <?php require 'C:\Users\Dell\source\SOE_4\public\blocks/header.php' ?>
+        <?php require 'C:\Users\Julie\source\SOE_4\public\blocks/header.php' ?>
         <!-- main -->
         <div class="main">
-            <?php require 'C:\Users\Dell\source\SOE_4\public\blocks/topbar.php' ?>
+            <?php require 'C:\Users\Julie\source\SOE_4\public\blocks/topbar.php' ?>
             <div class="page">
                 <h1>Додавання ціни:</h1>
                 <form action="../../vendor/price/store.php" method="post">
@@ -101,7 +101,7 @@ if (isset($_GET['manufacturer'])) $manufacturer_id = $_GET['manufacturer'];
             </div>
         </div>
     </div>
-    <?php require 'C:\Users\Dell\source\SOE_4\public\blocks/fotter.php'; ?>
+    <?php require 'C:\Users\Julie\source\SOE_4\public\blocks/fotter.php'; ?>
 </body>
 
 </html>

@@ -1,22 +1,22 @@
-<?php require 'C:\Users\Dell\source\SOE_4\public\blocks/pre_head.php';
+<?php require 'C:\Users\Julie\source\SOE_4\public\blocks/pre_head.php';
 
 use App\Models\Shop; ?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <?php require 'C:\Users\Dell\source\SOE_4\public\blocks/head.php' ?>
+    <?php require 'C:\Users\Julie\source\SOE_4\public\blocks/head.php' ?>
     <title>Магазини</title>
 </head>
 
 <body oncontextmenu="return false;">
-    <?php require 'C:\Users\Dell\source\SOE_4\public\blocks/preloader.php'
+    <?php require 'C:\Users\Julie\source\SOE_4\public\blocks/preloader.php'
     ?>
     <div class="container">
-        <?php require 'C:\Users\Dell\source\SOE_4\public\blocks/header.php' ?>
+        <?php require 'C:\Users\Julie\source\SOE_4\public\blocks/header.php' ?>
         <!-- main -->
         <div class="main">
-            <?php require 'C:\Users\Dell\source\SOE_4\public\blocks/topbar.php' ?>
+            <?php require 'C:\Users\Julie\source\SOE_4\public\blocks/topbar.php' ?>
             <div class="page">
                 <h1>Магазини</h1>
                 <div class="row w-full j-c-be m-3 p-3">
@@ -68,8 +68,8 @@ use App\Models\Shop; ?>
         </div>
     </div>
 
-    <?php require 'C:\Users\Dell\source\SOE_4\public/modals/example.php'; ?>
-    <?php require 'C:\Users\Dell\source\SOE_4\public\blocks/fotter.php'; ?>
+    <?php require 'C:\Users\Julie\source\SOE_4\public/modals/example.php'; ?>
+    <?php require 'C:\Users\Julie\source\SOE_4\public\blocks/fotter.php'; ?>
 
 </body>
 

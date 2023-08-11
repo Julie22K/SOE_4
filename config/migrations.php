@@ -42,10 +42,11 @@ class Migration
     {
         $db = DB::DB();
         $table = mysqli_query($db, "SELECT * from migrations LIMIT 1");
+        
         if ($table !== FALSE) {
-            Self::fill_migrations($migrations);
+            Migration::fill_migrations($migrations);
         } else {
-            mysqli_query($db, "create table migrations(id integer not null auto_increment,name varchar(30) unique,is_exists boolean default false,primary key(id,name));");
+            Migration::createTable("migrations",["id integer not null auto_increment","name varchar(30) unique","is_exists boolean default false","primary key(id,name)"]);
             Migration::fill_migrations($migrations);
         }
     }

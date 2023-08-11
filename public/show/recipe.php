@@ -1,6 +1,6 @@
 <?php
 
-require 'C:\Users\Dell\source\SOE_4\public\blocks/pre_head.php';
+require 'C:\Users\Julie\source\SOE_4\public\blocks/pre_head.php';
 
 use App\Models\Recipe;
 use App\Models\RecipeCategory;
@@ -11,19 +11,19 @@ $recipe = Recipe::find($_GET['id']);
 <html lang="en">
 
 <head>
-    <?php require 'C:\Users\Dell\source\SOE_4\public\blocks/head.php' ?>
+    <?php require 'C:\Users\Julie\source\SOE_4\public\blocks/head.php' ?>
     <title><?= $recipe->title ?></title>
 
 </head>
 
 <body oncontextmenu="return false;">
-    <?php require 'C:\Users\Dell\source\SOE_4\public\blocks/preloader.php'
+    <?php require 'C:\Users\Julie\source\SOE_4\public\blocks/preloader.php'
     ?>
     <div class="container">
-        <?php require 'C:\Users\Dell\source\SOE_4\public\blocks/header.php' ?>
+        <?php require 'C:\Users\Julie\source\SOE_4\public\blocks/header.php' ?>
         <!-- main -->
         <div class="main">
-            <?php require 'C:\Users\Dell\source\SOE_4\public\blocks/topbar.php' ?>
+            <?php require 'C:\Users\Julie\source\SOE_4\public\blocks/topbar.php' ?>
             <div class="page" id="recipes_page">
                 <div class="row-reverse w-full m-3 p-3">
                     <button class="btn" onclick="location.href='../pages/recipes.php'">До рецептів</button>
@@ -105,7 +105,7 @@ $recipe = Recipe::find($_GET['id']);
             </div>
         </div>
     </div>
-    <?php require 'C:\Users\Dell\source\SOE_4\public\blocks/fotter.php'; ?>
+    <?php require 'C:\Users\Julie\source\SOE_4\public\blocks/fotter.php'; ?>
 </body>
 
 </html>

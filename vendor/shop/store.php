@@ -1,5 +1,5 @@
 <?php
-require 'C:\Users\Dell\source\SOE_4\public/blocks/pre_head.php';
+require 'C:\Users\Julie\source\SOE_4\public/blocks/pre_head.php';
 
 use App\Models\Shop;
 

@@ -3,7 +3,7 @@
 use App\Data;
 use App\Models\Product;
 
-require 'C:\Users\Dell\source\SOE_4\public/blocks/pre_head.php';
+require 'C:\Users\Julie\source\SOE_4\public/blocks/pre_head.php';
 
 $title = $_POST['title'];
 $category = $_POST['category'];

@@ -13,3 +13,5 @@ Products()
 	=>edit product(product::find()+price::where()+shop::where()+product_category::find())
 Persons()
 	=>edit person
+
+погрупувати дані в списку покупок

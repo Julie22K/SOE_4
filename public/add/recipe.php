@@ -1,6 +1,6 @@
 <?php
 
-require 'C:\Users\Dell\source\SOE_4\public\blocks/pre_head.php';
+require 'C:\Users\Julie\source\SOE_4\public\blocks/pre_head.php';
 
 use App\Models\Product;
 use App\Models\RecipeCategory;
@@ -9,16 +9,16 @@ use App\Models\RecipeCategory;
 <!DOCTYPE html <html lang="en">
 
 <head>
-    <?php require 'C:\Users\Dell\source\SOE_4\public\blocks/head.php' ?>
+    <?php require 'C:\Users\Julie\source\SOE_4\public\blocks/head.php' ?>
     <title>Додати рецепт:</title>
 </head>
 
 <body oncontextmenu="return false;">
-    <?php require 'C:\Users\Dell\source\SOE_4\public\blocks/preloader.php' ?>
+    <?php require 'C:\Users\Julie\source\SOE_4\public\blocks/preloader.php' ?>
     <div class="container">
-        <?php require 'C:\Users\Dell\source\SOE_4\public\blocks/header.php' ?>
+        <?php require 'C:\Users\Julie\source\SOE_4\public\blocks/header.php' ?>
         <div class="main">
-            <?php require 'C:\Users\Dell\source\SOE_4\public\blocks/topbar.php' ?>
+            <?php require 'C:\Users\Julie\source\SOE_4\public\blocks/topbar.php' ?>
             <div class="page" id="page_add_recipe">
                 <h1>Додавання рецепту:</h1>
                 <form action="../../vendor/recipe/store.php" method="post" id="form_add_recipe">
@@ -162,7 +162,7 @@ use App\Models\RecipeCategory;
 
         const deleteIngredient = (elem) => elem.parentElement.remove();
     </script>
-    <?php require 'C:\Users\Dell\source\SOE_4\public\blocks/fotter.php'; ?>
+    <?php require 'C:\Users\Julie\source\SOE_4\public\blocks/fotter.php'; ?>
 </body>
 
 </html>

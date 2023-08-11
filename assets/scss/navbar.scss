@@ -7,6 +7,9 @@
   -webkit-transition: 0.5s;
   transition: 0.5s;
   overflow: hidden;
+  font-family: 'Ubuntu', sans-serif;
+
+  /*font-weight: 600;*/
 }
 
 .navigation.active {
@@ -118,4 +121,3 @@
   box-shadow: 35px -35px 0 10px var(--white);
   pointer-events: none;
 }
-

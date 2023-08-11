@@ -1,17 +1,15 @@
 @import 'margin';
 @import 'padding';
-$shadow:0.05rem 0.1rem 0.3rem -0.03rem rgba(0, 0, 0, 0.45);
-$shadow-hover:0.10rem 0.12rem 0.35rem -0.03rem rgba(0, 0, 0, 0.45);
+$shadow: 0.05rem 0.1rem 0.3rem -0.03rem rgba(0, 0, 0, 0.45);
+$shadow-hover: 0.10rem 0.12rem 0.35rem -0.03rem rgba(0, 0, 0, 0.45);
 
 $transition: 0.7s;
 
-$distance:10px;
+$distance: 10px;
 
-$border_radius:5px;
+$border_radius: 3px;
 
-$height_header:300px;
-$height_menu_card:60px;
-$height_recipe:250px;
-$height_person:200px;
-
-
+$height_header: 300px;
+$height_menu_card: 60px;
+$height_recipe: 250px;
+$height_person: 200px;

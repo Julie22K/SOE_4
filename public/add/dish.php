@@ -1,6 +1,6 @@
 <?php
 
-require 'C:\Users\Dell\source\SOE_4\public\blocks/pre_head.php';
+require 'C:\Users\Julie\source\SOE_4\public\blocks/pre_head.php';
 
 use App\Data;
 use App\Models\MealTime;
@@ -12,17 +12,17 @@ use App\Models\Recipe;
 <html lang="en">
 
 <head>
-    <?php require 'C:\Users\Dell\source\SOE_4\public\blocks/head.php' ?>
+    <?php require 'C:\Users\Julie\source\SOE_4\public\blocks/head.php' ?>
     <title>Add dish</title>
 
 </head>
 
 <body oncontextmenu="return false;">
-    <?php require 'C:\Users\Dell\source\SOE_4\public\blocks/preloader.php' ?>
+    <?php require 'C:\Users\Julie\source\SOE_4\public\blocks/preloader.php' ?>
     <div class="container">
-        <?php require 'C:\Users\Dell\source\SOE_4\public\blocks/header.php' ?>
+        <?php require 'C:\Users\Julie\source\SOE_4\public\blocks/header.php' ?>
         <div class="main">
-            <?php require 'C:\Users\Dell\source\SOE_4\public\blocks/topbar.php' ?>
+            <?php require 'C:\Users\Julie\source\SOE_4\public\blocks/topbar.php' ?>
             <div class="page">
                 <h1>Додавання страви до меню:</h1>
                 <form action="../../vendor/dish/store.php" method="post">
@@ -75,7 +75,7 @@ use App\Models\Recipe;
         </div>
     </div>
 
-    <?php require 'C:\Users\Dell\source\SOE_4\public\blocks/fotter.php'; ?>
+    <?php require 'C:\Users\Julie\source\SOE_4\public\blocks/fotter.php'; ?>
 </body>
 
 </html>

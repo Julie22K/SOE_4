@@ -1,24 +1,24 @@
 <?php
 
-require 'C:\Users\Dell\source\SOE_4\public\blocks/pre_head.php';
+require 'C:\Users\Julie\source\SOE_4\public\blocks/pre_head.php';
 
 ?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <?php require 'C:\Users\Dell\source\SOE_4\public\blocks/head.php' ?>
+    <?php require 'C:\Users\Julie\source\SOE_4\public\blocks/head.php' ?>
     <title>Додавання виробника</title>
 
 </head>
 
 <body oncontextmenu="return false;">
-    <?php require 'C:\Users\Dell\source\SOE_4\public\blocks/preloader.php' ?>
+    <?php require 'C:\Users\Julie\source\SOE_4\public\blocks/preloader.php' ?>
     <div class="container">
-        <?php require 'C:\Users\Dell\source\SOE_4\public\blocks/header.php' ?>
+        <?php require 'C:\Users\Julie\source\SOE_4\public\blocks/header.php' ?>
         <!-- main -->
         <div class="main">
-            <?php require 'C:\Users\Dell\source\SOE_4\public\blocks/topbar.php' ?>
+            <?php require 'C:\Users\Julie\source\SOE_4\public\blocks/topbar.php' ?>
             <div class="page">
                 <h1>Додавання виробника:</h1>
                 <form action="../../vendor/manufacturer/store.php" method="post">
@@ -37,7 +37,7 @@ require 'C:\Users\Dell\source\SOE_4\public\blocks/pre_head.php';
         </div>
     </div>
 
-    <?php require 'C:\Users\Dell\source\SOE_4\public\blocks/fotter.php'; ?>
+    <?php require 'C:\Users\Julie\source\SOE_4\public\blocks/fotter.php'; ?>
 </body>
 
 </html>

@@ -1,4 +1,4 @@
-<?php require 'C:\Users\Dell\source\SOE_4\public\blocks/pre_head.php';
+<?php require 'C:\Users\Julie\source\SOE_4\public\blocks/pre_head.php';
 
 use App\Models\Recipe;
 use App\Models\RecipeCategory; ?>
@@ -6,13 +6,13 @@ use App\Models\RecipeCategory; ?>
 <html lang="en">
 
 <head>
-    <?php require 'C:\Users\Dell\source\SOE_4\public\blocks/head.php' ?>
+    <?php require 'C:\Users\Julie\source\SOE_4\public\blocks/head.php' ?>
     <title>Рецепти</title>
 
 </head>
 
 <body oncontextmenu="return false;">
-    <?php require 'C:\Users\Dell\source\SOE_4\public\blocks/preloader.php'
+    <?php require 'C:\Users\Julie\source\SOE_4\public\blocks/preloader.php'
     ?>
     <script>
         $(document).ready(function() {
@@ -25,15 +25,15 @@ use App\Models\RecipeCategory; ?>
         });
     </script>
     <div class="container">
-        <?php require 'C:\Users\Dell\source\SOE_4\public\blocks/header.php' ?>
+        <?php require 'C:\Users\Julie\source\SOE_4\public\blocks/header.php' ?>
         <!-- main -->
         <div class="main">
-            <?php require 'C:\Users\Dell\source\SOE_4\public\blocks/topbar.php' ?>
+            <?php require 'C:\Users\Julie\source\SOE_4\public\blocks/topbar.php' ?>
             <div class="page" id="recipes_page">
                 <div class="card-header w-full m-3" id="recipes_header">
-                    <div class="anti-card recipes-header-side col w-full m-3" id="filterSort">
-                        <ion-icon class="icon-setting" onclick="changeViewSide('setting','recipes-header-side','recipes_header')" name="settings-outline"></ion-icon>
-                        <div class="filter border-line-bottom w-full" id="filter">
+                    <div class="anti-card recipes-header-side col w-full m-3 p-2" id="filterSort">
+                        <ion-icon class="icon-setting m-2" onclick="changeViewSide('setting','recipes-header-side','recipes_header')" name="settings-outline"></ion-icon>
+                        <div class="filter border-line-bottom w-full m-2" id="filter">
                             <h3>Filter:</h3>
 
                             <div class="row row-wrap">
@@ -45,7 +45,7 @@ use App\Models\RecipeCategory; ?>
                                 <?php } ?>
                             </div>
                         </div>
-                        <div class="sort border-line-bottom w-full">
+                        <div class="sort border-line-bottom w-full m-2">
                             <h3>Sort:</h3>
                             <div class="row row-wrap">
                                 <button onclick="sort_recipes('name_of_dish','#sortRecipeByName')" id="sortRecipeByName" class="btn m-2 btn-filter-sort active card-recipe-sort">A..Z</button>
@@ -57,30 +57,21 @@ use App\Models\RecipeCategory; ?>
                                 <button onclick="sort_recipes('fat_of_dish','#sortRecipeByProtein')" id="sortRecipeByProtein" class="btn m-2 btn-filter-sort card-recipe-sort">protein</button>
                             </div>
                         </div>
-                        <form class="search w-full" id="search_form">
-                            <h3>Search: <label>
-
+                        <div class="search w-full m-2 col" id="search_form">
+                            <h3>Search:</h3> 
                                     <span class="row">
-
                                         <input type="search" class="m-2" id="srch" placeholder="search..." name="searchField" disabled>
-
-
-
                                         <input type="submit" class="btn btn-search m-2" value="Search" onclick="show()" disabled>
-
                                     </span>
-
-
-
-                        </form>
+                        </div>
 
                     </div>
 
                     <div class="anti-card recipes-header-side col w-full m-3" id="setting" style="display: none">
 
-                        <ion-icon class="icon-setting" onclick="changeViewSide('filterSort','recipes-header-side','recipes_header')" name="settings-outline"></ion-icon>
+                        <ion-icon class="icon-setting m-2" onclick="changeViewSide('filterSort','recipes-header-side','recipes_header')" name="settings-outline"></ion-icon>
 
-                        <div class="col">
+                        <div class="w-full m-2">
 
                             <h3>Setting:</h3>
                             <div class="row" id="columns_nums">
@@ -245,7 +236,7 @@ use App\Models\RecipeCategory; ?>
         };
         //elems on page:11(+'add'),23,23+12,23+12*2
     </script>
-    <?php require 'C:\Users\Dell\source\SOE_4\public\blocks/fotter.php'; ?>
+    <?php require 'C:\Users\Julie\source\SOE_4\public\blocks/fotter.php'; ?>
     <script src="../../assets/js/dishes.js"></script>
     <script src="../../assets/js/sort/sort_recipe.js"></script>
     <script src="../../assets/js/delete_recipe.js"></script>

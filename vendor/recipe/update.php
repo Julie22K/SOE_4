@@ -1,5 +1,5 @@
 <?php
-require 'C:\Users\Dell\source\SOE_4\config/connect.php';
+require 'C:\Users\Julie\source\SOE_4\config/connect.php';
 $ID_recipe = $_POST['id_recipe'];
 $Name = $_POST['name'];
 $Type = $_POST['type'];

@@ -11,6 +11,8 @@ $days = array('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'
 class Data
 {
     public static $info_data = ['kcal', 'fat', 'carb', 'protein', 'water', 'cellulose', 'vitA', 'vitE', 'vitK', 'vitD', 'vitC', 'om3', 'om6', 'vitB1', 'vitB2', 'vitB5', 'vitB6', 'vitB8', 'vitB9', 'vitB12', 'minMg', 'minNa', 'minCa', 'minCl', 'minK', 'minS', 'minP', 'minI', 'minCu', 'minCr'];
+    public static $months = ['січ.','лют.','бер.','квіт.','трав.','черв.','лип.','серп.','вер.','жовт.','лист.','груд.'];
+    
     static function getData($table, string $param = "")
     {
         $db = DB::DB();

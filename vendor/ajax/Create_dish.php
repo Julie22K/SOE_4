@@ -1,5 +1,5 @@
 <?php
-require 'C:\Users\Dell\source\SOE_4\config/connect.php';
+require 'C:\Users\Julie\source\SOE_4\config/connect.php';
 
 try {
     $recipe_id = $_POST['recipe_id'];

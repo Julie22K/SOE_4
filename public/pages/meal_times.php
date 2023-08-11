@@ -1,4 +1,4 @@
-<?php require 'C:\Users\Dell\source\SOE_4\public\blocks/pre_head.php';
+<?php require 'C:\Users\Julie\source\SOE_4\public\blocks/pre_head.php';
 
 use App\Models\Manufacturer;
 use App\Models\MealTime; ?>
@@ -6,17 +6,17 @@ use App\Models\MealTime; ?>
 <html lang="en">
 
 <head>
-    <?php require 'C:\Users\Dell\source\SOE_4\public\blocks/head.php' ?>
+    <?php require 'C:\Users\Julie\source\SOE_4\public\blocks/head.php' ?>
     <title>Редагування часу прийомів їжі</title>
 </head>
 
 <body oncontextmenu="return false;">
-    <?php require 'C:\Users\Dell\source\SOE_4\public\blocks/preloader.php' ?>
+    <?php require 'C:\Users\Julie\source\SOE_4\public\blocks/preloader.php' ?>
     <div class="container">
-        <?php require 'C:\Users\Dell\source\SOE_4\public\blocks/header.php' ?>
+        <?php require 'C:\Users\Julie\source\SOE_4\public\blocks/header.php' ?>
         <!-- main -->
         <div class="main">
-            <?php require 'C:\Users\Dell\source\SOE_4\public\blocks/topbar.php' ?>
+            <?php require 'C:\Users\Julie\source\SOE_4\public\blocks/topbar.php' ?>
             <div class="page" id="shopping_list_page">
                 <h1>Редагування часу прийомів їжі</h1>
 
@@ -110,7 +110,7 @@ use App\Models\MealTime; ?>
             $('#myTable').html(table + addBtn);
         }
     </script>
-    <?php require 'C:\Users\Dell\source\SOE_4\public\blocks/fotter.php'; ?>
+    <?php require 'C:\Users\Julie\source\SOE_4\public\blocks/fotter.php'; ?>
 </body>
 
 </html>
