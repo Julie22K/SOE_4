@@ -3,7 +3,7 @@
     <!-- Modal content -->
     <div class="modal-content modal-info" id="modal-content">
         <div class="info" id="info">
-            <label for="kkal">Protein/Fat/Carb</label>
+            <label for="kkal">Білки/Жири/Вуглеводи</label>
             <div id="kkal" class="progress-bar progress-multiple" style="width:100%;">
                 <span class="progress progress-protein"></span>
                 <span class="progress progress-fat"></span>
@@ -11,13 +11,13 @@
             </div>
             <div class="grid-2">
                 <div>
-                    <label for="Vitamins:">Vitamins:</label>
+                    <label for="Vitamins:">Вітаміни:</label>
                     <div id="vit" class="progress-bar">
                         <span class="progress progress-vit"></span>
                     </div>
                 </div>
                 <div>
-                    <label for="Minerals:">Minerals:</label>
+                    <label for="Minerals:">Мінерали:</label>
                     <div id="min" class="progress-bar">
                         <span class="progress progress-min"></span>
                     </div>
@@ -27,8 +27,8 @@
 
         </div>
         <div class="info-data">
-            <div id="wg" class="text">Weight</div>
-            <div id="pr" class="text">Price</div>
+            <div id="wg" class="text">Вага</div>
+            <div id="pr" class="text">Ціна</div>
             <div id="wt" class="text">Water</div>
             <div id="cl" class="text">Cellulose</div>
         </div>
