@@ -24,7 +24,7 @@ if ($menu !== false && !is_null($menu)) {
                     <span class="icon">
                         <ion-icon name="calendar-outline"></ion-icon>
                     </span>
-                    <span class="title">System Of Eating</span>
+                    <span class="title">Система харчування</span>
                 </a>
             </li>
             <li class="pointer">

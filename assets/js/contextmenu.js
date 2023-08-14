@@ -225,7 +225,7 @@ $(".card-menu").on("contextmenu", (e) => {
       {
         icon: icons.shoplist,
         event: `location.href='../pages/shopping_list.php?id=` + id + `'`,
-        title: "Список меню"
+        title: "Список покупок"
       } /*
       {
         icon: icons.double,

@@ -1,6 +1,6 @@
 {
   "editor.formatOnSave": true,
-  "workbench.colorTheme": "Pink Flower",
+  "workbench.colorTheme": "Solarized Light",
   "vscode-edge-devtools.mirrorEdits": true,
   "liveSassCompile.settings.showOutputWindow": true,
   "workbench.iconTheme": "material-icon-theme",

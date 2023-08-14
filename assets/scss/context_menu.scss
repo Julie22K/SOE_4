@@ -6,24 +6,28 @@
   left: 0;
   box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.54);
   background-color: white;
-  border-radius: 4px;
-  padding: 4px;
+  border-radius: $border_radius;
+  padding: 10px;
 }
 
 .context-menu-open ul {
   padding: 0;
   margin: 0;
+
+  li {
+    cursor: pointer;
+    list-style: none;
+    padding: 10px 12px;
+    margin: 0;
+    border-bottom: 1px solid lightgray;
+    display: flex;
+    align-items: center;
+
+    /*transition: 0.8s;*/
+    /* Розташування елементів по вертикалі */
+  }
 }
 
-.context-menu-open ul li {
-  cursor: pointer;
-  list-style: none;
-  padding: 10px 12px;
-  margin: 0;
-  border-bottom: 1px solid lightgray;
-  display: flex;
-  align-items: center; /* Розташування елементів по вертикалі */
-}
 
 .context-menu-open ul li:last-child {
   border-bottom: 1px solid transparent;
@@ -31,8 +35,10 @@
 
 .context-menu-open ul li:hover {
   background-color: var(--hover);
+  color: white;
 }
 
 .context-menu-open ul li ion-icon {
-  margin-right: 10px; /* Відступ праворуч від іконки */
+  margin-right: 10px;
+  /* Відступ праворуч від іконки */
 }

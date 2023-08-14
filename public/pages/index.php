@@ -10,7 +10,7 @@ use App\Models\Product; ?>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php require 'C:\Users\Julie\source\SOE_4\public\blocks/head.php'; ?>
-    <title>Document</title>
+    <title>Головна</title>
 </head>
 
 <body oncontextmenu="return false;">

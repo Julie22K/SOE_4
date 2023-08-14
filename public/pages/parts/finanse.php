@@ -34,10 +34,10 @@
     ?>
     <div class="progress" title="Бюджет: <?= $budget ?> грн">
         <div class="progress-need <?= $style ?>" style="width:<?= $need_val ?>%;" title="Необхідна сума: <?= $need ?> грн">
-            <span class="text-center"><?= $need_val ?>% </span>
+            <span class="text-center"><?= $need_val!=0?$need_val . '%':'' ?></span>
 
             <div class="progress-used" style="position:relative;width:<?= $used_val2 ?>%;" title="Товарів закуплено на суму: <?= $used ?> грн">
-                <span class="text-center" style=""><?= $used_val2 ?>% </span>
+                <span class="text-center" style=""><?= $used_val2!=0?$used_val2 . '%':''?> </span>
             </div>
         </div>
 

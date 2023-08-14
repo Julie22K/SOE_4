@@ -7,7 +7,7 @@ use App\Models\Product; ?>
 
 <head>
     <?php require 'C:\Users\Julie\source\SOE_4\public\blocks/head.php' ?>
-    <title>Setting</title>
+    <title>Налаштування</title>
 
 </head>
 
@@ -25,29 +25,29 @@ use App\Models\Product; ?>
                         <h4>Теми:</h4>
                     </div>
                     <div class="row">
-                        <button class="btn btn-color" onclick="theme('#ffa927','#fff127','#F2F3A5','#fff673','#ffce73')" id="yellow_orange"><span>orange</span>
+                        <button class="btn btn-color" onclick="theme('#ffa927','#fff127','#F2F3A5','#fff673','#ffce73')" id="yellow_orange"><span>Помаранчева</span>
                         </button>
-                        <button class="btn btn-color" onclick="theme('#BD2828','#381f1f','#EDABAB','#ffd2cf','#e72f2f')" id="red"><span>red</span>
+                        <button class="btn btn-color" onclick="theme('#BD2828','#381f1f','#EDABAB','#ffd2cf','#f16565')" id="red"><span>Червона</span>
                         </button>
-                        <button class="btn btn-color" onclick="theme('#3E793F','#527445','#C2D4B3','#E5D3C9','#54b455')" id="green"><span>green</span>
+                        <button class="btn btn-color" onclick="theme('#3E793F','#527445','#C2D4B3','#E5D3C9','#54b455')" id="green"><span>Зелена</span>
                         </button>
-                        <button class="btn btn-color" onclick="theme('#447C99','#222b3b','#9CC9E0','#9CC9E0','#36a7e1')" id="blue"><span>blue</span>
+                        <button class="btn btn-color" onclick="theme('#447C99','#222b3b','#9CC9E0','#9CC9E0','#36a7e1')" id="blue"><span>Блакитна</span>
                         </button>
-                        <button class="btn btn-color" onclick="theme('#7B58AD','#392838','#C8B3E5','#C8B3E5','#7e3bdc')" id="purple"><span>purple</span>
+                        <button class="btn btn-color" onclick="theme('#7B58AD','#392838','#C8B3E5','#C8B3E5','#7e3bdc')" id="purple"><span>Фіолетова</span>
                         </button>
-                        <button class="btn btn-color" onclick="theme('#323232','#7a8888','#cccccc','#cccccc','#7e7e7e')" id="gray"><span>gray</span>
+                        <button class="btn btn-color" onclick="theme('#323232','#7a8888','#cccccc','#cccccc','#7e7e7e')" id="gray"><span>Сіра</span>
                         </button>
                     </div>
                     <div class="row">
-                        <button class="btn btn-color" onclick="theme('#DA2A2A','#381f1f','#64C264','#B2E1B2','#DA2A2A')" id="red_green"><span>red-green</span>
+                        <button class="btn btn-color" onclick="theme('#DA2A2A','#381f1f','#64C264','#B2E1B2','#DA2A2A')" id="red_green"><span>Червоно - зелена</span>
                         </button>
-                        <button class="btn btn-color" onclick="theme('#277F27','#527445','#532496','#A992CB','#93B914')" id="green_purple"><span>green-purple</span>
+                        <button class="btn btn-color" onclick="theme('#277F27','#527445','#532496','#A992CB','#93B914')" id="green_purple"><span>Зелено - фіолетова</span>
                         </button>
-                        <button class="btn btn-color" onclick="theme('#447C99','#222b3b','#ffa927','#FFD493','#0E72A7')" id="blue_orange"><span>blue-orange</span>
+                        <button class="btn btn-color" onclick="theme('#447C99','#222b3b','#ffa927','#FFD493','#0E72A7')" id="blue_orange"><span>Блакитно - помаранчева</span>
                         </button>
-                        <button class="btn btn-color" onclick="theme('#7B58AD','#392838','#FFF040','#FFFAC0','#7e3bdc')" id="purple_yellow"><span>purple-yellow</span>
+                        <button class="btn btn-color" onclick="theme('#7B58AD','#392838','#FFF040','#FFFAC0','#7e3bdc')" id="purple_yellow"><span>Фіолетово - жовта</span>
                         </button>
-                        <button class="btn btn-color" onclick="theme('#666666','#dfdf59','#F2F3A5','#a09fa3','#d7d77c')" id="yellow_gray"><span>gray-yellow</span>
+                        <button class="btn btn-color" onclick="theme('#666666','#dfdf59','#F2F3A5','#a09fa3','#d7d77c')" id="yellow_gray"><span>Сіра - жовта</span>
                         </button>
 
 
