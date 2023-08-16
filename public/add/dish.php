@@ -13,7 +13,7 @@ use App\Models\Recipe;
 
 <head>
     <?php require 'C:\Users\Julie\source\SOE_4\public\blocks/head.php' ?>
-    <title>Add dish</title>
+    <title>Додати страву</title>
 
 </head>
 
@@ -30,7 +30,8 @@ use App\Models\Recipe;
                     <div class="col">
                         <div class="m-3 w-full">
                             <label for="recipes">Рецепти:</label>
-                            <select class="select2-add" name="recipes" id="recipes" multiple>
+                            <select class="select2-add" name="recipes[]" id="recipes" multiple>
+                            <option selected="selected" disabled>Оберіть страви</option>
                                 <?php
                                 $recipes = Recipe::all();
                                 foreach ($recipes as $recipe) {

@@ -65,7 +65,7 @@ if ($menu !== false && !is_null($menu)) {
                     <span class="icon">
                         <ion-icon name="people-outline"></ion-icon>
                     </span>
-                    <span class="title">Persons</span>
+                    <span class="title">Користувачі</span>
                 </a>
             </li>
             <li class="pointer">

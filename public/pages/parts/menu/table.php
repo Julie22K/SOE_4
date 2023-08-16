@@ -6,7 +6,7 @@ for ($i = 0; $i < $menu->days_interval + 2; $i++) {
 ?>
 <div class="anti-card grid m-3 w-full" id="menu" style="grid-template-columns: <?= $style_grid ?>;">
     <div class="card card-daytime">
-        <h6 class="text-center"><?= $menu->first_date ?> - <?= $menu->last_date ?></h6>
+        <h6 class="text-center"><?= $menu->first_date ?> - <br/><?= $menu->last_date ?></h6>
     </div>
     <?php
 

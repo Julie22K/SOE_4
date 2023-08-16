@@ -199,9 +199,7 @@ $(".card-menu").on("contextmenu", (e) => {
       {
         icon: icons.export,
         event:
-          `location.href='C:\\Users\\Dell\\source\\SOE_4\\vendor\\export/word.php?id=` +
-          id +
-          `'`,
+          `location.href='../../vendor/export/word.php?id=` + id + `'`,
         title: "Експорт в .word"
       },
       {
@@ -212,10 +210,8 @@ $(".card-menu").on("contextmenu", (e) => {
       {
         icon: icons.export,
         event:
-          `location.href='C:\\Users\\Dell\\source\\SOE_4\\vendor\\/pfd.php?id=` +
-          id +
-          `'`,
-        title: "Експорт в .pfd"
+          `location.href='../../vendor/export/pdf.php?id=` + id + `'`,
+        title: "Експорт в .pdf"
       },
       {
         icon: icons.menu,

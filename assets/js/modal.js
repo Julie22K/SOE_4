@@ -6,6 +6,8 @@ window.onclick = function (event) {
     Modal.close(".modal");
   }
 };
+
+
 class Button {
   constructor(title, classes, event) {
     this.title = title;
@@ -24,6 +26,7 @@ class Button {
     );
   }
 }
+let menus_list = "";
 class Modal {
   static close() {
     $(".modal").eq(0).hide();
@@ -165,9 +168,21 @@ class Modal {
   static add_recipe_to_menu(id) {
     const title = "Додати рецепт до меню";
     const content = modal_add_recipe_to_menu(id);
-    console.log(content);
+    rebuildTable(id);
     Modal.build(title, content, [], "");
+
     Modal.open();
+
+    if (menus_list == "") {
+      const xmlhttp = new XMLHttpRequest();
+      xmlhttp.onload = function () {
+        document.getElementById("menus_list").innerHTML = this.responseText;
+      }
+      xmlhttp.open("GET", "../../vendor/ajax/data/menus_list.php");
+      xmlhttp.send();
+    }
+    else document.getElementById("menus_list").innerHTML = menus_list;
+
   }
   static delete_item(item, id, menu = 0) {
     if (item == "dish")

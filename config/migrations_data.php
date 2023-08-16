@@ -7,11 +7,11 @@ class MigrationsData
     static public function data()
     {
         $current_menu_1_date = date('Y-m-d');
-        $current_menu_2_date = date("Y-m-d", strtotime("$current_menu_1_date +7 day"));
+        $current_menu_2_date = date("Y-m-d", strtotime("$current_menu_1_date +6 day"));
         $prev_menu_1_date = date("Y-m-d", strtotime("$current_menu_1_date -7 day"));
-        $prev_menu_2_date = date("Y-m-d", strtotime("$prev_menu_1_date +7 day"));
-        $next_menu_1_date = date("Y-m-d", strtotime("$current_menu_1_date +8 day"));
-        $next_menu_2_date = date("Y-m-d", strtotime("$next_menu_1_date +7 day"));
+        $prev_menu_2_date = date("Y-m-d", strtotime("$prev_menu_1_date +6 day"));
+        $next_menu_1_date = date("Y-m-d", strtotime("$current_menu_1_date +7 day"));
+        $next_menu_2_date = date("Y-m-d", strtotime("$next_menu_1_date +6 day"));
 
         return
             [

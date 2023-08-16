@@ -102,6 +102,11 @@ class Recipe
             $new_ingredient->create();
         }
     }
+    static function store_by_title(string $title)
+    {
+        $recipe_id = Data::createItem('recipes', ["title"=>$title,"recipe_category_id"=>16]);
+        return $recipe_id != 0 ?  $recipe_id : $false;
+    }
     static function store(array $data, array $products = [], array $weights = [])
     {
         $recipe_id = Data::createItem('recipes', $data);
@@ -110,7 +115,7 @@ class Recipe
             $new_ingredient = new Ingredient($weights[$i], $recipe_id, $products[$i]);
             $new_ingredient->create();
         }
-        return $recipe_id != 0 ? true : $data;
+        return $recipe_id != 0 ? $recipe_id : $data;
     }
     public function delete()
     {
