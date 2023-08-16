@@ -109,7 +109,7 @@
                                         $is_hide = "";
                                         foreach (App\Data::$info_data as $item) {
                                             if ($item == "cellulose") $is_hide = 'style="display:none"'; ?>
-                                            <td <?= $is_hide ?>><?= $product->product_data[$item] ?></td>
+                                            <td <?= $is_hide ?>><?= $product->product_data[$item]==0?" - ":$product->product_data[$item]?></td>
                                         <?php
                                         }
                                         ?>

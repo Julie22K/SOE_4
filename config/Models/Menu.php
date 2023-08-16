@@ -261,6 +261,16 @@ class Menu
             $p->create();
         }
     }
+    static function update($id,$data)
+    {
+        Data::deleteItemsWhere('person_in_menus',"menu_id=$id");
+        foreach ($data['persons'] as $person) {
+            $p = new PersonInMenu($id, $person);
+            $p->create();
+        }
+        return Data::updateItem('menus',$id,['budget' => $data['budget'], 'first_date' => $data['first_date'], 'last_date' => $data['last_date']]);
+        
+    }
     public function clear()
     {
         foreach ($this->person_in_menus() as $person_in_menu) {

@@ -75,4 +75,11 @@ class Data
         mysqli_query($db, "DELETE FROM $table WHERE id='$id';");
         $db = DB::close($db);
     }
+    static function deleteItemsWhere($table,$condition)
+    {
+        $db = DB::DB();
+        mysqli_query($db, "DELETE FROM $table WHERE $condition;");
+        echo "DELETE FROM $table WHERE $condition;";
+        $db = DB::close($db);
+    }
 }

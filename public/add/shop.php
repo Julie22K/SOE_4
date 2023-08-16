@@ -8,7 +8,7 @@ require 'C:\Users\Julie\source\SOE_4\public\blocks/pre_head.php';
 
 <head>
     <?php require 'C:\Users\Julie\source\SOE_4\public\blocks/head.php' ?>
-    <title>Add dish</title>
+    <title>Додати страву до меню</title>
 
 </head>
 

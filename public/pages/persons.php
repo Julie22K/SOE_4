@@ -8,7 +8,7 @@ use App\Models\Product; ?>
 
 <head>
     <?php require 'C:\Users\Julie\source\SOE_4\public\blocks/head.php' ?>
-    <title>Особи</title>
+    <title>Користувачі</title>
 </head>
 
 <body oncontextmenu="return false;">

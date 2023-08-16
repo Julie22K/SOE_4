@@ -102,6 +102,10 @@ class Person
         }
         return $res;
     }
+    static function update($id,$data)
+    {
+        return Data::updateItem('persons',$id, $data);
+    }
     public function create()
     {
         Data::createItem('persons', array_merge(['name' => $this->name, 'gender' => $this->gender, 'date_of_birth' => $this->date_of_birth, 'weight' => $this->weight, 'height' => $this->height, 'activity' => $this->activity], $this->person_data));

@@ -7,7 +7,7 @@ require 'C:\Users\Julie\source\SOE_4\public/blocks/pre_head.php';
 $name = $_POST['name'];
 $gender = $_POST['gender'];
 $date_of_birth = $_POST['date_of_birth'];
-$weight = $_POST['weigth'];
+$weight = $_POST['weight'];
 $height = $_POST['height'];
 $activity = $_POST['activity'];
 

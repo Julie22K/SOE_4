@@ -85,11 +85,17 @@ use App\Models\Product; ?>
                     <h4>Часи прийому їжі:</h4>
                     <button class="btn m-3 w-half" onclick='location.href="meal_times.php"'>Налаштувати</button>
                 </div>
+                <?php
+                if($_SESSION['user']['full_name']=="Admin"){
+                ?>
                 <div class="anti-card col m-3 p-3">
 
                     <h4>База даних:</h4>
                     <button class="btn m-3 w-half" onclick='location.href="../../vendor/database/clear.php"'>Перезапустити</button>
                 </div>
+                <?php
+            }
+            ?>
             </div>
         </div>
     </div>

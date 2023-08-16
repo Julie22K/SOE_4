@@ -7,8 +7,7 @@
   -webkit-transition: 0.5s;
   transition: 0.5s;
   overflow: hidden;
-  font-family: 'Ubuntu', sans-serif;
-
+  font-family: "Ubuntu", sans-serif;
   /*font-weight: 600;*/
 }
 
@@ -40,12 +39,15 @@
   background: var(--white);
 }
 
-
 .navigation ul li:nth-child(1) {
   margin-bottom: 40px;
   pointer-events: none;
 }
 
+.navigation ul li:nth-child(8) {
+  pointer-events: none;
+  cursor: pointer;
+}
 
 .navigation ul li a {
   position: relative;

@@ -10,7 +10,7 @@ use App\Models\RecipeCategory;
 
 <head>
     <?php require 'C:\Users\Julie\source\SOE_4\public\blocks/head.php' ?>
-    <title>Додати рецепт:</title>
+    <title>Додати рецепт</title>
 </head>
 
 <body oncontextmenu="return false;">

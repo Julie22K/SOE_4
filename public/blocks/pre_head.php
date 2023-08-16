@@ -4,3 +4,9 @@ require 'C:\Users\Julie\source\SOE_4\config/data.php';
 require 'C:\Users\Julie\source\SOE_4\config/migrations_data.php';
 require 'C:\Users\Julie\source\SOE_4\config/migrations.php';
 require 'C:\Users\Julie\source\SOE_4\config/models.php';
+
+session_start();
+if (!$_SESSION['user']) {
+    header('Location: /');
+}
+?>

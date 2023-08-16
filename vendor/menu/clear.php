@@ -11,4 +11,4 @@ $menu = Menu::find($id);
 $menu->clear($id);
 
 
-header('Location: ../../public/pages/menu.php?id=' . $id);
+header('Location: ../../public/pages/menus.php?id=' . $id);

@@ -76,6 +76,17 @@ if ($menu !== false && !is_null($menu)) {
                     <span class="title">Налаштування</span>
                 </a>
             </li>
+            
+            <li style="margin-top: 120px;">
+                <form>
+                    <a href="../../vendor/logout.php" class="logout">
+                        <span class="icon" title="Вийти за акаунту">
+                            <ion-icon name="log-out-outline"></ion-icon>
+                        </span>
+                        <span class="title" title="Вийти за акаунту <?= $_SESSION['user']['full_name'] ?>">Вихід</span>
+                    </a>
+                </form>
+            </li>
         </ul>
     </div>
 </navbar>

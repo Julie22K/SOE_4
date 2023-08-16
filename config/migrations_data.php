@@ -217,7 +217,7 @@ class MigrationsData
                 ],
                 "persons" => [
                     ["name" => "Юлія", "gender" => "woman", "date_of_birth" => "2000-4-4", "weight" => "77", "height" => "155", "activity" => "1.7"],
-                    ["name" => "Наталія", "gender" => "woman", "date_of_birth" => "2000-4-4", "weight" => "53", "height" => "166", "activity" => "1.1"], ["name" => "Олександр", "gender" => "man", "date_of_birth" => "2000-4-4", "weight" => "54", "height" => "177", "activity" => "1.4"]
+                    ["name" => "Наталія", "gender" => "woman", "date_of_birth" => "2000-4-4", "weight" => "53", "height" => "166", "activity" => "1.2"], ["name" => "Олександр", "gender" => "man", "date_of_birth" => "2000-4-4", "weight" => "54", "height" => "177", "activity" => "1.4"]
                 ],
                 "menus" => [
                     ["budget" => "450", "first_date" => $prev_menu_1_date, "last_date" => $prev_menu_2_date,],

@@ -1,28 +1,17 @@
 <?php
-require 'C:\Users\Julie\source\SOE_4\config/connect.php';
-require 'C:\Users\Julie\source\SOE_4\config/nutr.php';
-$idcd = $_POST['idc'];
-$name = $_POST['name'];
-$sex = $_POST['sex'];
-$date = $_POST['date'];
-$age = calculate_age($date);
-$height = $_POST['height'];
-$weight = $_POST['weight'];
-$activity = $_POST['activity'];
+require 'C:\Users\Julie\source\SOE_4\public/blocks/pre_head.php';
 
-$kkal = GetKkal($sex, $activity, $weight, $height, $age);
+use App\Models\Person;
 
-$carb = GetCarb($kkal);
-$fat = GetFat($kkal);
-$protein = GetProtein($kkal);
-$cellulose = GetCellulose($kkal);
-$water = GetWater($weight);
+$id=$_GET['id'];
+$data=[
+    'name' => $_POST['name'],
+    'gender' => $_POST['gender'],
+    'date_of_birth' => $_POST['date_of_birth'],
+    'height' => $_POST['height'],
+    'weight' => $_POST['weight'],
+    'activity' => $_POST['activity'],
+];
+$res=Person::update($id,$data);
 
-mysqli_query($soe, "UPDATE `persons` SET `Name`='$name',`Sex`='$sex',
-`age`='$age',`Date_of_birth`='$date',
-`activity`='$activity',`Weight`='$weight',`Height`='$height',
-`kkal`='$kkal',`carb`='$carb',`fat`='$fat',`protein`='$protein',
-`cellulose`='$cellulose',`water`='$water'
-WHERE `ID`='$idcd'");
-
-header('Location: ../persons.php');
+header('Location: ../../public/pages/persons.php');

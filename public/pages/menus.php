@@ -45,7 +45,7 @@ use App\Models\Shop; ?>
 
                     $word="";
                     $count_persons=count($menu->persons());
-                    if($count_persons==1) $word="осіб";
+                    if($count_persons==1) $word="особу";
                     else if($count_persons>=2&&$count_persons<=4) $word="особи";
                     else $word="осіб";
                     $persons_title="Розраховано на " . $count_persons . " " . $word . ":";
