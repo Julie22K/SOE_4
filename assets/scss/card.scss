@@ -8,10 +8,9 @@
 
   box-shadow: $shadow;
 
-  transition: $transition;
 
   overflow: hidden;
-  transition: $transition;
+  //transition: $transition;
 }
 
 .card:hover {
@@ -214,7 +213,6 @@
 }
 
 #card_analitic {
-  transition: $transition;
 
   .arc path {
     stroke: #000;

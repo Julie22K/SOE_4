@@ -35,9 +35,6 @@ use App\Models\Product; ?>
     </div>
 
     <script>
-        function ToggleSubList(id) {
-            $("#" + id + " tr").toggle(500);
-        }
 
         $('.horizontal .progress-fill span').each(function() {
             var percent = $(this).html();

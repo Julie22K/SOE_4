@@ -37,7 +37,9 @@ use App\Models\Menu; ?>
     <div class="context-menu-open"></div>
 
     <script src="../../assets/js/modal.js"></script>
+    <script src="../../assets/js/info.js"></script>
 
+    <?php require_once 'C:\Users\Julie\source\SOE_4\public/parts/menu/info_scripts.php'; ?>
     <?php require_once 'C:\Users\Julie\source\SOE_4\public\blocks/fotter.php'; ?>
 
 </body>

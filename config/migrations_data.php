@@ -221,7 +221,7 @@ class MigrationsData
                 ],
                 "menus" => [
                     ["budget" => "450", "first_date" => $prev_menu_1_date, "last_date" => $prev_menu_2_date,],
-                    ["budget" => "1000", "first_date" => $current_menu_1_date, "last_date" => $current_menu_2_date,],
+                    ["budget" => "1500", "first_date" => $current_menu_1_date, "last_date" => $current_menu_2_date,],
                     ["budget" => "600", "first_date" => $next_menu_1_date, "last_date" => $next_menu_2_date,],
                 ],
                 "person_in_menus" => [

@@ -24,14 +24,16 @@ use App\Models\Product; ?>
             <div class="page">
                 <h2>Вітаємо <?= $_SESSION['user']['full_name'] ?>!</h2>
                 <p>На цьому додатку ви можете:</p>
-                <ul>
+                <ul id="text">
                     <li>Створити своє меню</li>
                     <li>Відслідковувати його бюджет та користь для здоров'я</li>
                     <li>Переглядати список покупок після створення меню</li>
                     <li>Переглядати  рецепти інших користувачів або додавати свої</li>
                     <li>Корисне меню можна створити не лише для себе, а і для родини, близьких чи друзів</li>
                 </ul>
+                <button onclick="$('#text').slideToggle('slow')">click</button>
             </div>
+            
         </div>
     </div>
     <?php require 'C:\Users\Julie\source\SOE_4\public\blocks/fotter.php'; ?>

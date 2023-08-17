@@ -22,6 +22,15 @@ class Data
         if ($res !== FALSE) return mysqli_fetch_all($res);
         else return false;
     }
+    static function getDataWithLimit($table, int $limit)
+    {
+        $db = DB::DB();
+        $res = mysqli_query($db, "SELECT * FROM " . $table . " LIMIT " . $limit . ";");
+        //echo "SELECT * FROM " . $table . " LIMIT " . $limit . ";";  
+        $db = DB::close($db);
+        if ($res !== FALSE) return mysqli_fetch_all($res);
+        else return false;
+    }
     static function getItemById($table, $id)
     {
         $db = DB::DB();

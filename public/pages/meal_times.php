@@ -7,7 +7,7 @@ use App\Models\MealTime; ?>
 
 <head>
     <?php require 'C:\Users\Julie\source\SOE_4\public\blocks/head.php' ?>
-    <title>Редагування часу прийомів їжі</title>
+    <title>Редагування режиму харчування</title>
 </head>
 
 <body oncontextmenu="return false;">
@@ -18,12 +18,12 @@ use App\Models\MealTime; ?>
         <div class="main">
             <?php require 'C:\Users\Julie\source\SOE_4\public\blocks/topbar.php' ?>
             <div class="page" id="shopping_list_page">
-                <h1>Редагування часу прийомів їжі</h1>
+                <h1>Редагування режиму харчування</h1>
 
                 <form class="w-full col" action="../../vendor/meal_time/store.php" method="post">
                     <div class="card w-full m-3 p-3">
 
-                        <table class="w-full">
+                        <table class="w-full none-hover">
                             <thead>
                                 <tr>
                                     <th>Назва</th>

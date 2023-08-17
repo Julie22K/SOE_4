@@ -37,7 +37,9 @@ use App\Models\Product; ?>
                         </button>
                         <button class="btn btn-color" onclick="theme('#323232','#7a8888','#cccccc','#cccccc','#7e7e7e')" id="gray"><span>Сіра</span>
                         </button>
-                    </div>
+                    </div><?php
+                if($_SESSION['user']['full_name']=="Admin"){
+                ?>
                     <div class="row">
                         <button class="btn btn-color" onclick="theme('#DA2A2A','#381f1f','#64C264','#B2E1B2','#DA2A2A')" id="red_green"><span>Червоно - зелена</span>
                         </button>
@@ -57,6 +59,9 @@ use App\Models\Product; ?>
                         <!-- <button class="color" onclick="theme('#F5F5F5','#000000','#ffffff','#ffffff')" id="light">light</button>
                         <button class="color" onclick="theme('#F5F5F5','#000000','#ffffff','#ffffff')" id="dark">dark</button> -->
                     </div>
+                <?php
+            }
+            ?>
                 </div>
                 <!--
                 <div class="anti-card col">
@@ -82,7 +87,7 @@ use App\Models\Product; ?>
                 </div>-->
                 <div class="anti-card col m-3 p-3">
 
-                    <h4>Часи прийому їжі:</h4>
+                    <h4>Режим харчування:</h4>
                     <button class="btn m-3 w-half" onclick='location.href="meal_times.php"'>Налаштувати</button>
                 </div>
                 <?php

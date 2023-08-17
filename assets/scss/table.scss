@@ -21,12 +21,17 @@ tr {
   text-align: center;
   vertical-align: middle;
 
-  transition: 0.5s;
+  //transition: 0.5s;
 }
 
 td,
 th {
   padding: 0.2rem;
+}
+
+table.none-hover tr:hover {
+  background-color: white;
+
 }
 
 thead tr:hover {

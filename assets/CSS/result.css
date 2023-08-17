@@ -812,10 +812,7 @@
   position: relative;
   -webkit-box-shadow: 0.05rem 0.1rem 0.3rem -0.03rem rgba(0, 0, 0, 0.45);
           box-shadow: 0.05rem 0.1rem 0.3rem -0.03rem rgba(0, 0, 0, 0.45);
-  -webkit-transition: 0.7s;
-  transition: 0.7s;
   overflow: hidden;
-  transition: 0.7s;
 }
 
 .card:hover {
@@ -1012,10 +1009,6 @@
   /*visibility: hidden;*/
 }
 
-#card_analitic {
-  -webkit-transition: 0.7s;
-  transition: 0.7s;
-}
 #card_analitic .arc path {
   stroke: #000;
 }
@@ -1251,13 +1244,15 @@ thead th {
 tr {
   text-align: center;
   vertical-align: middle;
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
 }
 
 td,
 th {
   padding: 0.2rem;
+}
+
+table.none-hover tr:hover {
+  background-color: white;
 }
 
 thead tr:hover {
@@ -1893,6 +1888,48 @@ input.fake {
 #table_ingredients tr.new-i td.price input {
   text-align: right;
   border: none;
+}
+
+.info,
+.success,
+.warning,
+.error,
+.validation {
+  border-radius: 4px;
+  border: 1px solid;
+  margin: 10px 25px;
+  padding: 15px 20px 15px 50px;
+  background-repeat: no-repeat;
+  background-position: 10px center;
+}
+
+.info {
+  color: #00529B;
+  background-color: #BDE5F8;
+  background-image: url("https://i.imgur.com/ilgqWuX.png");
+}
+
+.success {
+  color: #4F8A10;
+  background-color: #DFF2BF;
+  background-image: url("https://i.imgur.com/Q9BGTuy.png");
+}
+
+.warning {
+  color: #9F6000;
+  background-color: #FEEFB3;
+  background-image: url("https://i.imgur.com/Z8q7ww7.png");
+}
+
+.error {
+  color: #D8000C;
+  background-color: #FFBABA;
+}
+
+.validation {
+  color: #D63301;
+  background-color: #FFCCBA;
+  background-image: url("https://i.imgur.com/GnyDvKN.png");
 }
 
 .btn {
@@ -2643,15 +2680,15 @@ img.recipe {
   /* Відступ праворуч від іконки */
 }
 
-#shopping_list table {
-  /*
-  transition: $transition;*/
-}
 #shopping_list table caption {
   background-color: var(--main);
   border-radius: 3px;
   color: white;
   height: 25px;
+  /*color: black;
+  border-bottom: 1px solid black;
+  background-color: gainsboro;
+  */
 }
 #shopping_list table caption h3 {
   font-weight: 100;

@@ -32,7 +32,7 @@
             if (count($sublist) != 0) {
 
                 $category_name = $sublist[0]->product()->category()->name;
-                echo '<table id="table_' . $category_id . '"><caption onclick="ToggleSubList(\'table_' . $category_id . '\')"><h3><span><img class="product-icon" src="../../assets/images/product_categories/' . $category_name . '.png" alt="' . $category_name . '"></span>' . $category_name . '</h3></caption>';
+                echo '<table id="table_' . $category_id . '"><caption onclick="$(\'#tbody_' . $category_id . '\').fadeToggle(\'slow\')"><h3><span><img class="product-icon" src="../../assets/images/product_categories/' . $category_name . '.png" alt="' . $category_name . '"></span>' . $category_name . '</h3></caption><thead></thead><tbody id="tbody_' . $category_id . '">';
             } else echo '<table id="table_' . $category_id . '" class="none-element">';
 
             $sublist_res=array();
@@ -79,7 +79,7 @@
                 </tr>
         <?php
             }
-            echo '</table>';
+            echo '</tbody></table>';
         }
         ?>
         <!-- <p style="cursor: pointer;" onclick="location.href='Addshoplist.php'">+Add</p> -->

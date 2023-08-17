@@ -65,6 +65,15 @@ class Product
         }
         return $res;
     }
+    static function paginate($number)
+    {
+        $items = Data::getDataWithLimit("product_categories",$number);
+        $res = array();
+        foreach ($items as $item) {
+            array_push($res, Self::find($item[0]));
+        }
+        return $res;
+    }
     static function all()
     {
         $products = Data::getData('products');

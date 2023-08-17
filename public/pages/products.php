@@ -96,7 +96,7 @@
                             </thead>
                             <tbody id="myTable">
                                 <?php
-                                $products = App\Models\Product::all();
+                                $products = App\Models\Product::paginate(10);
                                 foreach ($products as $product) {
                                 ?>
                                     <tr class="tr-product category_<?= $product->category_id ?>" id="<?= $product->id ?>" name_of_product="<?= $product->title ?>" price_of_product="<?= $product->avg_price() ?>" <?php foreach (App\Data::$info_data as $item) { ?> <?= $item ?> <?php } ?>>

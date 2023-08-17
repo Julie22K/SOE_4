@@ -40,10 +40,8 @@ for ($i = 0; $i < $menu->days_interval + 2; $i++) {
                 }
             }
 
-            $text = "";
-            foreach ($res as $t) {
-                $text = $text . "<li>" . $t . "</li>";
-            }
+            $text = join(', ',$res);
+            
             if ($text == "") {
         ?>
                 <div class="add-card add-card-dish invisible" id="<?= $dish_id ?>" onclick="location.href='../add/dish.php?menu=<?= $menu->id ?>&date=<?= $dayweek ?>&time=<?= $time->id ?>'">
@@ -53,7 +51,7 @@ for ($i = 0; $i < $menu->days_interval + 2; $i++) {
             } else {
             ?>
                 <div class="card card-dish" day="<?= $dayweek ?>" menu="<?= $menu->id ?>" time="<?= $time->id ?>" id="<?= $dish_id ?>">
-                    <ul class="text-center"><?= $text ?></ul>
+                    <ul class="text-center" style="padding:5px;"><li><?= $text ?></li></ul>
 
                 </div>
     <?php
