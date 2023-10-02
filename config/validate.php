@@ -8,6 +8,7 @@ class Validate
     static function Validate($prev_page,$data)
     {
         $res=false;
+        $data_=$data;
         foreach($data as $key=>$item){
             if($item=="") {
                 echo $item;
@@ -17,6 +18,6 @@ class Validate
 
         }
         if($res) header("Location: ../../public/add/$prev_page.php");
-        else return $data;
+        else return $data_;
     }
 }

@@ -92,6 +92,13 @@ use App\Models\RecipeCategory;
                             </div>
                             <button type="button" class="m-2 btn" onclick="addIngredient(this)">Додати інгрідієнт</button>
                         </div>
+                        <?php
+                            if ($_SESSION['errors']) {
+                                foreach($_SESSION['errors'] as $error)
+                                    echo '<p class="error"> ' . $error . ' </p>';
+                            }
+                            unset($_SESSION['errors']);
+                        ?>
                         <div class="row j-c-be">
                             <button type="submit" class="btn btn-save">Додати</button>
                             <button type="button" class="btn btn-cancel" onclick="location.href='../pages/recipes.php'">Повернутись</button>

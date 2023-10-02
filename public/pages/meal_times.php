@@ -40,6 +40,13 @@ use App\Models\MealTime; ?>
 
                         </div>
                     </div>
+                        <?php
+                            if ($_SESSION['errors']) {
+                                foreach($_SESSION['errors'] as $error)
+                                    echo '<p class="error"> ' . $error . ' </p>';
+                            }
+                            unset($_SESSION['errors']);
+                        ?>
                     <div class="w-full m-3 p-3">
                         <button type="submit" class="btn w-full">Зберегти</button>
                     </div>

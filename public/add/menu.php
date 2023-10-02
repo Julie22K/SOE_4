@@ -72,8 +72,13 @@ $menu_=Menu::find($id);
                                 <input type="date" name="last_date" id="last_date" <?=$is_add_page?'':'value="' . $menu->last_date . '"'?>>
                             </div>
                         </div>
-
-
+                        <?php
+                            if ($_SESSION['errors']) {
+                                foreach($_SESSION['errors'] as $error)
+                                    echo '<p class="error"> ' . $error . ' </p>';
+                            }
+                            unset($_SESSION['errors']);
+                        ?>
                         <div class="row j-c-be">
                             <button type="submit" class="btn btn-save"><?=$is_add_page?"Додати":"Зберегти"?></button>
                             <button type="button" class="btn btn-cancel" onclick="location.href='../pages/menus.php'">Повернутись</button>

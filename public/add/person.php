@@ -86,16 +86,19 @@ $person=Person::find($id);
                             </div>
                         </div>
                         <?php
-            if ($_SESSION['errors']) {
-                foreach($_SESSION['errors'] as $error)
-                    echo '<p class="error"> ' . $error . ' </p>';
-            }
-            unset($_SESSION['errors']);
-        ?>
+                            if ($_SESSION['errors']) {
+                                foreach($_SESSION['errors'] as $error)
+                                    echo '<p class="error"> ' . $error . ' </p>';
+                            }
+                            unset($_SESSION['errors']);
+                        ?>
                         <div class="row j-c-be button-row">
                             <button type="submit" class="btn btn-save"><?=$is_add_page?"Додати":"Зберегти"?></button>
                             <button type="button" class="btn btn-cancel" onclick="location.href='../pages/persons.php'">Повернутись</button>
                         </div>
+                        <!--for add user_id-->
+                        <input type="number" class="hiden-element" name="user_id" id="name" value="<?=$_SESSION['user']['id']?>">
+                            
                     </div>
                 </form>
             </div>

@@ -16,7 +16,8 @@ class Person
     public $height;
     public $activity;
     public $person_data;
-    function __construct($name, $gender, $date_of_birth, $weight, $height, $activity, $id = null)
+    public $user_id;
+    function __construct($name, $gender, $date_of_birth, $weight, $height, $activity, $user_id,$id = null)
     {
         $this->id = $id;
         $this->name = $name;
@@ -26,6 +27,7 @@ class Person
         $this->height = $height;
         $this->activity = $activity;
         $this->person_data = $this->person_data();
+        $this->user_id=$user_id;
     }
     function person_data()
     {
@@ -82,7 +84,7 @@ class Person
     static function find($id)
     {
         $person = Data::getItemById('persons', $id);
-        return new Person($person[1], $person[2], $person[3], $person[4], $person[5], $person[6], $person[0]);
+        return new Person($person[1], $person[2], $person[3], $person[4], $person[5], $person[6],$person[7], $person[0]);
     }
     static function where($foreign_key, $id)
     {
@@ -102,13 +104,22 @@ class Person
         }
         return $res;
     }
+    static function allByUser($user_id)
+    {
+        $persons = Data::getData('persons','user_id=' . $user_id);
+        $res = array();
+        foreach ($persons as $person) {
+            array_push($res, Self::find($person[0]));
+        }
+        return $res;
+    }
     static function update($id,$data)
     {
         return Data::updateItem('persons',$id, $data);
     }
     public function create()
     {
-        Data::createItem('persons', array_merge(['name' => $this->name, 'gender' => $this->gender, 'date_of_birth' => $this->date_of_birth, 'weight' => $this->weight, 'height' => $this->height, 'activity' => $this->activity], $this->person_data));
+        Data::createItem('persons', array_merge(['name' => $this->name, 'gender' => $this->gender, 'date_of_birth' => $this->date_of_birth, 'weight' => $this->weight, 'height' => $this->height, 'activity' => $this->activity,'user_id'=>$this->user_id], $this->person_data));
     }
     static function store($data)
     {

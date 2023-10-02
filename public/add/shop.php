@@ -38,6 +38,13 @@ require 'C:\Users\Julie\source\SOE_4\public\blocks/pre_head.php';
                             </div>
                         </div>
 
+                        <?php
+                            if ($_SESSION['errors']) {
+                                foreach($_SESSION['errors'] as $error)
+                                    echo '<p class="error"> ' . $error . ' </p>';
+                            }
+                            unset($_SESSION['errors']);
+                        ?>
                         <div class="row j-c-be">
                             <button type="submit" class="btn btn-save">Додати</button>
                             <button type="button" class="btn btn-cancel" onclick="location.href='../pages/shops.php'">Повернутись</button>

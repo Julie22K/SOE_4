@@ -20,7 +20,9 @@ use App\Models\Product; ?>
             <?php require 'C:\Users\Julie\source\SOE_4\public\blocks/topbar.php' ?>
             <div class="page" id="persons_page">
                 <div class="anti-card grid grid-2">
-                    <?php $persons = Person::all();
+                    <?php 
+                    $user_id=$_SESSION['user']['id'];
+                    $persons = Person::allByUser($user_id);
                     foreach ($persons as $person) { ?>
                         <div class="card card-person m-3 p-3" id="<?= $person->id ?>">
                             <h3><?= $person->name ?></h3>
