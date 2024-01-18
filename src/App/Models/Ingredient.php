@@ -32,6 +32,10 @@ class Ingredient
         }
         return $res;
     }
+
+    /**
+     * 
+     */
     public function recipe()
     {
         return Recipe::find($this->recipe_id);

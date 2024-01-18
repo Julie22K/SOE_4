@@ -1,2 +1,5 @@
 prepros.config
 test.php
+composer.json
+composer.lock
+/vendor/

@@ -12,7 +12,7 @@ use App\Models\Product; ?>
 </head>
 
 <body oncontextmenu="return false;">
-    <?php //require 'C:\Users\Julie\source\SOE_4\public\blocks/preloader.php' 
+    <?php require 'C:\Users\Julie\source\SOE_4\public\blocks/preloader.php' 
     ?>
     <div class="container">
         <?php require 'C:\Users\Julie\source\SOE_4\public\blocks/header.php' ?>

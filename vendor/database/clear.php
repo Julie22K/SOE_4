@@ -6,7 +6,6 @@ use App\Models\Recipe;
 require 'C:\Users\Julie\source\SOE_4\public/blocks/pre_head.php';
 
 echo "database clear";
-mysqli_query(DB::DB(), "drop table migrations;");
 mysqli_query(DB::DB(), "drop table products;");
 mysqli_query(DB::DB(), "drop table recipes;");
 mysqli_query(DB::DB(), "drop table persons;");
