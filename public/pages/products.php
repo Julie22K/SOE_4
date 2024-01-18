@@ -96,12 +96,16 @@
                             </thead>
                             <tbody id="myTable">
                                 <?php
-                                $products = App\Models\Product::paginate(10);
+                                $user_id=$_SESSION['user']['id'];
+                                $products = App\Models\Product::allByUser($user_id);
                                 foreach ($products as $product) {
+                                    
                                 ?>
                                     <tr class="tr-product category_<?= $product->category_id ?>" id="<?= $product->id ?>" name_of_product="<?= $product->title ?>" price_of_product="<?= $product->avg_price() ?>" <?php foreach (App\Data::$info_data as $item) { ?> <?= $item ?> <?php } ?>>
-                                        <td class="name">
+                                        <td class="name row">
                                             <?= $product->title ?>
+                                            <small style="color:green; margin-left:5px"> <?= (int)$product->user_id===(int)$user_id?App\Models\User::find($user_id)->full_name:""?>
+                                        </small>
                                         </td>
                                         <td><img alt="<?= $product->category()->name ?>" class="product-icon" src="../../assets/images/product_categories/<?= $product->category()->name ?>.png"></td>
                                         <td><?= $product->avg_price() == 0 ? ' - ' : $product->avg_price() . " грн" ?></td>

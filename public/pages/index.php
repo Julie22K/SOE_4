@@ -2,7 +2,10 @@
 
 use App\Data;
 use App\Models\MealTime;
-use App\Models\Product; ?>
+use App\Models\Product; 
+use App\Migrations\Migration;
+Migration::run();
+?>
 <!DOCTYPE html>
 <html lang="en">
 

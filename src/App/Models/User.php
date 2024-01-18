@@ -7,11 +7,12 @@ use App\Data;
 class User
 {
     public $id;
-    public $full_name = "users";
+    public $table = "users";
+    public $full_name;
     public $login;
     public $email;
     public $password;
-    function __construct($title, $category_id, $image_url, $data, $id = null)
+    function __construct($full_name, $login, $email, $password, $id = null)
     {
         $this->id = is_null($id) ? 0 : $id;
         $this->full_name = $full_name;
@@ -21,7 +22,7 @@ class User
     }
     static function find($id){
         $user = Data::getItemById('users', $id);
-        return new Product($user[1], $user[2], $user[3],$user[4], $user[0]);
+        return new User($user[1], $user[2], $user[3],$user[4], $user[0]);
     }
     static function where($foreign_key, $id){
         $items = Data::getData("users", ' ' . $foreign_key . '=' . $id);
@@ -50,6 +51,5 @@ class User
     }
     public function delete()
     {
-        
     }
 }

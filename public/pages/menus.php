@@ -1,9 +1,8 @@
-<?php require 'C:\Users\Julie\source\SOE_4\public\blocks/pre_head.php';
+<?php require_once 'C:\Users\Julie\source\SOE_4\public\blocks/pre_head.php';
 
 use App\Data;
 use App\Models\Menu;
-use App\Models\Product;
-use App\Models\Shop; ?>
+?>
 <!DOCTYPE html>
 <html lang="en">
 

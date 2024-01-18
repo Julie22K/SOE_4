@@ -5,7 +5,7 @@ use App\Models\Person;
 require 'C:\Users\Julie\source\SOE_4\public/blocks/pre_head.php';
 
 
-use App\Validate;
+use App\Validate\Validate;
 $data=Validate::Validate("person",[
     "name"=>$_POST['name'],
     "gender" => $_POST['gender'],

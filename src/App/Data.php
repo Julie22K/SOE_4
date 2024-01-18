@@ -3,6 +3,7 @@
 namespace App;
 
 use mysqli;
+use App\DB;
 
 $type_dish = array("sup", "salad", "meat", "fish", "snack", "breakfast", "sandwich", "drink", "dessert", "poridje", "puncakes", "sweets", "sauce", "paste", "baking", "pudding", "others");
 $types = array('vegetables', 'fruits', 'fish', 'green', 'berries', 'legumes', 'milk', 'meat', 'eggs', 'mushrooms', 'cereals', 'spices', 'baking', 'tea', 'dried fruits', 'nuts', 'seed', 'oil');

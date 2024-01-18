@@ -91,7 +91,7 @@ use App\Models\Product; ?>
                     <button class="btn m-3 w-half" onclick='location.href="meal_times.php"'>Налаштувати</button>
                 </div>
                 <?php
-                if($_SESSION['user']['full_name']=="Admin"){
+                if($_SESSION['user']['full_name']=="admin"){
                 ?>
                 <div class="anti-card col m-3 p-3">
 

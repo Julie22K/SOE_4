@@ -1,10 +1,7 @@
 <?php
-require 'C:\Users\Julie\source\SOE_4\config/connect.php';
-require 'C:\Users\Julie\source\SOE_4\config/data.php';
-require 'C:\Users\Julie\source\SOE_4\config/migrations_data.php';
-require 'C:\Users\Julie\source\SOE_4\config/migrations.php';
-require 'C:\Users\Julie\source\SOE_4\config/models.php';
-require 'C:\Users\Julie\source\SOE_4\config/validate.php';
+
+namespace App;
+require_once 'C:\Users\Julie\source\SOE_4/vendor/autoload.php';
 
 session_start();
 if (!$_SESSION['user']) {
