@@ -28,50 +28,66 @@ use App\Models\Shop;
             <div class="page" id="page_add_product">
                 <h1>Додавання продукту:</h1>
                 <form action="../../vendor/product/store.php" method="post">
-                    <div class="col">
-                        <div class="row j-c-be">
-                            <div class="m-3 w-half">
+                    <div class="col a-items-stretc">
+                        <div class="row j-c-be a-items-stretch">
+                            <div class="m-3 w-third">
                                 <Label for="title">Назва:</Label>
                                 <input type="text" name="title" id="title">
                             </div>
-                            <div class="m-3 w-half">
+                            <div class="m-3 w-third">
                                 <Label for="category">Категорія:</Label>
                                 <select class="select2-add m-2" name="category" id="category">
                                     <?php
                                     $categories = ProductCategory::all();
 
                                     foreach ($categories as $category) {
-                                    ?>
-                                        <option value="<?= $category->id ?>"><?= $category->name ?></option>
-                                    <?php
+                                        ?>
+                                        <option value="<?= $category->id ?>">
+                                            <?= $category->name ?>
+                                        </option>
+                                        <?php
                                     }
                                     ?>
                                 </select>
                             </div>
+
+                            <div class="m-3 w-third">
+                                <label>Доступний іншим користувачам:</label><br/>
+                                <label class="switch">
+                                    
+                                    <input type="checkbox" name="is_private">
+                                    <span class="slider round"></span>
+                                    
+                                </label>
+                            </div>
                         </div>
-                        <div class="row j-c-be">
+                        <div class="row j-c-be a-items-stretch">
                             <div class="col m-3" style="width: 70%">
                                 <div class="w-full" id="prices_list">
 
 
-                                    <div class="row j-c-ar">
+                                    <!--<div class="grid">
                                         <h6>Ціна</h6>
                                         <h6>Вага</h6>
                                         <h6>Виробник</h6>
                                         <h6>Магазин</h6>
                                         <h6></h6>
-                                    </div>
+                                    </div>-->
                                     <div class="row j-c-ar a-items-baseline">
-                                        <input class="m-2" type="number" name="prices[]">
-                                        <input class="m-2" type="number" name="weights[]">
+                                        <input class="m-2" type="number" name="prices[]" placeholder="Ціна" min="0"
+                                            step="0.01">
+                                        <input class="m-2" type="number" name="weights[]" placeholder="Вага (г)" min="0"
+                                            step="1">
                                         <select class="select2-add m-2" name="manufacturers[]" id="manufacturers">
                                             <?php
                                             $manufacturers = Manufacturer::all();
 
                                             foreach ($manufacturers as $manufacturer) {
-                                            ?>
-                                                <option value="<?= $manufacturer->id ?>"><?= $manufacturer->name ?></option>
-                                            <?php
+                                                ?>
+                                                <option value="<?= $manufacturer->id ?>">
+                                                    <?= $manufacturer->name ?>
+                                                </option>
+                                                <?php
                                             }
                                             ?>
                                         </select>
@@ -79,24 +95,29 @@ use App\Models\Shop;
                                             <?php
                                             $shops = Shop::all();
                                             foreach ($shops as $shop) {
-                                            ?>
-                                                <option value="<?= $shop->id ?>"><?= $shop->name ?></option>
-                                            <?php
+                                                ?>
+                                                <option value="<?= $shop->id ?>">
+                                                    <?= $shop->name ?>
+                                                </option>
+                                                <?php
                                             }
                                             ?>
                                         </select>
-                                        <button type="button" class="btn btn-delete m-2" onclick="deletePrice(this)">X</button>
+                                        <button type="button" class="btn btn-delete m-2"
+                                            onclick="deletePrice(this)">X</button>
                                     </div>
                                 </div>
-                                <button class="btn m-2" type="button" onclick="addPrice(this)">Додати ціну продукту</button>
+                                <button class="btn m-2" type="button" onclick="addPrice(this)">Додати ціну
+                                    продукту</button>
                             </div>
-                            <div class="add-card" id="add_image_url" style="width: 30%;height:150px" onclick="Modal.for_form('image_url','modal_add_image_url','')">
+                            <div class="add-card" id="add_image_url" style="width: 30%;height:150px"
+                                onclick="Modal.for_form('image_url','modal_add_image_url','')">
                                 <h6>Додати зображення</h6>
                             </div>
                             <input id="image_url" name="image_url" type="text" class="none-element int">
                         </div>
-                        <div class="col">
-                            <div class="row j-c-be">
+                        <div class="col a-items-stretch">
+                            <div class="row j-c-be a-items-stretch">
                                 <input class="m-2" type="number" step="0.001" name="kcal" placeholder="Kcal">
                                 <input class="m-2" type="number" step="0.001" name="carb" placeholder="Carb">
                                 <input class="m-2" type="number" step="0.001" name="fat" placeholder="Fat">
@@ -105,7 +126,7 @@ use App\Models\Shop;
                                 <input class="m-2" type="number" step="0.001" name="cellulose" placeholder="Cellulose">
 
                             </div>
-                            <div class="row j-c-be">
+                            <div class="row j-c-be a-items-stretch">
                                 <input class="m-2" type="number" step="0.001" name="vitA" placeholder="A">
                                 <input class="m-2" type="number" step="0.001" name="vitE" placeholder="E">
                                 <input class="m-2" type="number" step="0.001" name="vitK" placeholder="K">
@@ -141,16 +162,17 @@ use App\Models\Shop;
                             </div>
                         </div>
                     </div>
-                        <?php
-                            if ($_SESSION['errors']) {
-                                foreach($_SESSION['errors'] as $error)
-                                    echo '<p class="error"> ' . $error . ' </p>';
-                            }
-                            unset($_SESSION['errors']);
-                        ?>
+                    <?php
+                    if (isset($_SESSION['errors'])) {
+                        foreach ($_SESSION['errors'] as $error)
+                            echo '<p class="error"> ' . $error . ' </p>';
+                    }
+                    unset($_SESSION['errors']);
+                    ?>
                     <div class="row j-c-be">
                         <button type="submit" class="btn btn-save">Додати</button>
-                        <button type="button" class="btn btn-cancel" onclick="location.href='../pages/products.php'">Повернутись</button>
+                        <button type="button" class="btn btn-cancel"
+                            onclick="location.href='../pages/products.php'">Повернутись</button>
                     </div>
 
                 </form>
@@ -158,6 +180,8 @@ use App\Models\Shop;
         </div>
     </div>
     <script type="text/javascript">
+
+        var selectCounter = 1;
         function addPrice(list) {
             const prices_list = document.getElementById('prices_list');
 
@@ -168,42 +192,49 @@ use App\Models\Shop;
             inputPrice.className = 'm-2';
             inputPrice.type = 'number';
             inputPrice.name = 'prices[]';
+            inputPrice.placeholder = 'Ціна';
+            inputPrice.min = 0;
+            inputPrice.step = 0.01;
             elem.appendChild(inputPrice);
 
             var inputWeight = document.createElement('input');
             inputWeight.className = 'm-2';
             inputWeight.type = 'number';
             inputWeight.name = 'weights[]';
+            inputWeight.placeholder = 'Вага (г)';
+            inputWeight.min = 0;
+            inputWeight.step = 1;
             elem.appendChild(inputWeight);
 
             var selectManufacturer = document.createElement('select');
+            selectManufacturer.id = 'select2_for_manufacturer_' + selectCounter; // Унікальний ідентифікатор
             selectManufacturer.className = 'select2-add m-2';
             selectManufacturer.name = 'manufacturers[]';
             <?php
-            $manufacturers = Manufacturer::all();
-            foreach ($manufacturers as $manufacturer) {
-            ?>
+            $manufacturers = Manufacturer::all(); foreach ($manufacturers as $manufacturer) {
+                ?>
                 var option = document.createElement('option');
                 option.value = '<?= $manufacturer->id ?>';
                 option.text = '<?= $manufacturer->name ?>';
                 selectManufacturer.appendChild(option);
-            <?php
+                <?php
             }
             ?>
             elem.appendChild(selectManufacturer);
 
             var selectShop = document.createElement('select');
+            selectShop.id = 'select2_for_shop_' + selectCounter; // Унікальний ідентифікатор
             selectShop.className = 'select2-add m-2';
             selectShop.name = 'shops[]';
             <?php
             $shops = Shop::all();
             foreach ($shops as $shop) {
-            ?>
+                ?>
                 var option = document.createElement('option');
                 option.value = '<?= $shop->id ?>';
                 option.text = '<?= $shop->name ?>';
                 selectShop.appendChild(option);
-            <?php
+                <?php
             }
             ?>
             elem.appendChild(selectShop);
@@ -211,12 +242,30 @@ use App\Models\Shop;
             var btn = document.createElement('button');
             btn.className = 'btn m-2';
             btn.textContent = 'X';
-            btn.onclick = function() {
+            btn.onclick = function () {
                 deletePrice(this);
             };
             elem.appendChild(btn);
 
             prices_list.appendChild(elem);
+            $('#select2_for_manufacturer_' + selectCounter).select2({
+                theme: 'bootstrap4',
+                placeholder: {
+                    id: '-1', // the value of the option
+                    text: 'Select an option'
+                },
+
+                tags: true,
+            });
+            $('#select2_for_shop_' + selectCounter).select2({
+                theme: 'bootstrap4',
+                placeholder: {
+                    id: '-1', // the value of the option
+                    text: 'Select an option'
+                },
+                tags: true,
+            });
+            selectCounter++;
         }
 
         const deletePrice = (elem) => elem.parentElement.remove();

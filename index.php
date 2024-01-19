@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-if ($_SESSION['user']) {
+if (isset($_SESSION['user'])) {
     header('Location: public/pages/index.php');
 }
 
@@ -30,7 +30,7 @@ if ($_SESSION['user']) {
             Немаєте акаунту? - <a href="/register.php">зареєструйтесь</a>!
         </p>
         <?php
-            if ($_SESSION['message']) {
+            if (isset($_SESSION['message'])) {
                 echo '<p class="msg"> ' . $_SESSION['message'] . ' </p>';
             }
             unset($_SESSION['message']);

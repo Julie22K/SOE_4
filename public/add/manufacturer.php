@@ -27,17 +27,18 @@ require 'C:\Users\Julie\source\SOE_4\public\blocks/pre_head.php';
                             <label for="name">Назва:</label>
                             <input type="text" name="name" id="name">
                         </div>
-                        
+
                         <?php
-                            if ($_SESSION['errors']) {
-                                foreach($_SESSION['errors'] as $error)
-                                    echo '<p class="error"> ' . $error . ' </p>';
-                            }
-                            unset($_SESSION['errors']);
+                        if (isset($_SESSION['errors'])) {
+                            foreach ($_SESSION['errors'] as $error)
+                                echo '<p class="error"> ' . $error . ' </p>';
+                        }
+                        unset($_SESSION['errors']);
                         ?>
                         <div class="row j-c-be">
                             <button type="submit" class="btn btn-save">Додати</button>
-                            <button type="button" class="btn btn-cancel" onclick="location.href='../pages/manufacturers.php'">Повернутись</button>
+                            <button type="button" class="btn btn-cancel"
+                                onclick="location.href='../pages/manufacturers.php'">Повернутись</button>
                         </div>
                     </div>
                 </form>

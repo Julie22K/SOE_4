@@ -9,10 +9,13 @@ require 'C:\Users\Julie\source\SOE_4\public\blocks/pre_head.php';
 $shop_id = 0;
 $manufacturer_id = 0;
 $product_id = 0;
-if (isset($_GET['shop'])) $shop_id = $_GET['shop'];
-if (isset($_GET['product'])) $product_id = $_GET['product'];
+if (isset($_GET['shop']))
+    $shop_id = $_GET['shop'];
+if (isset($_GET['product']))
+    $product_id = $_GET['product'];
 
-if (isset($_GET['manufacturer'])) $manufacturer_id = $_GET['manufacturer'];
+if (isset($_GET['manufacturer']))
+    $manufacturer_id = $_GET['manufacturer'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -41,9 +44,11 @@ if (isset($_GET['manufacturer'])) $manufacturer_id = $_GET['manufacturer'];
                                 <?php
                                 $products = Product::all();
                                 foreach ($products as $product) {
-                                ?>
-                                    <option value="<?= $product->id ?>" <?= ($product_id == $product->id) ? "selected" : "" ?>><?= $product->title ?></option>
-                                <?php
+                                    ?>
+                                    <option value="<?= $product->id ?>" <?= ($product_id == $product->id) ? "selected" : "" ?>>
+                                        <?= $product->title ?>
+                                    </option>
+                                    <?php
                                 }
                                 ?>
                             </select>
@@ -67,9 +72,11 @@ if (isset($_GET['manufacturer'])) $manufacturer_id = $_GET['manufacturer'];
                                     <?php
                                     $shops = Shop::all();
                                     foreach ($shops as $shop) {
-                                    ?>
-                                        <option value="<?= $shop->id ?>" <?= ($shop_id == $shop->id) ? "selected" : "" ?>><?= $shop->name ?></option>
-                                    <?php
+                                        ?>
+                                        <option value="<?= $shop->id ?>" <?= ($shop_id == $shop->id) ? "selected" : "" ?>>
+                                            <?= $shop->name ?>
+                                        </option>
+                                        <?php
                                     }
                                     ?>
                                 </select>
@@ -77,29 +84,33 @@ if (isset($_GET['manufacturer'])) $manufacturer_id = $_GET['manufacturer'];
                             <div class="m-3 w-half">
                                 <label for="manufacturer">Виробник:</label>
                                 <select class="select2 m-2" name="manufacturer" id="manufacturer">
-                                    <option value="0" <?= $manufacturer_id == "" ? "selected" : "" ?>>Оберіть виробника</option>
+                                    <option value="0" <?= $manufacturer_id == "" ? "selected" : "" ?>>Оберіть виробника
+                                    </option>
                                     <?php
                                     $manufacturers = Manufacturer::all();
 
                                     foreach ($manufacturers as $manufacturer) {
-                                    ?>
-                                        <option value="<?= $manufacturer->id ?>" <?= ($manufacturer_id == $manufacturer->id) ? "" : "" ?>><?= $manufacturer->name ?></option>
-                                    <?php
+                                        ?>
+                                        <option value="<?= $manufacturer->id ?>" <?= ($manufacturer_id == $manufacturer->id) ? "" : "" ?>>
+                                            <?= $manufacturer->name ?>
+                                        </option>
+                                        <?php
                                     }
                                     ?>
                                 </select>
                             </div>
                         </div>
                         <?php
-                            if ($_SESSION['errors']) {
-                                foreach($_SESSION['errors'] as $error)
-                                    echo '<p class="error"> ' . $error . ' </p>';
-                            }
-                            unset($_SESSION['errors']);
+                        if (isset($_SESSION['errors'])) {
+                            foreach ($_SESSION['errors'] as $error)
+                                echo '<p class="error"> ' . $error . ' </p>';
+                        }
+                        unset($_SESSION['errors']);
                         ?>
                         <div class="row j-c-be">
                             <button type="submit" class="btn btn-save">Додати</button>
-                            <button type="button" class="btn btn-cancel" onclick="location.href='../pages/shops.php'">Повернутись</button>
+                            <button type="button" class="btn btn-cancel"
+                                onclick="location.href='../pages/shops.php'">Повернутись</button>
                         </div>
                     </div>
                 </form>

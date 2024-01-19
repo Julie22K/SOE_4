@@ -34,9 +34,11 @@ use App\Models\RecipeCategory;
                                     <?php
                                     $categories = RecipeCategory::all();
                                     foreach ($categories as $category) {
-                                    ?>
-                                        <option value="<?= $category->id ?>"><?= $category->name ?></option>
-                                    <?php
+                                        ?>
+                                        <option value="<?= $category->id ?>">
+                                            <?= $category->name ?>
+                                        </option>
+                                        <?php
                                     }
                                     ?>
                                 </select>
@@ -48,14 +50,17 @@ use App\Models\RecipeCategory;
                             </div>
                         </div>
                         <div class="row j-c-ar">
-                            <div class="add-card" id="add_image_url" onclick="Modal.for_form('image_url','modal_add_image_url','')">
+                            <div class="add-card" id="add_image_url"
+                                onclick="Modal.for_form('image_url','modal_add_image_url','')">
                                 <h6>Додати зображення</h6>
                             </div>
-                            <div class="add-card" id="add_description" onclick="Modal.for_form('description','modal_add_description','')">
+                            <div class="add-card" id="add_description"
+                                onclick="Modal.for_form('description','modal_add_description','')">
                                 <h6>Додати опис</h6>
                                 <p class="text-center text-description" style="color: black;"></p>
                             </div>
-                            <div class="add-card" id="add_video_url" onclick="Modal.for_form('video_url','modal_add_video_url','')">
+                            <div class="add-card" id="add_video_url"
+                                onclick="Modal.for_form('video_url','modal_add_video_url','')">
                                 <h6>Додати відео</h6>
 
                             </div>
@@ -63,7 +68,8 @@ use App\Models\RecipeCategory;
                         <div class="col">
                             <input id="video_url" name="video_url" type="url" class="none-element int">
                             <input id="image_url" name="image_url" type="url" class="none-element int">
-                            <textarea id="description" name="description" cols="100" rows="50" class="none-element"></textarea>
+                            <textarea id="description" name="description" cols="100" rows="50"
+                                class="none-element"></textarea>
                         </div>
                         <div class="col">
                             <div class="col w-full" id="list_ingredients">
@@ -79,29 +85,34 @@ use App\Models\RecipeCategory;
                                         <?php
                                         $products = Product::all();
                                         foreach ($products as $product) {
-                                        ?>
-                                            <option value="<?= $product->id ?>"><?= $product->title ?></option>
-                                        <?php
+                                            ?>
+                                            <option value="<?= $product->id ?>">
+                                                <?= $product->title ?>
+                                            </option>
+                                            <?php
                                         }
                                         ?>
                                     </select>
-                                    <input class="m-2" type="number" placeholder="Введіть вагу" name="weights[]" onchange="changePrice(this)">
+                                    <input class="m-2" type="number" placeholder="Введіть вагу" name="weights[]"
+                                        onchange="changePrice(this)">
                                     <input class="m-2" type="number" name="prices[]" readonly>
                                     <button type="button" class="m-2 btn" onclick="deleteIngredient(this)">X</button>
                                 </div>
                             </div>
-                            <button type="button" class="m-2 btn" onclick="addIngredient(this)">Додати інгрідієнт</button>
+                            <button type="button" class="m-2 btn" onclick="addIngredient(this)">Додати
+                                інгрідієнт</button>
                         </div>
                         <?php
-                            if ($_SESSION['errors']) {
-                                foreach($_SESSION['errors'] as $error)
-                                    echo '<p class="error"> ' . $error . ' </p>';
-                            }
-                            unset($_SESSION['errors']);
+                        if (isset($_SESSION['errors'])) {
+                            foreach ($_SESSION['errors'] as $error)
+                                echo '<p class="error"> ' . $error . ' </p>';
+                        }
+                        unset($_SESSION['errors']);
                         ?>
                         <div class="row j-c-be">
                             <button type="submit" class="btn btn-save">Додати</button>
-                            <button type="button" class="btn btn-cancel" onclick="location.href='../pages/recipes.php'">Повернутись</button>
+                            <button type="button" class="btn btn-cancel"
+                                onclick="location.href='../pages/recipes.php'">Повернутись</button>
                         </div>
                     </div>
                 </form>
@@ -121,14 +132,13 @@ use App\Models\RecipeCategory;
             selectProduct.className = 'm-2 select2-add';
             selectProduct.name = 'products[]';
             <?php
-            $products = Product::all();
-            foreach ($products as $product) {
-            ?>
+            $products = Product::all(); foreach ($products as $product) {
+                ?>
                 var product = document.createElement('option');
                 product.value = '<?= $product->id ?>';
                 product.text = '<?= $product->title ?>';
                 selectProduct.appendChild(product);
-            <?php
+                <?php
             }
             ?>
             elem.appendChild(selectProduct);
@@ -154,7 +164,7 @@ use App\Models\RecipeCategory;
             var btn = document.createElement('button');
             btn.className = 'btn m-2';
             btn.textContent = 'X';
-            btn.onclick = function() {
+            btn.onclick = function () {
                 deleteIngredient(this);
             };
             elem.appendChild(btn);

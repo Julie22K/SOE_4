@@ -57,6 +57,7 @@ class Product
     static function find($id)
     {
         $product = Data::getItemById('products', $id);
+        //print_r($product);
         $product_data = array('kcal' => $product[6], 'water' => $product[7], 'cellulose' => $product[8], 'fat' => $product[9], 'carb' => $product[10], 'protein' => $product[11], 'vitA' => $product[12], 'vitE' => $product[13], 'vitK' => $product[14], 'vitD' => $product[15], 'vitC' => $product[16], 'om3' => $product[17], 'om6' => $product[18], 'vitB1' => $product[19], 'vitB2' => $product[20], 'vitB5' => $product[21], 'vitB6' => $product[22], 'vitB8' => $product[23], 'vitB9' => $product[24], 'vitB12' => $product[25], 'minMg' => $product[26], 'minNa' => $product[27], 'minCa' => $product[28], 'minCl' => $product[29], 'minK' => $product[30], 'minS' => $product[31], 'minP' => $product[32], 'minI' => $product[33], 'minCu' => $product[34], 'minCr' => $product[35]);
         return new Product($product[1], $product[2], $product[3],$product[4],$product[5], $product_data, $product[0]);
     }
@@ -89,7 +90,7 @@ class Product
     }
     static function allByUser($user_id)
     {
-        $products = Data::getData('products','(is_private=true AND user_id IS NULL) OR user_id=' . $user_id);
+        $products = Data::getData('products','(is_private=0 AND user_id=0) OR user_id=' . $user_id);
         $res = array();
         foreach ($products as $product) {
             array_push($res, Self::find($product[0]));
@@ -99,7 +100,7 @@ class Product
     public function create(array $prices = [], array $weights = [], array $manufacturers = [], array $shops = [])
     {
         $product_id = Data::createItem('products', array_merge(['title' => $this->title, 'product_category_id' => $this->category_id, 'image_url' => $this->image_url], $this->product_data));
-        echo 'PRODUCT_ID' . $product_id;
+        //echo 'PRODUCT_ID' . $product_id;
         if (count($weights) == 0) {
             foreach ($prices as $price) {
                 if ($price instanceof Price) $price->create();

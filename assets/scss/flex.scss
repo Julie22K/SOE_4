@@ -1,10 +1,14 @@
 .row{
   display: flex;
   flex-direction: row;
+  
 }
 .col{
   display: flex;
   flex-direction: column;
+}
+.a-items-stretch{
+  align-items: stretch;
 }
 .a-items-center{
   align-items: center;

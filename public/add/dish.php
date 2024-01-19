@@ -31,13 +31,15 @@ use App\Models\Recipe;
                         <div class="m-3 w-full">
                             <label for="recipes">Рецепти:</label>
                             <select class="select2-add" name="recipes[]" id="recipes" multiple>
-                            <option selected="selected" disabled>Оберіть страви</option>
+                                <option selected="selected" disabled>Оберіть страви</option>
                                 <?php
                                 $recipes = Recipe::all();
                                 foreach ($recipes as $recipe) {
-                                ?>
-                                    <option value="<?= $recipe->id ?>"><?= $recipe->title ?></option>
-                                <?php
+                                    ?>
+                                    <option value="<?= $recipe->id ?>">
+                                        <?= $recipe->title ?>
+                                    </option>
+                                    <?php
                                 }
 
                                 $date = $_GET['date'];
@@ -58,25 +60,28 @@ use App\Models\Recipe;
                                     <?php
                                     $meal_times = MealTime::all();
                                     foreach ($meal_times as $meal_time) {
-                                    ?>
-                                        <option value="<?= $meal_time->id ?>" <?= $meal_time->id == $time ? 'selected' : '' ?>><?= $meal_time->name ?></option>
-                                    <?php
+                                        ?>
+                                        <option value="<?= $meal_time->id ?>" <?= $meal_time->id == $time ? 'selected' : '' ?>>
+                                            <?= $meal_time->name ?>
+                                        </option>
+                                        <?php
                                     }
                                     ?>
                                 </select>
                             </div>
                         </div>
                     </div>
-                        <?php
-                            if ($_SESSION['errors']) {
-                                foreach($_SESSION['errors'] as $error)
-                                    echo '<p class="error"> ' . $error . ' </p>';
-                            }
-                            unset($_SESSION['errors']);
-                        ?>
+                    <?php
+                    if (isset($_SESSION['errors'])) {
+                        foreach ($_SESSION['errors'] as $error)
+                            echo '<p class="error"> ' . $error . ' </p>';
+                    }
+                    unset($_SESSION['errors']);
+                    ?>
                     <div class="row j-c-be">
                         <button type="submit" class="btn btn-save">Додати</button>
-                        <button type="button" class="btn btn-cancel" onclick="location.href='../pages/menu.php?id=<?= $menu ?>'">Повернутись</button>
+                        <button type="button" class="btn btn-cancel"
+                            onclick="location.href='../pages/menu.php?id=<?= $menu ?>'">Повернутись</button>
                     </div>
                 </form>
             </div>

@@ -86,7 +86,7 @@ $person=Person::find($id);
                             </div>
                         </div>
                         <?php
-                            if ($_SESSION['errors']) {
+                            if (isset($_SESSION['errors'])) {
                                 foreach($_SESSION['errors'] as $error)
                                     echo '<p class="error"> ' . $error . ' </p>';
                             }

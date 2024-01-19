@@ -40,13 +40,13 @@ use App\Models\MealTime; ?>
 
                         </div>
                     </div>
-                        <?php
-                            if ($_SESSION['errors']) {
-                                foreach($_SESSION['errors'] as $error)
-                                    echo '<p class="error"> ' . $error . ' </p>';
-                            }
-                            unset($_SESSION['errors']);
-                        ?>
+                    <?php
+                    if (isset($_SESSION['errors'])) {
+                        foreach ($_SESSION['errors'] as $error)
+                            echo '<p class="error"> ' . $error . ' </p>';
+                    }
+                    unset($_SESSION['errors']);
+                    ?>
                     <div class="w-full m-3 p-3">
                         <button type="submit" class="btn w-full">Зберегти</button>
                     </div>
@@ -57,18 +57,17 @@ use App\Models\MealTime; ?>
 
     <script>
         let data = [<?php
-                    $meal_times = MealTime::all();
-                    foreach ($meal_times as $meal_time) {
-                    ?> {
+        $meal_times = MealTime::all(); foreach ($meal_times as $meal_time) {
+            ?> {
                     id: <?= $meal_time->id ?>,
                     name: "<?= $meal_time->name ?>",
                     priority: "<?= $meal_time->priority ?>"
                 },
-            <?php
-                    }
-            ?>
+                <?php
+        }
+        ?>
         ]
-        $(document).ready(function() {
+        $(document).ready(function () {
             fillList();
         });
 

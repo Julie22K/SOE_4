@@ -1,8 +1,13 @@
 <?php require_once '../modals/example.php'; ?>
 <script>
     $(document).ready(function() {
-        $('.select2').select2();
+        $('.select2').select2({
+            theme: 'bootstrap4',
+            placeholder: "Оберіть...",
+        });
         $('.select2-add').select2({
+            theme: 'bootstrap4',
+            placeholder: "Оберіть...",
             tags: true
         });
 
