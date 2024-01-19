@@ -57,9 +57,8 @@ class Product
     static function find($id)
     {
         $product = Data::getItemById('products', $id);
-        //print_r($product);
-        $product_data = array('kcal' => $product[6], 'water' => $product[7], 'cellulose' => $product[8], 'fat' => $product[9], 'carb' => $product[10], 'protein' => $product[11], 'vitA' => $product[12], 'vitE' => $product[13], 'vitK' => $product[14], 'vitD' => $product[15], 'vitC' => $product[16], 'om3' => $product[17], 'om6' => $product[18], 'vitB1' => $product[19], 'vitB2' => $product[20], 'vitB5' => $product[21], 'vitB6' => $product[22], 'vitB8' => $product[23], 'vitB9' => $product[24], 'vitB12' => $product[25], 'minMg' => $product[26], 'minNa' => $product[27], 'minCa' => $product[28], 'minCl' => $product[29], 'minK' => $product[30], 'minS' => $product[31], 'minP' => $product[32], 'minI' => $product[33], 'minCu' => $product[34], 'minCr' => $product[35]);
-        return new Product($product[1], $product[2], $product[3],$product[4],$product[5], $product_data, $product[0]);
+        $product_data = array('kcal' => $product[4], 'water' => $product[5], 'cellulose' => $product[6], 'fat' => $product[7], 'carb' => $product[8], 'protein' => $product[9], 'vitA' => $product[10], 'vitE' => $product[11], 'vitK' => $product[12], 'vitD' => $product[13], 'vitC' => $product[14], 'om3' => $product[15], 'om6' => $product[16], 'vitB1' => $product[17], 'vitB2' => $product[18], 'vitB5' => $product[19], 'vitB6' => $product[20], 'vitB8' => $product[21], 'vitB9' => $product[22], 'vitB12' => $product[23], 'minMg' => $product[24], 'minNa' => $product[25], 'minCa' => $product[26], 'minCl' => $product[27], 'minK' => $product[28], 'minS' => $product[29], 'minP' => $product[30], 'minI' => $product[31], 'minCu' => $product[32], 'minCr' => $product[33]);
+        return new Product($product[1], $product[2], $product[3], $product_data, $product[0]);
     }
     static function where($foreign_key, $id)
     {
@@ -82,15 +81,6 @@ class Product
     static function all()
     {
         $products = Data::getData('products');
-        $res = array();
-        foreach ($products as $product) {
-            array_push($res, Self::find($product[0]));
-        }
-        return $res;
-    }
-    static function allByUser($user_id)
-    {
-        $products = Data::getData('products','(is_private=0 AND user_id=0) OR user_id=' . $user_id);
         $res = array();
         foreach ($products as $product) {
             array_push($res, Self::find($product[0]));
