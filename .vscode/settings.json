@@ -3,7 +3,7 @@
   "workbench.colorTheme": "Solarized Dark",
   "vscode-edge-devtools.mirrorEdits": true,
   "liveSassCompile.settings.showOutputWindow": true,
-  "workbench.iconTheme": "material-icon-theme",
+  "workbench.iconTheme": "eq-material-theme-icons",
   "bracketPairColorizer.depreciation-notice": false,
   "editor.renderControlCharacters": false
 }

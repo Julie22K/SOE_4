@@ -31,7 +31,6 @@ use App\Models\Recipe;
                         <div class="m-3 w-full">
                             <label for="recipes">Рецепти:</label>
                             <select class="select2-add" name="recipes[]" id="recipes" multiple>
-                                <option selected="selected" disabled>Оберіть страви</option>
                                 <?php
                                 $recipes = Recipe::all();
                                 foreach ($recipes as $recipe) {
@@ -48,7 +47,7 @@ use App\Models\Recipe;
 
                                 ?>
                             </select>
-                        </div><input type="text" style="visibility: hidden;" value="<?= $menu ?>" name="menu">
+                        </div>
                         <div class="row j-c-be">
                             <div class="m-3 w-half">
                                 <label for="date">Дата:</label>
@@ -82,7 +81,7 @@ use App\Models\Recipe;
                         <button type="submit" class="btn btn-save">Додати</button>
                         <button type="button" class="btn btn-cancel"
                             onclick="location.href='../pages/menu.php?id=<?= $menu ?>'">Повернутись</button>
-                    </div>
+                    </div><input type="text" style="visibility: hidden;" value="<?= $menu ?>" name="menu">
                 </form>
             </div>
         </div>

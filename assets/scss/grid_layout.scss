@@ -1,0 +1,38 @@
+#form_add_product{
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    grid-template-areas:
+      'title category is_private'
+      'title category add_img'
+      'prices_list prices_list add_img'
+      'vits_and_mins vits_and_mins vits_and_mins'
+      'buttons buttons buttons';
+    gap: 10px;
+    padding: 10px;
+    #title{ grid-area: title;}
+    #category{ grid-area: category;}
+    #is_private{ grid-area: is_private;}
+    #price_list{ grid-area: prices_list;}
+    #add_image_url{ grid-area: add_img;}
+    #vits_and_mins{ grid-area: vits_and_mins;}
+    #buttons{ grid-area: buttons;}
+}
+#form_add_recipe{
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    grid-template-areas:
+      'title category numbers'
+      'add_image_url add_description add_video_url'
+      'list_ingredients_ list_ingredients_ list_ingredients_'
+      'buttons buttons buttons';
+    gap: 10px;
+    padding: 10px;
+    #title{ grid-area: title;}
+    #category{ grid-area: category;}
+    #numbers{ grid-area: numbers;}
+    #add_image_url{ grid-area: add_image_url;}
+    #add_description{ grid-area: add_description;}
+    #add_video_url{ grid-area: add_video_url;}
+    #list_ingredients_{grid-area: list_ingredients_;}
+    #buttons{grid-area: buttons;}
+}

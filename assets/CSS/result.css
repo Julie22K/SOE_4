@@ -1298,6 +1298,67 @@ hr {
     grid-template-columns: auto;
   }
 }
+#form_add_product {
+  display: grid;
+  grid-template-columns: 33% 33% 33%;
+  grid-template-areas: "title category is_private" "title category add_img" "prices_list prices_list add_img" "vits_and_mins vits_and_mins vits_and_mins" "buttons buttons buttons";
+  gap: 10px;
+  padding: 10px;
+}
+#form_add_product #title {
+  grid-area: title;
+}
+#form_add_product #category {
+  grid-area: category;
+}
+#form_add_product #is_private {
+  grid-area: is_private;
+}
+#form_add_product #price_list {
+  grid-area: prices_list;
+}
+#form_add_product #add_image_url {
+  grid-area: add_img;
+}
+#form_add_product #vits_and_mins {
+  grid-area: vits_and_mins;
+}
+#form_add_product #buttons {
+  grid-area: buttons;
+}
+
+#form_add_recipe {
+  display: grid;
+  grid-template-columns: 33% 33% 33%;
+  grid-template-areas: "title category numbers" "add_image_url add_description add_video_url" "list_ingredients_ list_ingredients_ list_ingredients_" "buttons buttons buttons";
+  gap: 10px;
+  padding: 10px;
+}
+#form_add_recipe #title {
+  grid-area: title;
+}
+#form_add_recipe #category {
+  grid-area: category;
+}
+#form_add_recipe #numbers {
+  grid-area: numbers;
+}
+#form_add_recipe #add_image_url {
+  grid-area: add_image_url;
+}
+#form_add_recipe #add_description {
+  grid-area: add_description;
+}
+#form_add_recipe #add_video_url {
+  grid-area: add_video_url;
+}
+#form_add_recipe #list_ingredients_ {
+  grid-area: list_ingredients_;
+}
+#form_add_recipe #buttons {
+  grid-area: buttons;
+}
+
 .tgl {
   display: none;
 }
@@ -1728,7 +1789,6 @@ th button:hover {
 }
 
 #form_add_recipe .add-card {
-  width: 33%;
   height: 160px;
 }
 #form_add_recipe textarea {
@@ -1767,12 +1827,23 @@ input.fake {
   border: none;
 }
 
+#list_ingredients_ select, #list_ingredients_ input {
+  flex: 1 23.75%;
+}
+#list_ingredients_ .select2, #list_ingredients_ .select2-add {
+  flex: 1 23.75%;
+}
+#list_ingredients_ .btn {
+  flex: 2 5%;
+}
+
 #prices_list select, #prices_list input {
   flex: 1 23.75%;
   margin: 3px;
   padding: 3px;
 }
 #prices_list .select2, #prices_list .select2-add {
+  flex: 1 23.75%;
   margin: 3px;
 }
 #prices_list button {

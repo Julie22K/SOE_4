@@ -22,13 +22,12 @@ use App\Models\RecipeCategory;
             <div class="page" id="page_add_recipe">
                 <h1>Додавання рецепту:</h1>
                 <form action="../../vendor/recipe/store.php" method="post" id="form_add_recipe">
-                    <div class="col">
-                        <div class="row j-c-be">
-                            <div class="m-3 w-third">
+
+                            <div id="title">
                                 <label for="title">Назва:</label>
                                 <input type="text" id="title" name="title">
                             </div>
-                            <div class="m-3 w-third">
+                            <div id="category">
                                 <Label for="recipe_category">Категорія:</Label>
                                 <select class="select2 m-2" name="recipe_category" id="recipe_category">
                                     <?php
@@ -43,13 +42,10 @@ use App\Models\RecipeCategory;
                                     ?>
                                 </select>
                             </div>
-
-                            <div class="m-3 w-third">
+                            <div id="numbers">
                                 <label for="portions">Кількість порцій:</label>
                                 <input type="number" step="1" min="0" id="portions" name="portions">
                             </div>
-                        </div>
-                        <div class="row j-c-ar">
                             <div class="add-card" id="add_image_url"
                                 onclick="Modal.for_form('image_url','modal_add_image_url','')">
                                 <h6>Додати зображення</h6>
@@ -64,21 +60,13 @@ use App\Models\RecipeCategory;
                                 <h6>Додати відео</h6>
 
                             </div>
-                        </div>
-                        <div class="col">
                             <input id="video_url" name="video_url" type="url" class="none-element int">
                             <input id="image_url" name="image_url" type="url" class="none-element int">
                             <textarea id="description" name="description" cols="100" rows="50"
                                 class="none-element"></textarea>
-                        </div>
-                        <div class="col">
+                        
+                        <div class="col" id="list_ingredients_">
                             <div class="col w-full" id="list_ingredients">
-                                <div class="row j-c-ar">
-                                    <h6>Продукт</h6>
-                                    <h6>Вага</h6>
-                                    <h6>Ціна</h6>
-                                    <h6></h6>
-                                </div>
                                 <div class="row j-c-ar a-items-baseline">
                                     <select class="m-2 select2-add w-half" name="products[]" id="products">
                                         <option value="" default>Оберіть продукт</option>
@@ -93,13 +81,13 @@ use App\Models\RecipeCategory;
                                         }
                                         ?>
                                     </select>
-                                    <input class="m-2" type="number" placeholder="Введіть вагу" name="weights[]"
+                                    <input class="m-2" type="number" placeholder="Вага (г)" name="weights[]"
                                         onchange="changePrice(this)">
-                                    <input class="m-2" type="number" name="prices[]" readonly>
+                                    <input class="m-2" type="number" name="prices[]" readonly placeholder="Ціна">
                                     <button type="button" class="m-2 btn" onclick="deleteIngredient(this)">X</button>
                                 </div>
                             </div>
-                            <button type="button" class="m-2 btn" onclick="addIngredient(this)">Додати
+                            <button type="button" class="m-2 btn" style="height:30px;" onclick="addIngredient(this)">Додати
                                 інгрідієнт</button>
                         </div>
                         <?php
@@ -109,7 +97,7 @@ use App\Models\RecipeCategory;
                         }
                         unset($_SESSION['errors']);
                         ?>
-                        <div class="row j-c-be">
+                        <div class="row j-c-be" id="buttons">
                             <button type="submit" class="btn btn-save">Додати</button>
                             <button type="button" class="btn btn-cancel"
                                 onclick="location.href='../pages/recipes.php'">Повернутись</button>
@@ -122,6 +110,7 @@ use App\Models\RecipeCategory;
     </div>
 
     <script type="text/javascript">
+        var selectCounter = 1;
         function addIngredient(list) {
             const list_ingredients = document.getElementById('list_ingredients');
 
@@ -129,6 +118,7 @@ use App\Models\RecipeCategory;
             elem.className = 'row j-c-ar a-items-baseline';
 
             var selectProduct = document.createElement('select');
+            selectProduct.id = 'select2_for_ingr_' + selectCounter; // Унікальний ідентифікатор
             selectProduct.className = 'm-2 select2-add';
             selectProduct.name = 'products[]';
             <?php
@@ -149,17 +139,16 @@ use App\Models\RecipeCategory;
             var inputWeight = document.createElement('input');
             inputWeight.className = 'm-2';
             inputWeight.type = 'number';
+            inputWeight.placeholder = 'Вага (г)';
             inputWeight.name = 'weights[]';
             elem.appendChild(inputWeight);
 
             var inputPrice = document.createElement('input');
             inputPrice.className = 'm-2';
             inputPrice.type = 'number';
+            inputPrice.placeholder = 'Ціна';
             inputPrice.name = 'prices[]';
             elem.appendChild(inputPrice);
-
-
-
 
             var btn = document.createElement('button');
             btn.className = 'btn m-2';
@@ -170,6 +159,15 @@ use App\Models\RecipeCategory;
             elem.appendChild(btn);
 
             list_ingredients.appendChild(elem);
+            $('#select2_for_ingr_' + selectCounter).select2({
+                theme: 'bootstrap4',
+                placeholder: {
+                    id: '-1',
+                    text: 'Select an option'
+                },
+                tags: true,
+            });
+            selectCounter++;
 
         }
 

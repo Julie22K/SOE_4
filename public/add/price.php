@@ -40,7 +40,6 @@ if (isset($_GET['manufacturer']))
                         <div class="m-3">
                             <label for="product">Продукт:</label>
                             <select class="select2 m-2" name="product" id="product">
-                                <option value="0" <?= $product_id == "" ? "selected" : "" ?>>Оберіть продукт</option>
                                 <?php
                                 $products = Product::all();
                                 foreach ($products as $product) {

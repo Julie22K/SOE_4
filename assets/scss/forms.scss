@@ -361,7 +361,6 @@ th button:hover {
 // }
 #form_add_recipe {
   .add-card {
-    width: 33%;
     height: 160px;
   }
 
@@ -415,6 +414,18 @@ input.fake {
 
 
 }
+#list_ingredients_{
+  select,input{
+    flex: 1 23.75%;
+  }
+  .select2,.select2-add{
+    flex: 1 23.75%;
+  }
+  .btn{
+    flex:2 5%;
+
+  }
+}
 #prices_list{
   select,input{
     flex: 1 23.75%;
@@ -422,6 +433,7 @@ input.fake {
     padding: 3px;
   }
   .select2,.select2-add{
+    flex: 1 23.75%;
     margin: 3px;
   }
   button{
