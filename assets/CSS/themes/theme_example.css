@@ -1,0 +1,28 @@
+:root {
+    --shadow: 0.05rem 0.1rem 0.3rem -0.03rem rgba(0, 0, 0, 0.45);
+
+    --main: #ffffff00;
+    --main2: #ffffff00;
+    --main3: #ffffff00;
+    --front: #ffffff00;
+    --back: #ffffff00;
+
+    --btn: #ffffff00;
+    --btn-bg: var(--btn);
+    --main-tx: var(--white);
+    --btn-bdr: var(--btn);
+    --btn-submit: #ffffff00;
+    --btn-cancel: #ffffff00;
+    --gray: #ffffff00;
+
+    --text: #ffffff00;
+
+    --hover: #1515857c;
+    --white: #ffffff00;
+    --white-r: #ffffff00;
+    --grey: #ffffff00;
+    --black1: #ffffff00;
+    --black2: #ffffff00;
+    --min: #ffffff00;
+    --vit: #ffffff00;
+}

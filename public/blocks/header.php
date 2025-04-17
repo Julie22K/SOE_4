@@ -65,7 +65,7 @@ if ($menu !== false && !is_null($menu)) {
                     <span class="icon">
                         <ion-icon name="people-outline"></ion-icon>
                     </span>
-                    <span class="title">Користувачі</span>
+                    <span class="title">Члени родини</span>
                 </a>
             </li>
             <li class="pointer">
@@ -77,13 +77,13 @@ if ($menu !== false && !is_null($menu)) {
                 </a>
             </li>
             
-            <li style="margin-top: 120px;">
+            <li style="margin-top: 20px;">
                 <form>
-                    <a href="../../vendor/logout.php" class="logout">
+                    <a href="../../vendor/auth/logout.php" class="logout">
                         <span class="icon" title="Вийти за акаунту">
                             <ion-icon name="log-out-outline"></ion-icon>
                         </span>
-                        <span class="title" title="Вийти за акаунту <?= $_SESSION['user']['full_name'] ?>">Вихід</span>
+                        <span class="title" title="Вийти за акаунту <?= $_SESSION['user']['login'] ?>">Вихід</span>
                     </a>
                 </form>
             </li>

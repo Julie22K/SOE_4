@@ -1,0 +1,25 @@
+.empty-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.288);
+    margin: 10px;
+    border-radius: 5px;
+    width: 100%;
+
+    img {
+        margin-top: 20px;
+        height: 80px;
+        opacity: .3;
+        margin-bottom: 5px;
+    }
+
+    p {
+        text-align: center;
+        color: gray;
+        font-size: 1.2rem;
+        margin-bottom: 20px;
+        font-weight: 500;
+    }
+}

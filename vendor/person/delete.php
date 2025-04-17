@@ -1,14 +1,11 @@
 <?php
 
+require_once '../../public/blocks/pre_head.php';
+
 use App\Models\Person;
-
-require 'C:\Users\Julie\source\SOE_4\public/blocks/pre_head.php';
-
 
 $id = $_GET['id'];
 
-Person::find($id)->delete();
-
-
+Person::find($id)->delete($id);
 
 header('Location: ../../public/pages/persons.php');

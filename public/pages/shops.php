@@ -1,76 +1,82 @@
-<?php require 'C:\Users\Julie\source\SOE_4\public\blocks/pre_head.php';
+<?php
+require '../blocks/pre_head.php';
+$page_title = "Магазини";
 
-use App\Models\Shop; ?>
-<!DOCTYPE html>
-<html lang="en">
+use App\Models\Shop;
 
-<head>
-    <?php require 'C:\Users\Julie\source\SOE_4\public\blocks/head.php' ?>
-    <title>Магазини</title>
-</head>
+require '../blocks/head.php';
+?>
 
-<body oncontextmenu="return false;">
-    <?php require 'C:\Users\Julie\source\SOE_4\public\blocks/preloader.php'
-    ?>
-    <div class="container">
-        <?php require 'C:\Users\Julie\source\SOE_4\public\blocks/header.php' ?>
-        <!-- main -->
-        <div class="main">
-            <?php require 'C:\Users\Julie\source\SOE_4\public\blocks/topbar.php' ?>
-            <div class="page">
-                <h1>Магазини</h1>
-                <div class="row w-full j-c-be m-3 p-3">
-                    <button class="btn btn-cancel" onclick="location.href='../pages/products.php'">До списку продуктів</button>
-                    <button class="btn" onclick="location.href='../add/shop.php'">Додати магазин</button>
-                </div>
-                <div class="card m-3 p-3 w-full">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Назва</th>
-                                <th>Адреса</th>
-                                <th>Телефон</th>
-                                <th>Дії</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php $shops = Shop::all();
-                            foreach ($shops as $shop) {
-                                $items_list = '';
-                                $prices = $shop->prices();
-                                foreach ($prices as $price) {
-                                    $product = $price->product()->title;
-                                    $weight = $price->weight;
-                                    $price_ = $price->price;
-                                    $manufacturer = $price->manufacturer()->name;
-                                    $items_list = "$items_list<li>$product - $price_ грн/$weight г ($manufacturer)</li>";
-                                }
-                                $items_list = '<ul>' . $items_list . '</ul>'; ?>
-                                <tr>
-                                    <td>
-                                        <?= $shop->name ?></td>
-                                    <td>
-                                        <?= $shop->address ?></td>
-                                    <td>
-                                        <?= $shop->phone ?></td>
-                                    <td>
-                                        <button class="btn btn-cancel" onclick="Modal.simple('Список товарів в магазині \'<?= $shop->name ?>\'','<?= $items_list ?>','location.href=\'../add/price.php?shop=<?= $shop->id ?>\'')">Переглянути товари</button>
-                                        <button class="btn btn-cancel" onclick='location.href="#"'>Додати товар</button>
-                                        <button class="btn btn-cancel" onclick='location.href="#"'>Редагувати</button>
-                                        <button class="btn btn-cancel" onclick='location.href="../../vendor/manufacturer/delete.php?id=<?= $shop->id ?>"'>Видалити</button>
-                                    </td>
-                                </tr>
-                            <?php } ?>
-                        </tbody>
-                        </ul>
-                </div>
-            </div>
-        </div>
+<div class="page">
+    <h1>Магазини</h1>
+    <div class="row w-full j-c-be m-3 p-3">
+        <button class="btn btn-cancel" onclick="location.href='../pages/products.php'">До списку продуктів</button>
+        <button class="btn" onclick="location.href='../add/shop.php'">Додати магазин</button>
     </div>
+    <?php
+    if (isset($_SESSION['messages']['success'])) {
+    ?>
+        <div class="success">
+            <p><?= $_SESSION['messages']['success'] ?></p>
+            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+        </div>
+    <?php
+    } else if (isset($_SESSION['messages']['danger'])) {
+    ?>
+        <div class="warning">
+            <p><?= $_SESSION['messages']['danger'] ?></p>
+            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+        </div>
+    <?php
 
-    <?php require 'C:\Users\Julie\source\SOE_4\public/modals/example.php'; ?>
-    <?php require 'C:\Users\Julie\source\SOE_4\public\blocks/fotter.php'; ?>
+    }
+    unset($_SESSION['messages']['danger']);
+    unset($_SESSION['messages']['success']);
+    ?>
+    <div class="card m-3 p-3 w-full column">
 
-</body>
+        <table>
+            <thead>
+                <tr>
+                    <th>Статус</th>
+                    <th>Назва</th>
+                    <th>Адреса</th>
+                    <th>Телефон</th>
+                    <th>Дії</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                $user_id = $_SESSION['user']['id'];
+                $shops = Shop::where(null, "user_id=$user_id OR (is_private=false AND user_id!=$user_id)");
+                foreach ($shops as $shop) {
+                    
+                ?>
+                    <tr>
+                        <td class="status-icon">
+                            <?= ($shop->is_private == true && $shop->user_id == $user_id) ? '<ion-icon name="lock-closed-outline" title="Не доступний іншим користувачам"></ion-icon>' : '' ?>
+                            <?= ($shop->is_private == false && $shop->user_id == $user_id) ? '<ion-icon name="lock-open-outline" title="Доступний іншим користувачам"></ion-icon>' : '' ?>
+                            <?= ($shop->is_private == false && $shop->user_id != $user_id) ? '<ion-icon name="people-outline" title="Автор: ' . ($shop->user() != null ? $shop->user()->login : 'Admin') . '"></ion-icon>' : ''  ?>
+                        </td>
+                        <td>
+                            <?= $shop->name ?>
+                        </td>
+                        <td>
+                            <?= $shop->address ?></td>
+                        <td>
+                            <?= $shop->phone ?></td>
+                        <td>
+                            <button class="btn btn-with-icon" onclick="Modal.with_load_data('Товари у магазині \'<?= $shop->name ?>\'','../../vendor/ajax/get_prices_by_shop.php?shop_id=<?=$shop->id?>','location.href=\'../add/price.php?shop=<?= $shop->id ?>\'')" title="Переглянути товари"><ion-icon name="reader-outline"></ion-icon></button>
+                            <button class="btn btn-with-icon" onclick='location.href="../add/price.php?shop=<?= $shop->id ?>"' title="Додати товар"><ion-icon name="add-outline"></ion-icon></button>
+                            <button class="btn btn-with-icon" onclick='location.href="../add/shop.php?id=<?= $shop->id ?>"' title="Редагувати магазин"><ion-icon name="create-outline"></ion-icon></button>
+                            <button class="btn btn-with-icon" onclick="Modal.delete_alert('Ви впевненні, що хочете видалити цей магазин? Всі пов`язані з ним ціни будуть видалені.','shop',<?= $shop->id ?>)" title="Видалити магазин"><ion-icon name="close-outline"></ion-icon></button>
+                        </td>
+                    </tr>
+                <?php } ?>
+            </tbody>
+            </ul>
+    </div>
+</div>
 
-</html>
+
+<?php require '../blocks/fotter.php'; ?>

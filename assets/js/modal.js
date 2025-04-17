@@ -7,7 +7,6 @@ window.onclick = function (event) {
   }
 };
 
-
 class Button {
   constructor(title, classes, event) {
     this.title = title;
@@ -15,17 +14,10 @@ class Button {
     this.event = event;
   }
   build() {
-    return (
-      '<button class="' +
-      this.classes +
-      '" onclick="' +
-      this.event +
-      '">' +
-      this.title +
-      "</button>"
-    );
+    return '<button class="' + this.classes + '" onclick="' + this.event + '">' + this.title + "</button>";
   }
 }
+
 let menus_list = "";
 class Modal {
   static close() {
@@ -35,27 +27,23 @@ class Modal {
     $(".modal").eq(0).show();
   }
   static build(title, content, buttons, icon) {
-    if (title !== "") {
-      $(".modal-header")
-        .eq(0)
-        .html("<h2>" + title + "</h2>");
-    }
+    let modal_header = $(".modal-header");
+    let modal_body = $(".modal-body");
+    let modal_footer = $(".modal-footer");
+    if (title !== "") modal_header.eq(0).html("<h2>" + title + "</h2>");
     if (content !== "") {
       if (icon != "") {
-        $(".modal-body").addClass("row j-c-ar");
-        $(".modal-body")
-          .eq(0)
-          .html("<div>" + icon + "</div><div>" + content + "</div>");
-      } else {
-        $(".modal-body").eq(0).html(content);
+        modal_body.addClass("row j-c-ar");
+        modal_body.eq(0).html("<div>" + icon + "</div><div>" + content + "</div>");
       }
+      else modal_body.eq(0).html(content);
     }
     if (true) {
       let footer = "";
       buttons.forEach((button) => {
         footer += button.build();
       });
-      $(".modal-footer").eq(0).html(footer);
+      modal_footer.eq(0).html(footer);
     }
   }
   static simple(title, content, event = "") {
@@ -66,6 +54,25 @@ class Modal {
     Modal.build(title, content, buttons, "");
     Modal.open();
   }
+  //with ajax
+  static with_load_data(title, url, event = "") {
+    // console.log("url", url);
+    const xmlhttp = new XMLHttpRequest();
+    xmlhttp.onload = function () {
+      const content = this.responseText;
+      const buttons = [
+        new Button("Додати", "btn m-2", event == "" ? "Modal.close()" : event),
+        new Button("Закрити", "btn btn-cancel m-2", "Modal.close()")
+      ];
+      Modal.build(title, content, buttons, "");
+      Modal.open();
+    }
+
+    xmlhttp.open("GET", url);
+    xmlhttp.send();
+  }
+
+  //for delete
   static delete_alert(text, item, id, menu = 0) {
     const title = "Попередження";
     const icon = icons.warning;
@@ -83,6 +90,7 @@ class Modal {
     Modal.build(title, content, buttons, icon);
     Modal.open();
   }
+  //others
   static for_form(item, name, default_value) {
     let title = "";
     let body = "";
@@ -100,13 +108,13 @@ class Modal {
         body =
           '<div class="m-3 col w-full"><label for="' +
           name +
-          '">Посилання на зображення:</label><input type="text" id="' +
+          '">Посилання на зображення:</label><input type="file" id="' +
           name +
           '" name="' +
           name +
-          '" value="' +
-          default_value +
-          '"></div>';
+          // '" value="' +
+          // default_value +
+          '" accept=".png, .jpg, .jpeg" /></div>';
         break;
       case "video_url":
         title = "Додати відео";

@@ -1,0 +1,30 @@
+:root{
+    --shadow:0.05rem 0.1rem 0.3rem -0.03rem rgba(0, 0, 0, 0.45);
+
+    --main: #1dacbc;
+    --main: #1d99bc;
+    --main2: #1dacbc50;
+    --main3: #0a565e;
+    --front: #73beff;
+    --back: #c4ecff;
+    
+    --btn: cornflowerblue;
+
+    --btn-bg: var(--btn);
+    --main-tx:var(--white); /* Main text color */
+    --btn-bdr:var(--btn); /* Button border color */
+    --btn-submit: #1E88E5; /* Submit button color */
+    --btn-cancel: #D32F2F; /* Cancel button color */
+    --gray: #7e7e7e; /* Gray color */
+
+    --text:#043338; /* Text color */
+
+    --hover:#1515857c;
+    --white: rgb(255, 255, 255);
+    --white-r:#0000009c;
+    --grey:#808080;
+    --black1:#222;
+    --black2:#999;
+    --min:#FF4F99;
+    --vit:#B14FFF;
+}

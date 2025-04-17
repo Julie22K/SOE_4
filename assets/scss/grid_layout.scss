@@ -2,20 +2,20 @@
     display: grid;
     grid-template-columns: 33% 33% 33%;
     grid-template-areas:
-      'title category is_private'
-      'title category add_img'
-      'prices_list prices_list add_img'
+      'title is_private is_private'
+      'category prices_list prices_list'
+      'add_img prices_list prices_list'
       'vits_and_mins vits_and_mins vits_and_mins'
-      'buttons buttons buttons';
+      'btns btns btns';
     gap: 10px;
     padding: 10px;
-    #title{ grid-area: title;}
-    #category{ grid-area: category;}
-    #is_private{ grid-area: is_private;}
-    #price_list{ grid-area: prices_list;}
-    #add_image_url{ grid-area: add_img;}
-    #vits_and_mins{ grid-area: vits_and_mins;}
-    #buttons{ grid-area: buttons;}
+    #form_title{ grid-area: title;}
+    #form_category{ grid-area: category;}
+    #form_is_private{ grid-area: is_private;}
+    #form_price_list{ grid-area: prices_list;}
+    #form_add_image_url{ grid-area: add_img;}
+    #form_vits_and_mins{ grid-area: vits_and_mins;}
+    #form_buttons{ grid-area: btns;}
 }
 #form_add_recipe{
     display: grid;

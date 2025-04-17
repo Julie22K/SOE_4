@@ -18,7 +18,7 @@ thead th {
 }
 
 tr {
-  text-align: center;
+  text-align:left ; //center;
   vertical-align: middle;
 
   //transition: 0.5s;
@@ -35,11 +35,12 @@ table.none-hover tr:hover {
 }
 
 thead tr:hover {
-  background-color: var(--main2);
+  // background-color: var(--main2);
+  background-color: white;
 }
 
 tr:hover {
-  background-color: var(--hover);
+  background-color: var(--main2);//var(--hover);
 }
 
 .card-dish table {
@@ -89,11 +90,11 @@ table.menu th {
 }
 
 tr.tr-product {
-  display: none;
+  display: table-row;
 }
 
 tr.tr-product.show {
-  display: table-row;
+  // 
 }
 
 hr {

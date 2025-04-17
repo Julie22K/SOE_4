@@ -1,14 +1,21 @@
 <?php
 
+require_once '../../public/blocks/pre_head.php';
+
+use App\Validate\Validate;
 use App\Models\Manufacturer;
 
-require 'C:\Users\Julie\source\SOE_4\public/blocks/pre_head.php';
+$_POST['is_private'] = isset($_POST['is_private']) ? $_POST['is_private'] : false;
 
-$name = $_POST['name'];
+$data = Validate::Validate("manufacturer", $_POST);
 
-Manufacturer::store([
-    'name' => $name,
-]);
+$data['user_id'] = $_SESSION['user']['id'];
 
+$new_shop = new Manufacturer($data);
 
-header('Location: ../../public/pages/manufacturers.php');
+$res = $new_shop->create();
+
+if (is_array($res)) {
+    unset($_SESSION['validation_data']);
+    returnToPrevPage();
+}

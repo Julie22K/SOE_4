@@ -5,11 +5,17 @@ namespace App\Migrations;
 use App\DB;
 use App\Data;
 use App\Migrations\MigrationsData;
-
+use App\Models\Person;
+use Exception;
 
 class Migration
 {
-    static function run()
+    private $db;
+    public function __construct()
+    {
+        $this->db = DB::DB();
+    }
+    function run()
     {
         Migration::createMigrations([
             "create_users",
@@ -87,7 +93,9 @@ class Migration
             "video_url varchar(2000) default ''",
             "image_url varchar(2000) default ''",
             "description varchar(10000) default ''",
-            "portions integer default 0"
+            "portions integer default 0",
+            "user_id integer DEFAULT NULL",
+            "is_private boolean DEFAULT false",
         ]);
         Migration::createTable("persons", [
             "name varchar(20)",
@@ -96,6 +104,8 @@ class Migration
             "weight integer",
             "height integer",
             "activity enum('1.2','1.4','1.55','1.7','1.9')",
+            "user_id integer DEFAULT NULL",
+            "is_private boolean DEFAULT false",
             "kcal double DEFAULT 0",
             "water double DEFAULT 0",
             "cellulose double DEFAULT 0",
@@ -129,26 +139,34 @@ class Migration
         ]);
         Migration::createTable("product_categories", [
             "name varchar(20)",
-            "image_name varchar(20)"
+            "image_name varchar(20)",
+            "user_id integer DEFAULT NULL",
         ]);
         Migration::createTable("recipe_categories", [
             "name varchar(20)",
-            "image_name varchar(20)"
+            "image_name varchar(20)",
+            "user_id integer DEFAULT NULL",
         ]);
         Migration::createTable("prices", [
             "price double",
             "weight integer",
             "product_id integer",
             "manufacturer_id integer",
-            "shop_id integer"
+            "shop_id integer",
+            "user_id integer DEFAULT NULL",
+            "is_private boolean DEFAULT false",
         ]);
         Migration::createTable("shops", [
             "name varchar(30)",
             "phone varchar(13)",
-            "address varchar(30)"
+            "address varchar(30)",
+            "user_id integer DEFAULT NULL",
+            "is_private boolean DEFAULT false",
         ]);
         Migration::createTable("manufacturers", [
-            "name varchar(30)"
+            "name varchar(30)",
+            "user_id integer DEFAULT NULL",
+            "is_private boolean DEFAULT false",
         ]);
         Migration::createTable("ingredients", [
             "weight integer",
@@ -159,7 +177,9 @@ class Migration
             "date date",
             "meal_time_id integer",
             "recipe_id integer",
-            "menu_id integer"
+            "menu_id integer",
+            "user_id integer DEFAULT NULL",
+            "is_private boolean DEFAULT false",
         ]);
         Migration::createTable("shop_items", [
             "ingredient_id integer",
@@ -172,11 +192,15 @@ class Migration
             "name varchar(30)",
             "priority integer",
             "is_use boolean DEFAULT true",
+            "user_id integer DEFAULT NULL",
+            "is_private boolean DEFAULT false", //FIXME:
         ]);
         Migration::createTable("menus", [
             "budget integer",
             "first_date date",
-            "last_date date"
+            "last_date date",
+            "user_id integer DEFAULT NULL",
+            "is_private boolean DEFAULT false",
         ]);
         Migration::createTable("person_in_menus", [
             "menu_id integer",
@@ -198,23 +222,46 @@ class Migration
         Migration::fillTable("dishes");
         Migration::fillTable("shop_items");
     }
-    static function createMigrations(array $migrations)
+    function runForUser($user_id)
     {
-        $db = DB::DB();
-        //echo $db;
-        $table = mysqli_query($db, "SELECT * from `migrations` LIMIT 1");
-        //echo $table;
-        if ($table !== FALSE) {
-            Migration::fill_migrations($migrations);
-        } else {
-            //create table migration
-            $columns_ = join(",", ["name varchar(30) unique", "is_exists boolean default false"]);
-            mysqli_query($db, "CREATE TABLE `migrations` (id integer NOT NULL AUTO_INCREMENT, $columns_, PRIMARY KEY (id));");
+        Migration::add_migrations([
+            "fill_meal_times_for_user_" . $user_id,
+            "fill_persons_for_user_" . $user_id,
+        ]);
+        Migration::fillTableforUser("meal_times", $user_id);
+        Migration::fillTableforUser("persons", $user_id);
+        // Migration::fillTable("recipe_categories");
+        // Migration::fillTable("product_categories");
+        // Migration::fillTable("shops");
+        // Migration::fillTable("manufacturers");
+        // Migration::fillTable("products");
+        // Migration::fillTable("recipes");
+        // Migration::fillTable("ingredients");
+        // Migration::fillTable("menus");
+        // Migration::fillTable("person_in_menus");
+        // Migration::fillTable("prices");
+        // Migration::fillTable("dishes");
+        // Migration::fillTable("shop_items");
 
-            Migration::fill_migrations($migrations);
+        //update user norms
+        foreach (Person::all() as $person_) {
+            $person_->CalcNorms();
+            $person_->update($person_->id);
         }
     }
-    static function fill_migrations($migrations)
+    function createMigrations(array $migrations)
+    {
+        // mysqli_query($this->db, "SHOW TABLES LIKE 'migrations'");
+
+        $columns_ = join(",", ["name varchar(30) unique", "is_exists boolean default false"]);
+        mysqli_query($this->db, "CREATE TABLE IF NOT EXISTS `migrations` (id integer NOT NULL AUTO_INCREMENT, $columns_, PRIMARY KEY (id));");
+
+        Migration::fill_migrations($migrations);
+
+        //FIXME:
+
+    }
+    function fill_migrations($migrations)
     {
         $table = Data::getData("migrations");
         if (count($table) == 0) {
@@ -223,26 +270,33 @@ class Migration
             }
         }
     }
-    static function createTable($table, $columns)
+    function add_migrations($migrations)
     {
-        $db = DB::DB();
+        foreach ($migrations as $migration) {
+            $items = Data::GetData("migrations", "name='" . $migration . "'");
+            if (count($items) == 0) {
+                Data::createItem("migrations", ["name" => $migration]);
+            }
+        }
+    }
+    function createTable($table, $columns)
+    {
         $name_migration = "create_" . $table;
-        $migration = mysqli_fetch_assoc(mysqli_query($db, "SELECT * from migrations where name='$name_migration'"));
+        $migration = mysqli_fetch_assoc(mysqli_query($this->db, "SELECT * from migrations where name='$name_migration'"));
         if ($migration !== false && !is_null($migration)) {
             $is_exists = $migration["is_exists"];
             if ($is_exists != true) {
                 $columns_ = join(",", $columns);
-                mysqli_query($db, "CREATE TABLE $table (id integer NOT NULL AUTO_INCREMENT, $columns_, PRIMARY KEY (id));");
+                mysqli_query($this->db, "CREATE TABLE $table (id integer NOT NULL AUTO_INCREMENT, $columns_, PRIMARY KEY (id));");
 
-                mysqli_query($db, "UPDATE migrations SET is_exists=true WHERE name='$name_migration';");
+                mysqli_query($this->db, "UPDATE migrations SET is_exists=true WHERE name='$name_migration';");
             }
         }
     }
-    static function fillTable($table)
+    function fillTable($table)
     {
-        $db = DB::DB();
         $name_migration = "fill_" . $table;
-        $migration = mysqli_fetch_assoc(mysqli_query($db, "SELECT * from migrations where name='$name_migration'"));
+        $migration = mysqli_fetch_assoc(mysqli_query($this->db, "SELECT * from migrations where name='$name_migration'"));
         if ($migration !== false && !is_null($migration)) {
             $is_exists = $migration["is_exists"];
             if ($is_exists != true) {
@@ -251,7 +305,27 @@ class Migration
                     Data::createItem($table, $item);
                 }
                 $res = Data::getData($table);
-                mysqli_query($db, "UPDATE migrations SET is_exists=true WHERE name='$name_migration';");
+                mysqli_query($this->db, "UPDATE migrations SET is_exists=true WHERE name='$name_migration';");
+            }
+        }
+    }
+    function fillTableforUser($table, $user_id)
+    {
+        //todo
+        $name_migration = "fill_" . $table . "_for_user_" . $user_id;
+        $migration = mysqli_fetch_assoc(mysqli_query($this->db, "SELECT * from migrations where name='$name_migration'"));
+        if ($migration !== false && !is_null($migration)) {
+            $is_exists = $migration["is_exists"];
+            if ($is_exists != true) {
+                $data = MigrationsData::data();
+
+                foreach ($data[$table] as $item) {
+                    $item['user_id'] = $user_id;
+                    $res=Data::createItem($table, $item);
+                }
+                
+                $res = Data::getData($table);
+                mysqli_query($this->db, "UPDATE migrations SET is_exists=true WHERE name='$name_migration';");
             }
         }
     }

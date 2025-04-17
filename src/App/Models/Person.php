@@ -5,132 +5,123 @@ namespace App\Models;
 use App\Data;
 use DateTime;
 
-class Person
+/**
+ * @property string $name
+ * @property string $gender
+ * @property string $date_of_birth
+ * @property int $weight
+ * @property int $height
+ * @property string $activity
+ * @property int $user_id
+ * @property int $is_private
+ * @property int $kcal
+ * @property int $water
+ * @property int $cellulose
+ * @property int $fat
+ * @property int $carb
+ * @property int $protein
+ * @property int $vitA
+ * @property int $vitE
+ * @property int $vitK
+ * @property int $vitD
+ * @property int $vitC
+ * @property int $om3
+ * @property int $om6
+ * @property int $vitB1
+ * @property int $vitB2
+ * @property int $vitB5
+ * @property int $vitB6
+ * @property int $vitB8
+ * @property int $vitB9
+ * @property int $vitB12
+ * @property int $minMg
+ * @property int $minNa
+ * @property int $minCa
+ * @property int $minCl
+ * @property int $minK
+ * @property int $minS
+ * @property int $minP
+ * @property int $minI
+ * @property int $minCu
+ * @property int $minCr
+ */
+
+class Person extends Model
 {
-    public $id;
-    public $table = "persons";
-    public $name;
-    public $gender;
-    public $date_of_birth;
-    public $weight;
-    public $height;
-    public $activity;
-    public $person_data;
-    public $user_id;
-    function __construct($name, $gender, $date_of_birth, $weight, $height, $activity, $user_id,$id = null)
+    protected $table = 'persons';
+
+     function CalcNorms()
     {
-        $this->id = $id;
-        $this->name = $name;
-        $this->gender = $gender;
-        $this->date_of_birth = $date_of_birth;
-        $this->weight = $weight;
-        $this->height = $height;
-        $this->activity = $activity;
-        $this->person_data = $this->person_data();
-        $this->user_id=$user_id;
+        $this->kcal = self::calcKcalNorm();
+        $this->kcal = $this->kcal;
+        $this->fat = round(($this->kcal * 0.3) / 4, 2);
+        $this->protein = round(($this->kcal * 0.1) / 9, 2);
+        $this->carb = round(($this->kcal * 0.6) / 4, 2);
+        $this->cellulose = round(0.012 *  $this->kcal, 2);
+        $this->water = round($this->weight * 35, 2);
+        $this->vitA = 900;
+        $this->vitE = 15;
+        $this->vitK = 100;
+        $this->vitD = 10;
+        $this->vitC = 70;
+        $this->om3 = round(0.06 * $this->kcal, 2);
+        $this->om6 = round(0.015 * $this->kcal, 2);
+        $this->vitB1 = 1.3;
+        $this->vitB2 = 1.5;
+        $this->vitB5 = 4;
+        $this->vitB6 = 1.6;
+        $this->vitB8 = 1000;
+        $this->vitB9 = 400;
+        $this->vitB12 = 3;
+        $this->minMg = 400;
+        $this->minNa = 1300;
+        $this->minCa = 2300;
+        $this->minCl = 1200;
+        $this->minK = 2500;
+        $this->minS = 4;
+        $this->minP = 1200;
+        $this->minCr = 1000;
+        $this->minI = 150;
+        $this->minCu = 35;
     }
-    function person_data()
-    {
-        $kcal = $this->calcKcalNorm($this->weight, $this->height, $this->gender, $this->activity);
-        $res = array('kcal' => $kcal, 'fat' => $this->calcFatNorm($kcal), 'protein' => $this->calcProteinNorm($kcal), 'carb' => $this->calcCarbNorm($kcal), 'cellulose' => $this->calcCelluloseNorm($kcal), 'water' => $this->calcWaterNorm($this->weight), 'vitA' => 900, 'vitE' => 15, 'vitK' => 100, 'vitD' => 10, 'vitC' => 70, 'om3' => round(0.06 * $kcal, 2), 'om6' => round(0.015 * $kcal, 2), 'vitB1' => 1.3, 'vitB2' => 1.5, 'vitB5' => 4, 'vitB6' => 1.6, 'vitB8' => 1000, 'vitB9' => 400, 'vitB12' => 3, 'minMg' => 400, 'minNa' => 1300, 'minCa' => 2300, 'minCl' => 1200, 'minK' => 2500, 'minS' => 4, 'minP' => 1200, 'minCr' => 1000, 'minI' => 150, 'minCu' => 35,);
-        return $res;
-    }
-    function calcKcalNorm($weight, $height, $gender, $activity)
+
+    public function CalcKcalNorm()
     {
         $age = $this->age();
         $calorieNorm = 0;
-        $w = (float)$weight;
-        $h = (float)$height;
+        $w = (float)$this->weight;
+        $h = (float)$this->height;
         $a = (float)$age;
-        $act = (float)$activity;
-        if ($gender === "woman") {
+        $act = (float)$this->activity;
+        if ($this->gender === "woman") {
             $calorieNorm = ((10 * $w) + (6.25 * $h) - (5 * $a) - 161) * $act;
         } else {
             $calorieNorm = ((10 * $w) + (6.25 * $h) - (5 * $a) + 5) * $act;
         }
         return round($calorieNorm, 2);
     }
-    function age()
+
+    //fields
+    public function age()
     {
         $date = new DateTime($this->date_of_birth);
         $now = new DateTime();
         $interval = $now->diff($date);
         return $interval->y;
     }
-    function calcProteinNorm($kcal)
-    {
-        return round(($kcal * 0.3) / 4, 2);
-    }
-    function calcFatNorm($kcal)
-    {
-        return round(($kcal * 0.1) / 9, 2);
-    }
-    function calcCarbNorm($kcal)
-    {
-        return round(($kcal * 0.6) / 4, 2);
-    }
-    function calcCelluloseNorm($kcal)
-    {
-        return round(0.012 * $kcal, 2);
-    }
-    function calcWaterNorm($weight)
-    {
-        return round($weight * 35, 2);
-    }
+
     public function person_in_menus()
     {
-        return PersonInMenu::where('person_id', $this->id);
+        return PersonInMenu::where([['person_id', $this->id]]);
     }
-    static function find($id)
-    {
-        $person = Data::getItemById('persons', $id);
-        return new Person($person[1], $person[2], $person[3], $person[4], $person[5], $person[6],$person[7], $person[0]);
-    }
-    static function where($foreign_key, $id)
-    {
-        $items = Data::getData("persons", ' ' . $foreign_key . '=' . $id);
-        $res = array();
-        foreach ($items as $item) {
-            array_push($res, Self::find($item[0]));
-        }
-        return $res;
-    }
-    static function all()
-    {
-        $persons = Data::getData('persons');
-        $res = array();
-        foreach ($persons as $person) {
-            array_push($res, Self::find($person[0]));
-        }
-        return $res;
-    }
+
     static function allByUser($user_id)
     {
-        $persons = Data::getData('persons','user_id=' . $user_id);
+        $persons = Data::getData('persons', 'user_id=' . $user_id);
         $res = array();
         foreach ($persons as $person) {
-            array_push($res, Self::find($person[0]));
+            array_push($res, self::find($person[0]));
         }
         return $res;
-    }
-    static function update($id,$data)
-    {
-        return Data::updateItem('persons',$id, $data);
-    }
-    public function create()
-    {
-        Data::createItem('persons', array_merge(['name' => $this->name, 'gender' => $this->gender, 'date_of_birth' => $this->date_of_birth, 'weight' => $this->weight, 'height' => $this->height, 'activity' => $this->activity,'user_id'=>$this->user_id], $this->person_data));
-    }
-    static function store($data)
-    {
-        $new_person = new Person($data['name'], $data['name'], $data['name'], $data['name'], $data['name'], $data['name']);
-        $new_person->create();
-    }
-    public function delete()
-    {
-        foreach ($this->person_in_menus() as $person_in_menu) {
-            $person_in_menu->delete();
-        }
-        Data::deleteItem($this->table, $this->id);
     }
 }

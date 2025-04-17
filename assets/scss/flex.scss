@@ -1,6 +1,7 @@
 .row{
   display: flex;
   flex-direction: row;
+  transition: 2s;
   
 }
 .col{
@@ -44,6 +45,9 @@ align-items: baseline
 .j-c-be{
   justify-content: space-between;
 }
+.j-c-ce{
+  justify-content:center;
+}
 
 .w-half{
   width: 50%;
@@ -59,4 +63,34 @@ align-items: baseline
 }
 .w-inherit{
   width: inherit;
+}
+.w-10pr{
+  width: 10%;
+}
+.w-20pr{
+  width: 20%;
+}
+.w-30pr{
+  width: 30%;
+}
+.w-40pr{
+  width: 40%;
+}
+.w-50pr{
+  width: 50%;
+}
+.w-60pr{
+  width: 60%;
+}
+.w-70pr{
+  width: 70%;
+}
+.w-80pr{
+  width: 80%;
+}
+.w-90pr{
+  width: 90%;
+}
+.w-100pr{
+  width: 100%;
 }

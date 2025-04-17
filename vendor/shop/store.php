@@ -1,17 +1,22 @@
 <?php
-require 'C:\Users\Julie\source\SOE_4\public/blocks/pre_head.php';
+
+require_once '../../public/blocks/pre_head.php';
 
 use App\Models\Shop;
-use App\Validate;
+use App\Validate\Validate;
+
+$_POST['is_private'] = isset($_POST['is_private']) ?$_POST['is_private'] : false;
 
 
-$data=Validate::Validate('shop',[
-    "name"=>$_POST['name'],
-    "address"=>$_POST['address'],
-    "phone"=>$_POST['phone'],
-]);
+$data = Validate::Validate("shop", $_POST);
 
-$new_shop= new Shop($data['name'],$data['address'],$data['phone']);
-$new_shop->create();
+$data['user_id'] = $_SESSION['user']['id'];
 
-header('Location: ../../public/pages/shops.php');
+$new_shop = new Shop($data);
+
+$res = $new_shop->create();
+
+if (is_array($res)) {
+    unset($_SESSION['validation_data']);
+    returnToPrevPage();
+}

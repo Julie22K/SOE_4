@@ -9,7 +9,7 @@
   border: 1.5px solid var(--btn-bdr);
   background: var(--btn-bg);
   color: var(--main-tx);
-  transition: $transition;
+  transition: $transition/2;
 }
 
 .btn-secondary {
@@ -23,8 +23,35 @@
   color: var(--btn-bdr);
 }
 
+button.btn-with-icon {
+  background: var(--back);
+  border-color: var(--back);
+  color: var(--btn-bdr);
+  height: 30px;
+  width: 30px;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  ion-icon {
+    font-size: 16px;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    --ionicon-stroke-width: 64px;
+    color: var(--btn-bdr);
+  }
+}
+
+button.btn-with-icon:hover {
+  background: var(--front);
+  border-color: var(--front);
+  color: var(--white);
+}
+
 .btn:hover {
   cursor: pointer;
+  opacity: .5;
 }
 
 .btn:active {
@@ -67,9 +94,11 @@
 }
 
 .btn-filter-sort {
-  color: var(--front);
+
+  transition: $transition/2;
+  color: var(--main);
   background: var(--back);
-  border-color: var(--back);
+  border-color: var(--main);
   height: 25px;
 }
 
@@ -77,6 +106,12 @@
   color: var(--white);
   background: var(--btn);
   border-color: var(--btn);
+}
+
+.btn-filter-sort:hover {
+  border-color: var(--front);
+  background-color: var(--front);
+  color: var(--white);
 }
 
 .btn-icon {
@@ -93,6 +128,7 @@
   color: var(--white);
   height: 18px;
   width: 18px;
+  font-weight: bold;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -111,6 +147,7 @@
   padding: calc($distance / 2);
   margin: $distance*2 $distance;
   border: none;
+  border-radius: $border_radius;
   // color: var(--white);
   // text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
 }

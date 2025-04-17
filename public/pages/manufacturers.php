@@ -1,68 +1,73 @@
-<?php require 'C:\Users\Julie\source\SOE_4\public\blocks/pre_head.php';
+<?php
+require '../blocks/pre_head.php';
+$page_title = "Виробники";
 
-use App\Models\Manufacturer; ?>
-<!DOCTYPE html>
-<html lang="en">
+use App\Models\Manufacturer;
 
-<head>
-    <?php require 'C:\Users\Julie\source\SOE_4\public\blocks/head.php' ?>
-    <title>Виробники</title>
-</head>
+require '../blocks/head.php';
+?>
 
-<body oncontextmenu="return false;">
-    <?php require 'C:\Users\Julie\source\SOE_4\public\blocks/preloader.php' ?>
-    <div class="container">
-        <?php require 'C:\Users\Julie\source\SOE_4\public\blocks/header.php' ?>
-        <!-- main -->
-        <div class="main">
-            <?php require 'C:\Users\Julie\source\SOE_4\public\blocks/topbar.php' ?>
-            <div class="page" id="shopping_list_page">
-                <h1>Виробники</h1>
-                <div class="row w-full j-c-be m-3 p-3">
-                    <button class="btn btn-cancel" onclick="location.href='../pages/products.php'">До списку продуктів</button>
-                    <button class="btn" onclick="location.href='../add/manufacturer.php'">Додати виробника</button>
-                </div>
-                <div class="card w-full m-3 p-3">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Назва</th>
-                                <th>Дії</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php $manufacturers = Manufacturer::all();
-                            foreach ($manufacturers as $manufacturer) {
-                                $items_list = '';
-                                $prices = $manufacturer->prices();
-                                foreach ($prices as $price) {
-                                    $product = $price->product()->title;
-                                    $weight = $price->weight;
-                                    $price_ = $price->price;
-                                    $shop = $price->shop()->name;
-                                    $items_list = "$items_list<li>$product - $price_ грн/$weight г ($shop)</li>";
-                                }
-                                $items_list = '<ul>' . $items_list . '</ul>'; ?>
-                                <tr>
-                                    <td>
-                                        <?= $manufacturer->name ?></td>
-                                    <td>
-                                        <button class="btn btn-cancel" onclick="Modal.simple('Список товарів від виробника \'<?= $manufacturer->name ?>\'','<?= $items_list ?>','location.href=\'../add/price.php?manufacturer=<?= $manufacturer->id ?>\'')">Переглянути товари</button>
-                                        <button class="btn btn-cancel btn-small" onclick='location.href="#"'>Додати товар</button>
-                                        <button class="btn btn-cancel btn-small" onclick='location.href="#"'>Редагувати</button>
-                                        <button class="btn btn-cancel btn-small" onclick='location.href="../../vendor/manufacturer/delete.php?id=<?= $shop->id ?>"'>Видалити</button>
-                                    </td>
-                                </tr>
-                            <?php } ?>
-                        </tbody>
-                        </ul>
-                </div>
-            </div>
+<div class="page">
+    <h1>Виробники</h1>
+    <div class="row w-full j-c-be m-3 p-3">
+        <button class="btn btn-cancel" onclick="location.href='../pages/products.php'">До списку продуктів</button>
+        <button class="btn" onclick="location.href='../add/manufacturer.php'">Додати виробника</button>
+    </div>
+    <?php
+    if (isset($_SESSION['messages']['success'])) {
+    ?>
+        <div class="success">
+            <p><?= $_SESSION['messages']['success'] ?></p>
+            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
         </div>
+    <?php
+    } else if (isset($_SESSION['messages']['danger'])) {
+    ?>
+        <div class="warning">
+            <p><?= $_SESSION['messages']['danger'] ?></p>
+            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+        </div>
+    <?php
+
+    }
+    unset($_SESSION['messages']['danger']);
+    unset($_SESSION['messages']['success']);
+    ?>
+    <div class="card w-full m-3 p-3">
+        <table>
+            <thead>
+                <tr>
+                    <th>Статус</th>
+                    <th>Назва</th>
+                    <th>Дії</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php 
+                $user_id = $_SESSION['user']['id'];
+                
+                $manufacturers = Manufacturer::where(null, "user_id=$user_id OR (is_private=false AND user_id!=$user_id)");
+                
+                foreach ($manufacturers as $manufacturer) {
+                ?>
+                    <tr>
+                        <td class="status-icon">
+                            <?= ($manufacturer->is_private == true && $manufacturer->user_id == $user_id) ? '<ion-icon name="lock-closed-outline" title="Не доступний іншим користувачам"></ion-icon>' : '' ?>
+                            <?= ($manufacturer->is_private == false && $manufacturer->user_id == $user_id) ? '<ion-icon name="lock-open-outline" title="Доступний іншим користувачам"></ion-icon>' : '' ?>
+                            <?= ($manufacturer->is_private == false && $manufacturer->user_id != $user_id) ? '<ion-icon name="people-outline" title="Автор: ' . ($manufacturer->user() != null ? $manufacturer->user()->login : 'Admin') . '"></ion-icon>' : ''  ?>
+                        </td>
+                        <td>
+                            <?= $manufacturer->name ?></td>
+                        <td>
+                            <button class="btn btn-with-icon" onclick="Modal.with_load_data('Список товарів від виробника \'<?= $manufacturer->name ?>\'','../../vendor/ajax/get_prices_by_manufacturer.php?manufacturer_id=<?= $manufacturer->id ?>','location.href=\'../add/price.php?manufacturer=<?= $manufacturer->id ?>\'')" title="Переглянути товари"><ion-icon name="reader-outline"></ion-icon></button>
+                            <button class="btn btn-with-icon" onclick='location.href="../add/price.php?manufacturer=<?= $manufacturer->id ?>"' title="Додати товар"><ion-icon name="add-outline"></ion-icon></button>
+                            <button class="btn btn-with-icon" onclick='location.href="../add/manufacturer.php?id=<?= $manufacturer->id ?>"' title="Редагувати магазин"><ion-icon name="create-outline"></ion-icon></button>
+                            <button class="btn btn-with-icon" onclick="Modal.delete_alert('Ви впевненні, що хочете видалити цього виробника? Всі пов`язані з ним ціни будуть видалені.','manufacturer',<?= $manufacturer->id ?>)" title="Видалити магазин"><ion-icon name="close-outline"></ion-icon></button>
+                        </td>
+                    </tr>
+                <?php } ?>
+            </tbody>
+            </ul>
     </div>
 
-
-    <?php require_once 'C:\Users\Julie\source\SOE_4\public\blocks/fotter.php'; ?>
-</body>
-
-</html>
+    <?php require '../blocks/fotter.php'; ?>

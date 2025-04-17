@@ -1,9 +1,0 @@
-{
-  "editor.formatOnSave": true,
-  "workbench.colorTheme": "Solarized Dark",
-  "vscode-edge-devtools.mirrorEdits": true,
-  "liveSassCompile.settings.showOutputWindow": true,
-  "workbench.iconTheme": "eq-material-theme-icons",
-  "bracketPairColorizer.depreciation-notice": false,
-  "editor.renderControlCharacters": false
-}

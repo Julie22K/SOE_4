@@ -1,13 +1,52 @@
 
 .modal.warning{
-  border-color: orange;
+  .modal-content {
+    background-color: #f44336;
+    color: white;
+  }
+  .modal-header,
+  .modal-footer{
+    background-color: #d32f2f;
+  }
+  .modal-header {
+    border-bottom: 2px solid #d32f2f;
+  }
+  .modal-body {
+    border-bottom: 2px solid #d32f2f;
+  }
+  .modal-footer {
+    border-top: 2px solid #d32f2f;
+  }
+  /* The Close Button */
+  .close {
+    color: white;
+  }
+
+  .close:hover,
+  .close:focus {
+    color: #f44336;
+  }
+  img.product{
+    border: 2px solid #d32f2f;
+  }
+  .modal-info{
+    background-color: #d32f2f;
+  }
+  .info-circles{
+    border-top: 2px solid #d32f2f;
+  }
+  .info-circles>div{
+    border-right: 2px solid #d32f2f;
+  }
+  .info-data{
+    border-top: 2px solid #d32f2f;
+  }
 }
 .modal {
-  font-family: sans-serif;
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
-  z-index: 6; /* Sit on top */
-  transition: $transition;
+  z-index: 1; /* Sit on top */
+  padding-top: 60px; /* Location of the box */
   left: 0;
   top: 0;
   width: 100%; /* Full width */
@@ -17,105 +56,71 @@
   background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 
   .modal-content {
-
-    transition: $transition;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
     background-color: #fefefe;
-    padding: $distance;
+    margin: auto;
+    padding: 20px;
     border: 1px solid #888;
-    border-radius: $border_radius;
-    max-width: 500px; /* Could be more or less, depending on screen size */
-    max-height: 400px;
-    min-width: 400px;
-    min-height: 250px;
-    width: fit-content;
-    height: fit-content;
-    overflow: hidden;
+    width: 80%;
 
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    margin-right: -50%;
-    transform: translate(-50%, -50%);
+    max-height: 80%;
+    overflow: auto;
+
   }
   .modal-header,
   .modal-body,
   .modal-footer{
-    display: flex;
-    /*width: 100%;*/
-    margin: calc($distance / 2);
-    padding: calc($distance / 4);
+    padding: 10px;
+
   }
   .modal-header {
-    justify-content:start;
-    border-bottom:1px solid gray;
+    border-bottom: 1px solid #888;
+
+
   }
   .modal-body {
+    border-bottom: 1px solid #888;
+
 
    }
   .modal-footer {
-    justify-content:space-between;
-    border-top:1px solid gray;
+    border-top: 1px solid #888;
+
     }
   /* The Close Button */
   .close {
-    color: #aaa;
+    color: #aaaaaa;
     float: right;
     font-size: 28px;
     font-weight: bold;
+
   }
 
   .close:hover,
   .close:focus {
-    color: black;
+    color: #000;
     text-decoration: none;
     cursor: pointer;
+
+
   }
   img.product{
-    /*margin: 20px;
-    padding: 20px;*/
-    border:3px solid #888;
-    height: 300px;
-    width: inherit;
+    border: 2px solid #888;
 
   }
   .modal-info{
-    width: 300px;
-    height: 245px;
-    background-color: var(--front);
-    color: var(--main);
-    position: relative;
+    background-color: #888;
   }
   .info-circles{
-    left: 15px;
-    right:15px;
-    top:15px;
-    height: 135px;
-    position: absolute;
+    border-top: 1px solid #888;
+
   }
   .info-circles>div{
-    left: 5px;
-    right:5px;
+    border-right: 1px solid #888;
+
   }
   .info-data{
-    display: grid;
-    grid-template-columns: auto auto;
-    justify-content:space-around;
-    font-size: 18px;
-    font-weight: bold;
-    left: 15px;
-    right:15px;
-    bottom:15px;
-    width: 270px;
-    height: 80px;
-    position: absolute;
+    border-top: 1px solid #888;
+    
   }
-
-
-
-
 }
-/* The Modal (background) */
 

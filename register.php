@@ -1,45 +1,27 @@
 <?php
-    session_start();
-    if (isset($_SESSION['user'])) {
-        header('Location: public/pages/index.php');
-    }
+$start_page=false;
+$redirect_path = 'public/pages/index.php';
+require_once 'public/blocks/auth/head.php';
 ?>
 
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Авторизація та реєстрація</title>
-    <?php  require_once 'public/blocks/head.php'; ?>
-    <link rel="stylesheet" href="assets/CSS/index.css">
-</head>
-<body>
-
-    <!-- Форма регистрации -->
-    <div class="page" style="width:50%;">
-    <form action="vendor/signup.php" method="post" enctype="multipart/form-data">
+<!-- Форма регистрации -->
+<div class="page" style="width:50%;">
+    <form action="/vendor/auth/signup.php" method="POST" enctype="multipart/form-data">
         <label>Ім'я</label>
-        <input type="text" name="full_name" placeholder="Введите свое полное имя">
-        <label>Логін</label>
-        <input type="text" name="login" placeholder="Введите свой логин">
+        <input type="text" name="login" placeholder="Введіть своє ім'я">
         <label>Ел.пошта</label>
-        <input type="email" name="email" placeholder="Введите адрес своей почты">
+        <input type="email" name="email" placeholder="Введіть електронну пошту">
         <label>Пароль</label>
-        <input type="password" name="password" placeholder="Введите пароль">
+        <input type="password" name="password" placeholder="Введіть пароль">
         <label>Пітвердження пароля</label>
-        <input type="password" name="password_confirm" placeholder="Подтвердите пароль">
+        <input type="password" name="password_confirm" placeholder="Підтвердьте пароль">
         <button class="btn" type="submit">Увійти</button>
         <p>
-            Ви вже маєте акаунт? - <a href="/">атворизуйтесь</a>!
+            Ви вже маєте акаунт? - <a href="/">авторизуйтесь</a>!
         </p>
-        <?php
-            if (isset($_SESSION['message'])) {
-                echo '<p class="msg"> ' . $_SESSION['message'] . ' </p>';
-            }
-            unset($_SESSION['message']);
-        ?>
+        <?php require_once 'public/blocks/auth/message.php'; ?>
     </form>
 </div>
-<script src="assets/js/color.js"></script>
-</body>
-</html>
+
+
+<?php require_once 'public/blocks/auth/footer.php'; ?>

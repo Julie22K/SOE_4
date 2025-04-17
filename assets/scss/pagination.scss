@@ -1,12 +1,19 @@
 .page_navigation {
-  margin-top:30px;
+  margin-top: 30px;
   width: 100%;
-  text-align: center }
+  text-align: center;
+  font-weight: 600;
+  font-family: "roboto";
+}
+
 .page_navigation ul {
-  padding: 0 }
+  padding: 0
+}
+
 .page_navigation li {
   display: inline;
-  color: black;
+  color: rgb(255, 255, 255);
+  background-color: var(--front);
   padding: 8px 16px;
   margin: 5px;
   text-decoration: none;
@@ -15,60 +22,120 @@
   align-content: center;
   align-items: center;
   cursor: pointer;
+  text-align: center;
 }
-.page_navigation li a:visited{
+
+.page_navigation li a {
+  width: 100%;
+  text-align: center;
+}
+
+.page_navigation li a:visited {
   text-decoration: none;
-  color: black;
+  color: rgb(255, 255, 255);
 }
+
 .page_navigation li.active_page {
-  color:white;
+  color: white;
   background-color: var(--main);
 }
-.page_navigation li:hover{
+
+.page_navigation li:hover {
   background-color: var(--main2);
 }
-.page_navigation li:hover a
-{
-  color:black;
+
+.page_navigation li:hover a {
+  color: var(--main);
   background-color: rgba(0, 0, 0, 0);
 }
-.page_navigation li.active_page:hover a{
-  color:black;
+
+.page_navigation li.active_page:hover a {
+  color: black;
   background-color: rgba(0, 0, 0, 0);
 }
-.page_navigation li.active_page a{
-  color:white;
+
+.page_navigation li.active_page a {
+  color: white;
   background-color: var(--main);
 }
+
 .page_navigation li a:link,
 .page_navigation li a:visited,
 .page_navigation li a:active,
-.page_navigation li a{
+.page_navigation li a {
   text-decoration: none;
 }
 
 /*previous and next pages*/
 .page_navigation li.previous_link,
-.page_navigation li.next_link
-{
+.page_navigation li.next_link {
   border-radius: 5px;
   background-color: var(--main);
 }
+
 .page_navigation li.previous_link a,
-.page_navigation li.next_link a
-{
-  color:white;
+.page_navigation li.next_link a {
+  color: white;
   background-color: var(--main);
 }
-/*
-.page_navigation li.previous_link:hover,
-.page_navigation li.next_link:hover
-{
-    background-color: var(--main2);
-}
-.page_navigation li.previous_link:hover a,
-.page_navigation li.next_link:hover a
-{
-    background-color: transparent;
-}*/
 
+.page_navigation li.previous_link:hover,
+.page_navigation li.next_link:hover {
+  background-color: var(--main2);
+}
+
+.page_navigation li.previous_link:hover a,
+.page_navigation li.next_link:hover a {
+  background-color: #ffffff00;
+  color: var(--main);
+}
+
+
+.page_navigation {
+  margin-top: 30px;
+  width: center;
+  text-align: center;
+  font-family: "roboto";
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+
+  button {
+    font-weight: 600;
+    border-width: 0;
+    color: rgb(255, 255, 255);
+    background-color: var(--front);
+    padding: 8px 16px;
+    margin: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    border: 1.5px white solid;
+  }
+
+  // button:hover {
+  //   border: 1.5px var(--main) solid;
+  //   background-color: white;
+  //   color: var(--main);
+  // }
+  button.current_page{
+    background-color: white;
+    border: 1.5px var(--main) solid;
+    color: var(--main);
+    // cursor:default;
+    transition: .5s;
+
+  }
+  button.previous_link,
+  button.next_link {
+    border: 1.5px var(--main) solid;
+    background-color: var(--main);
+  }
+  // button.previous_link:hover,
+  // button.next_link:hover {
+  //   background-color: white;
+  // }
+  button.previous_link:hover.current_page,
+  button.next_link:hover.current_page {
+    background-color: white;
+  }
+}

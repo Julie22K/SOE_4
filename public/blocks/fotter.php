@@ -1,4 +1,6 @@
-<?php require_once '../modals/example.php'; ?>
+</div>
+</div>
+
 <script>
     $(document).ready(function() {
         $('.select2').select2({
@@ -23,3 +25,30 @@
 <script src="../../assets/js/contextmenu.js"></script>
 <script src="../../assets/js/setting.js"></script>
 <script src="../../assets/js/modal.js"></script>
+
+<div class="context-menu-open" id="contextmenuperson"></div>
+<?php
+if($page_title=="Список покупок"){
+    require_once '../blocks/scripts/shopping_list.php'; 
+} 
+else if($page_title=="Редагування режиму харчування"){
+    require_once '../blocks/scripts/meal_times.php'; 
+}
+else if($page_title=="Menu of week"){
+    require_once '../blocks/scripts/menu.php'; 
+}
+else if($page_title=="Продукти"){
+    require_once '../blocks/scripts/products.php'; 
+}
+else if($page_title=="Рецепти"){
+    require_once '../blocks/scripts/recipes.php'; 
+}
+
+
+
+
+unset($_SESSION['message']);
+?>
+</body>
+
+</html>

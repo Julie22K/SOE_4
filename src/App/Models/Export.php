@@ -24,7 +24,8 @@ class Export
 
         return $menu->id;
     }*/
-    public static function just(){
+    public static function just()
+    {
         return 'end';
     }
 }

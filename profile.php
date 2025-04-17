@@ -1,26 +1,14 @@
 <?php
-session_start();
-if (isset($_SESSION['user']) ){
-    header('Location: /');
-}
+$start_page=false;
+$redirect_path = '/';
+require_once 'public/blocks/auth/head.php';
 ?>
 
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Авторизація та реєстрація</title>
-    <link rel="stylesheet" href="assets/CSS/index.css">
-</head>
-<body>
+<!-- Профиль -->
+<form>
+    <h2 style="margin: 10px 0;"><?= $_SESSION['user']['login'] ?></h2>
+    <a href="#"><?= $_SESSION['user']['email'] ?></a>
+    <a href="vendor/auth/logout.php" class="logout">Вихід</a>
+</form>
 
-    <!-- Профиль -->
-
-    <form>
-        <h2 style="margin: 10px 0;"><?= $_SESSION['user']['full_name'] ?></h2>
-        <a href="#"><?= $_SESSION['user']['email'] ?></a>
-        <a href="vendor/logout.php" class="logout">Вихід</a>
-    </form>
-
-</body>
-</html>
+<?php require_once 'public/blocks/auth/footer.php'; ?>

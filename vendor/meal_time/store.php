@@ -1,59 +1,41 @@
 <?php
-require 'C:\Users\Julie\source\SOE_4\public/blocks/pre_head.php';
+
+require_once '../../public/blocks/pre_head.php';
 
 use App\Models\MealTime;
 
-var_dump($_POST);
+$ids = $_POST['ids'];
+$names = $_POST['names'];
+$priorities = $_POST['priorities'];
 if (count($_POST) != 0) {
-    $names = $_POST['names'];
-    $priorities = $_POST['priorities'];
-    $ids = $_POST['ids'];
+    $form_meal_times = [];
+    for ($i = 0; $i < count($names); $i++) {
 
-    $old_data = MealTime::all();
+        $id = $ids[$i];
+        $name = $names[$i];
+        $priority = $priorities[$i];
+        $is_use = isset($_POST['is_uses_'.$id])?true:false;
 
-    //add item
-    foreach ($ids as $key => $id) {
+        if ($id == "null") {
+            $data_for_meal_time = [
+                'name' => $name,
+                'priority' => $priority,
+                'is_use' => $is_use,
+                'user_id' =>  $_SESSION['user']['id'],
+                'is_private' => true,
+            ];
 
-        $is_contains = false;
-        foreach ($old_data as $item) {
-            if ($item->id == $id) {
-                $is_contains = true;
-                break;
-            }
-        }
-        if (!$is_contains) {
-            echo "create item $names[$key] $priorities[$key]";
-            MealTime::store([
-                "name" => $names[$key],
-                "priority" => $priorities[$key]
-            ]);
-        }
-    }
-    foreach ($old_data as $item) {
+            $meal_time = new MealTime($data_for_meal_time);
 
-        $is_contains = false;
-        $k = 0;
-        foreach ($ids as $key => $id) {
-            if ($item->id == $id) {
-                $is_contains = true;
-                $k = $key;
-                break;
-            }
-        }
-        if (!$is_contains) {
-            echo "update item`s is_use" .  $item->name . " " . $item->id;
-            MealTime::update($item->id, [
-                "is_use" => false
-            ]);
+            $meal_time_created = new MealTime($meal_time->create());
         } else {
-            if ($item->priority != $priorities[$k]) {
-                echo "update item`s priority $names[$k] $priorities[$k]";
-                MealTime::update($item->id, [
-                    "priority" => $priorities[$k]
-                ]);
-            }
+            $meal_time_finded = MealTime::find($ids[$i]);
+            $meal_time_finded->name = $name;
+            $meal_time_finded->priority = $priority;
+            $meal_time_finded->is_use = $is_use == "on" ? 1 : 0;
+            $meal_time_finded->update($id);
         }
     }
 }
-
-header('Location: ../../public/pages/meal_times.php');
+returnToReallyPrevPage();
+?>

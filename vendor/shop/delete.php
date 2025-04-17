@@ -1,14 +1,14 @@
 <?php
-require 'C:\Users\Julie\source\SOE_4\public/blocks/pre_head.php';
-
+require_once '../../public/blocks/pre_head.php';
 
 use App\Models\Shop;
 
-$id = $_GET['id'];
-
-Shop::find($id)->delete();
-
-
-
-
-header('Location: ../../public/pages/shops.php');
+try {
+    $id = $_GET['id'];
+    $res_message = Shop::find($id)->delete($id);
+    $_SESSION['messages']['success'] = $res_message;
+    returnToReallyPrevPage();
+} catch (\Throwable $th) {
+    $_SESSION['messages']['danger'] = "Помилка видалення магазину";
+    returnToReallyPrevPage();
+}

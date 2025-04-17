@@ -6,22 +6,18 @@ use App\Data;
 use DateTime;
 use mysqli;
 
-class Menu
+/**
+ * @property int $first_date
+ * @property int $last_date
+ * @property int $gender
+ * @property int $days_interval
+ * @property int $meal_time_id
+ * @property int $budget
+ */
+class Menu extends Model
 {
-    public $id;
-    public $table = "menus";
-    public $budget;
-    public $days_interval;
-    public $first_date;
-    public $last_date;
-    function __construct($budget, $first_date, $last_date, $id = null)
-    {
-        $this->id = $id;
-        $this->budget = $budget;
-        $this->first_date = $first_date;
-        $this->last_date = $last_date;
-        $this->days_interval = $this->days_interval();
-    }
+    protected $table = 'menus';
+
     function days_interval()
     {
         $date1 = new DateTime($this->first_date);
@@ -65,7 +61,7 @@ class Menu
     }
     public function statistic_date_avg($date)
     {
-        $info = $this->info(Dish::where('date', $date));
+        $info = $this->info(Dish::where([['date', $date]]));
         $res = [];
         foreach (Data::$info_data as $val) {
             $res[$val] += (100 * $info[$val]) / $this->norms_on_day()[$val];
@@ -189,8 +185,9 @@ class Menu
     }
     public function dishes()
     {
-        return Dish::where('menu_id', $this->id);
+        return Dish::where([['menu_id', $this->id]]);
     }
+    
     public function shop_items()
     {
         $res = [];
@@ -211,22 +208,9 @@ class Menu
     }
     public function person_in_menus()
     {
-        return PersonInMenu::where('menu_id', $this->id);
+        return PersonInMenu::where([['menu_id', $this->id]]);
     }
-    static function find($id)
-    {
-        $menu = Data::getItemById('menus', $id);
-        return $menu !== FALSE ? new Menu($menu[1], $menu[2], $menu[3], $menu[0]) : false;
-    }
-    static function where($foreign_key, $id)
-    {
-        $items = Data::getData("menus", ' ' . $foreign_key . '=' . $id);
-        $res = array();
-        foreach ($items as $item) {
-            array_push($res, Self::find($item[0]));
-        }
-        return $res;
-    }
+
     static function current()
     {
         $currentDate = date('Y-m-d');
@@ -235,59 +219,20 @@ class Menu
             return Self::find($res[0][0]);
         } else false;
     }
-    static function all()
-    {
-        $menus = Data::getData('menus');
-        $res = array();
-        foreach ($menus as $menu) {
-            array_push($res, Self::find($menu[0]));
-        }
-        return $res;
-    }
-    public function create(array $persons = [])
-    {
-        Data::createItem('menus', ['budget' => $this->budget, 'first_date' => $this->first_date, 'last_date' => $this->last_date]);
-        $menu_id = Data::getLastItemId();
-        foreach ($persons as $person) {
-            $p = new PersonInMenu($person, $menu_id);
-            $p->create();
-        }
-    }
-    static function store($data)
-    {
-        $menu_id = Data::createItem('menus', ['budget' => $data['budget'], 'first_date' => $data['first_date'], 'last_date' => $data['last_date'],]);
-        foreach ($data['persons'] as $person) {
-            $p = new PersonInMenu($menu_id, $person);
-            $p->create();
-        }
-    }
-    static function update($id,$data)
-    {
-        Data::deleteItemsWhere('person_in_menus',"menu_id=$id");
-        foreach ($data['persons'] as $person) {
-            $p = new PersonInMenu($id, $person);
-            $p->create();
-        }
-        return Data::updateItem('menus',$id,['budget' => $data['budget'], 'first_date' => $data['first_date'], 'last_date' => $data['last_date']]);
-        
-    }
+    
+    
     public function clear()
     {
         foreach ($this->person_in_menus() as $person_in_menu) {
-            $person_in_menu->delete();
+            $person_in_menu->delete($person_in_menu->id);
         }
         foreach ($this->dishes() as $dish) {
-            $dish->delete();
+            $this->dish->delete();
         }
     }
-    public function delete()
+
+    public function user()
     {
-        foreach ($this->person_in_menus() as $person_in_menu) {
-            $person_in_menu->delete();
-        }
-        foreach ($this->dishes() as $dish) {
-            $dish->delete();
-        }
-        Data::deleteItem($this->table, $this->id);
+        return User::find($this->user_id);
     }
 }
